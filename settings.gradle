@@ -1,2 +1,6 @@
+include ':preferences'
+include ':logger'
+include ':settings'
+include ':authentication'
 include ':app'
 rootProject.name = "Perfectus"

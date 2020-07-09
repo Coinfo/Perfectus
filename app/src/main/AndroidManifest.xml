@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="chamich.app">
+    package="app.chamich">
 
     <application
         android:allowBackup="true"
