@@ -1,9 +1,9 @@
-package app.chamich.library.preferences
+package app.chamich.library.preferences.internal
 
 import android.util.Log
-import app.chamich.library.preferences.api.IPreferences
+import app.chamich.library.preferences.IPreferences
 
-class Preferences: IPreferences {
+internal class Preferences: IPreferences {
 
     init {
         Log.d("--| DEBUGGING |--",
