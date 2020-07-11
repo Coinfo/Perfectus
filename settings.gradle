@@ -1,7 +1,6 @@
-include ':core'
-include ':preferences'
-include ':logger'
-include ':settings'
-include ':authentication'
+include ':libraries:preferences'
+include ':libraries:logger'
+include ':features:settings'
+include ':features:account'
 include ':app'
 rootProject.name = "Perfectus"

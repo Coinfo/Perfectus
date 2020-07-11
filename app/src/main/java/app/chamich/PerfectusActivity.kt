@@ -21,19 +21,7 @@ class PerfectusActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_perfectus)
 
-
-
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-
-        setSupportActionBar(toolbar)
-
-        val appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.destination_fragment_settings)
-        )
-
-
-        NavigationUI.setupWithNavController(toolbar, findNavController(R.id.nav_host_fragment), appBarConfiguration)
-
+        setSupportActionBar(findViewById<Toolbar>(R.id.toolbar))
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -45,11 +33,4 @@ class PerfectusActivity : AppCompatActivity() {
         NavigationUI.onNavDestinationSelected(item, Navigation.findNavController(this, R.id.nav_host_fragment))
         return super.onOptionsItemSelected(item)
     }
-
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-////        when(item.itemId) {
-////            R.id.menu_item_settings ->
-////        }
-//        return super.onOptionsItemSelected(item)
-//    }
 }
