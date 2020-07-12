@@ -1,4 +1,4 @@
-package app.chamich
+package app.chamich.di
 
 import android.content.Context
 import app.chamich.library.logger.ILogger
