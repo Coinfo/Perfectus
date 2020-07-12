@@ -11,11 +11,11 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class SignUpFragment : Fragment() {
+internal class SignUpFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_sign_up, container, false)
+    ): View? = inflater.inflate(R.layout.account_fragment_sign_up, container, false)
 
 }
