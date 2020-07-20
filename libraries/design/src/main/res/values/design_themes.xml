@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base theme for Day Mode. -->
+    <style name="Theme.Perfectus" parent="Theme.MaterialComponents.Light" tools:ignore="ResourceName">
+        <item name="colorPrimary">@color/design_brand</item>
+        <item name="colorPrimaryDark">@color/design_brand_dark</item>
+        <item name="colorAccent">@color/design_accent</item>
+        <item name="design_fab_background_color">@color/design_fab_background</item>
+        <item name="design_hint_text_color">@color/design_accent</item>
+        <item name="design_box_stroke_color">@color/design_accent</item>
+        <item name="design_button_height">50dp</item>
+        <item name="design_card_background_color">@color/design_card_background</item>
+        <item name="design_card_corners_radius">16dp</item>
+        <item name="design_card_elevation">8dp</item>
+    </style>
+
+</resources>

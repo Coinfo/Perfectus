@@ -31,7 +31,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:backgroundTint="#F5F5FA"
             app:fabAlignmentMode="center"
             app:fabCradleMargin="10dp"
             app:fabCradleRoundedCornerRadius="10dp"
@@ -44,9 +43,8 @@
             android:layout_height="wrap_content"
             android:overScrollMode="ifContentScrolls"
             android:src="@android:drawable/btn_plus"
-            app:backgroundTint="#3949AB"
-            app:layout_anchor="@id/appbar"
-            app:tint="#FFFFFF" />
+            app:backgroundTint="?attr/design_fab_background_color"
+            app:layout_anchor="@id/appbar" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

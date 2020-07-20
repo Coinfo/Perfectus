@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <color name="design_brand">#1DB854</color>
+    <color name="design_brand_dark">#21272C</color>
+    <color name="design_accent">#F5F5F5</color>
+    <color name="design_text_primary">#1DB854</color>
+    <color name="design_text_input_outline">#1DB854</color>
+    <color name="design_fab_background">#1DB854</color>
+    <color name="design_card_background">#21272C</color>
+
+</resources>
