@@ -1,3 +1,9 @@
 <resources>
 
+    <string name="settings_label_text_theme">Choose application theme</string>
+
+    <string name="settings_button_text_theme_dark">Dark</string>
+    <string name="settings_button_text_theme_light">Light</string>
+    <string name="settings_button_text_theme_system">System</string>
+
 </resources>

@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:overScrollMode="ifContentScrolls"
-            android:src="@android:drawable/btn_plus"
+            android:src="@drawable/home_ic_search"
             app:backgroundTint="?attr/design_fab_background_color"
             app:layout_anchor="@id/appbar" />
 
