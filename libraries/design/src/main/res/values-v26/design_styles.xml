@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Edit Texts -->
+
+    <style name="Widget.Perfectus.EditText.Email" tools:ignore="ResourceName">
+        <item name="android:inputType">textEmailAddress</item>
+        <item name="android:autofillHints">emailAddress</item>
+    </style>
+
+    <style name="Widget.Perfectus.EditText.Password" tools:ignore="ResourceName">
+        <item name="android:inputType">textPassword</item>
+        <item name="android:autofillHints">password</item>
+    </style>
+
+</resources>

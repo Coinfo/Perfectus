@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Buttons -->
+
+    <style name="Widget.Perfectus.Button" parent="Widget.MaterialComponents.Button" tools:ignore="ResourceName">
+        <item name="android:layout_height">?attr/design_button_height</item>
+    </style>
+
+    <style name="Widget.Perfectus.TextButton" parent="Widget.MaterialComponents.Button.TextButton" tools:ignore="ResourceName">
+        <item name="android:layout_height">?attr/design_button_height</item>
+    </style>
+
+    <!-- Text Inputs -->
+
+    <style name="Widget.Perfectus.TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox" tools:ignore="ResourceName">
+        <item name="hintTextColor">?attr/design_hint_text_color</item>
+        <item name="boxStrokeColor">?attr/design_box_stroke_color</item>
+    </style>
+
+    <style name="Widget.Perfectus.TextInput.Email" tools:ignore="ResourceName" />
+
+    <style name="Widget.Perfectus.TextInput.Password" tools:ignore="ResourceName">
+        <item name="passwordToggleEnabled">true</item>
+    </style>
+
+    <!-- Edit Texts -->
+
+    <style name="Widget.Perfectus.EditText" parent="" tools:ignore="ResourceName">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="Widget.Perfectus.EditText.Email" tools:ignore="ResourceName">
+        <item name="android:inputType">textEmailAddress</item>
+    </style>
+
+    <style name="Widget.Perfectus.EditText.Password" tools:ignore="ResourceName">
+        <item name="android:inputType">textPassword</item>
+    </style>
+
+    <!-- Card View -->
+
+    <style name="Widget.Perfectus.Card" parent="" tools:ignore="ResourceName">
+        <item name="cardElevation">?attr/design_card_elevation</item>
+        <item name="cardCornerRadius">?attr/design_card_corners_radius</item>
+        <item name="cardBackgroundColor">?attr/design_card_background_color</item>
+    </style>
+
+
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <color name="design_brand">#45b84f</color>
+    <color name="design_brand_dark">#00a80e</color>
+    <color name="design_accent">#333333</color>
+    <color name="design_text_primary">#F5F5F5</color>
+    <color name="design_text_input_outline">#F5F5F5</color>
+    <color name="design_fab_background">#45b84f</color>
+    <color name="design_card_background">#F5F5F5</color>
+
+</resources>

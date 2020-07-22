@@ -7,4 +7,8 @@
     <string name="account_button_text_sign_up">Sign Up</string>
     <string name="account_button_text_forgot_password">Forgot Password?</string>
 
+    <!-- Hints -->
+    <string name="account_edittext_hint_email">Email</string>
+    <string name="account_edittext_hint_password">Password</string>
+
 </resources>

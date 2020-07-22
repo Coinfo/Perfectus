@@ -1,3 +1,4 @@
+include ':libraries:design'
 include ':features:home'
 include ':libraries:preferences'
 include ':libraries:logger'
