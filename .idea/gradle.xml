@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/features/home" />
             <option value="$PROJECT_DIR$/features/settings" />
             <option value="$PROJECT_DIR$/libraries" />
+            <option value="$PROJECT_DIR$/libraries/authentication" />
             <option value="$PROJECT_DIR$/libraries/design" />
             <option value="$PROJECT_DIR$/libraries/logger" />
             <option value="$PROJECT_DIR$/libraries/preferences" />

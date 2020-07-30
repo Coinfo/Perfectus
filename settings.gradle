@@ -1,3 +1,4 @@
+include ':libraries:authentication'
 include ':libraries:design'
 include ':features:home'
 include ':libraries:preferences'
