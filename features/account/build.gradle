@@ -28,6 +28,7 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':libraries:authenticator')
     implementation project(path: ':libraries:logger')
     implementation project(path: ':libraries:design')
 
