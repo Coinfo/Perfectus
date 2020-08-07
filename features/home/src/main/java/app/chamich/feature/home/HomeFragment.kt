@@ -4,20 +4,27 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import app.chamich.feature.home.databinding.HomeFragmentHomeBinding
 import kotlinx.android.synthetic.main.home_fragment_home.*
 
 
 class HomeFragment : Fragment() {
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.home_fragment_home, container, false)
+    ): View? = DataBindingUtil.inflate<HomeFragmentHomeBinding>(
+        inflater, R.layout.home_fragment_home, container, false
+    ).root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
 
 
         appbar.setOnMenuItemClickListener { menuItem ->
