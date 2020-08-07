@@ -1,6 +1,8 @@
 package app.chamich.di
 
 import android.content.Context
+import app.chamich.library.authentication.FirebaseAuthenticator
+import app.chamich.library.authentication.IAuthenticator
 import app.chamich.library.logger.ILogger
 import app.chamich.library.logger.Logger
 import app.chamich.library.preferences.IPreferences
@@ -30,4 +32,8 @@ object PerfectusModule {
     fun providesPreferences(
         @ApplicationContext context: Context
     ): IPreferences = Preferences(context)
+
+    @Provides
+    @Singleton
+    fun providesAuthenticator(): IAuthenticator = FirebaseAuthenticator()
 }

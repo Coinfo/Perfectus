@@ -2,10 +2,30 @@ package app.chamich.library.authentication.exceptions
 
 
 sealed class AuthenticatorException(
-    exception: Exception
-) : Throwable() {
+    override val message: String?, override val cause: Throwable?, localizedMessage: String?
+) : Exception() {
 
-    class SignInException(exception: Exception) : AuthenticatorException(exception)
-    class SignUpException(exception: Exception) : AuthenticatorException(exception)
-    class PasswordResetException(exception: Exception) : AuthenticatorException(exception)
+    class SignInException(
+        exception: Exception
+    ) : AuthenticatorException(
+        exception.message,
+        exception.cause,
+        exception.cause?.localizedMessage
+    )
+
+    class SignUpException(
+        exception: Exception
+    ) : AuthenticatorException(
+        exception.message,
+        exception.cause,
+        exception.cause?.localizedMessage
+    )
+
+    class PasswordResetException(
+        exception: Exception
+    ) : AuthenticatorException(
+        exception.message,
+        exception.cause,
+        exception.cause?.localizedMessage
+    )
 }

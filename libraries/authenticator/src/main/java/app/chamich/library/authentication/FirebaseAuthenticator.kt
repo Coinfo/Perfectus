@@ -20,6 +20,8 @@ class FirebaseAuthenticator(
             return FirebaseUser(user.uid, email, user.phoneNumber, user.displayName)
         } catch (exception: FirebaseException) {
             throw AuthenticatorException.SignInException(exception)
+        } catch (exception: IllegalArgumentException) {
+            throw AuthenticatorException.SignInException(exception)
         }
     }
 
@@ -33,6 +35,8 @@ class FirebaseAuthenticator(
             return FirebaseUser(user.uid, email, user.phoneNumber, user.displayName)
         } catch (exception: FirebaseException) {
             throw AuthenticatorException.SignUpException(exception)
+        } catch (exception: IllegalArgumentException) {
+            throw AuthenticatorException.SignInException(exception)
         }
     }
 
@@ -42,6 +46,8 @@ class FirebaseAuthenticator(
             authenticator.sendPasswordResetEmail(email).await()
         } catch (exception: FirebaseException) {
             throw AuthenticatorException.PasswordResetException(exception)
+        } catch (exception: IllegalArgumentException) {
+            throw AuthenticatorException.SignInException(exception)
         }
     }
 
