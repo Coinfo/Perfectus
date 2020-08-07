@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_signInFragment_to_signUpFragment"
             app:destination="@id/destination_fragment_sign_up" />
+        <action
+            android:id="@+id/account_action_destination_fragment_sign_in_to_account_forgotpasswordfragment"
+            app:destination="@id/destination_forgot_password" />
     </fragment>
 
     <fragment
@@ -21,4 +24,9 @@
         android:name="app.chamich.feature.authentication.ui.signup.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/account_fragment_sign_up" />
+    <fragment
+        android:id="@+id/destination_forgot_password"
+        android:name="app.chamich.feature.authentication.ui.password.forgot.ForgotPasswordFragment"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" />
 </navigation>

@@ -52,13 +52,13 @@ internal class SignInFragment : BaseFragment<SignInViewModel, AccountFragmentSig
     fun onClickSignIn(view: View) {
         requireContext().hideKeyboardFrom(view)
         viewModel.signIn(
-            binding.edittextEmail.textAsString,
-            binding.edittextPassword.textAsString
+            binding.editTextSignInEmail.textAsString,
+            binding.editTextSignInPassword.textAsString
         )
     }
 
     fun onClickForgotPassword() {
-        //
+        findNavController().navigate(Destinations.ForgotPassword.direction)
     }
 
     fun onClickSignUp() {
@@ -107,8 +107,8 @@ internal class SignInFragment : BaseFragment<SignInViewModel, AccountFragmentSig
     }
 
     private fun showProgress(show: Boolean) {
-        binding.progress.visibility = if (show) View.VISIBLE else View.INVISIBLE
-        binding.linearLayoutUserInput.visibility = if (show) View.INVISIBLE else View.VISIBLE
+        binding.progressSignIn.visibility = if (show) View.VISIBLE else View.INVISIBLE
+        binding.linearLayoutSignInInput.visibility = if (show) View.INVISIBLE else View.VISIBLE
         binding.buttonSignUp.isEnabled = !show
     }
 

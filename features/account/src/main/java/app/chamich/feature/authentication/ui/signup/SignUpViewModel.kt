@@ -17,15 +17,18 @@ class SignUpViewModel @ViewModelInject constructor(
     private val logger: ILogger
 ) : ViewModel() {
 
-    private val user = MutableLiveData<Resource<IUser>>()
+    private var user = MutableLiveData<Resource<IUser>>()
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //region Public Functions
 
     fun signUp(email: String, password: String) {
-        logger.debug(message = "Sign Up (email: $email, password: $password)")
+        logger.debug(message = "Sign Up (email: ${email}, password: ${password})")
         viewModelScope.launch {
             user.postValue(Resource.loading(null))
             try {
                 user.postValue(Resource.success(authenticator.signUp(email, password)))
-            } catch (exception: AuthenticatorException.SignInException) {
+            } catch (exception: AuthenticatorException.SignUpException) {
                 logger.error(message = "Exception while Sign Up", throwable = exception)
                 user.postValue(Resource.error(exception))
             }
@@ -33,4 +36,10 @@ class SignUpViewModel @ViewModelInject constructor(
     }
 
     fun getSignedUpUser(): LiveData<Resource<IUser>> = user
+
+    fun resetSignedUpUser() {
+        user = MutableLiveData()
+    }
+
+    //endregion
 }
