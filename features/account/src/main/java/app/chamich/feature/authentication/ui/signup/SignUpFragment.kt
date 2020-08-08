@@ -39,7 +39,7 @@ internal class SignUpFragment : BaseFragment<SignUpViewModel, AccountFragmentSig
         viewModel.resetSignedUpUser()
     }
 
-    override fun getViewModelClass(): Class<SignUpViewModel> = SignUpViewModel::class.java
+    override fun getViewModelClass() = SignUpViewModel::class.java
 
     //endregion
 

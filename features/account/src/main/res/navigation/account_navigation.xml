@@ -28,5 +28,5 @@
         android:id="@+id/destination_forgot_password"
         android:name="app.chamich.feature.authentication.ui.password.forgot.ForgotPasswordFragment"
         android:label="fragment_forgot_password"
-        tools:layout="@layout/fragment_forgot_password" />
+        tools:layout="@layout/account_fragment_forgot_password" />
 </navigation>

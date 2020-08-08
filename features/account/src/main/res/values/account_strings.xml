@@ -5,6 +5,7 @@
     <!-- Buttons -->
     <string name="account_button_text_sign_in">Sign In</string>
     <string name="account_button_text_sign_up">Sign Up</string>
+    <string name="account_button_text_restore_password">Restore</string>
     <string name="account_button_text_forgot_password">Forgot Password?</string>
 
     <!-- Hints -->
