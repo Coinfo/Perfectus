@@ -45,7 +45,6 @@ dependencies {
     implementation project(path: ':libraries:logger')
     implementation project(path: ':libraries:preferences')
     implementation project(path: ':libraries:authenticator')
-    implementation project(path: ':features:home')
     implementation project(path: ':features:settings')
     implementation project(path: ':features:account')
 
