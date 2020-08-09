@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class ForgotPasswordFragment :
+internal class ForgotPasswordFragment :
     BaseFragment<ForgotPasswordViewModel, AccountFragmentForgotPasswordBinding>() {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////

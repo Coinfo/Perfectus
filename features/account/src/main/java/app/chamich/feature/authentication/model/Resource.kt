@@ -1,7 +1,7 @@
 package app.chamich.feature.authentication.model
 
 
-data class Resource<out T>(val status: Status, val data: T?, val exception: Exception?) {
+internal data class Resource<out T>(val status: Status, val data: T?, val exception: Exception?) {
 
     companion object {
         fun <T> success(data: T?): Resource<T> {

@@ -29,6 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:defaultNavHost="true"
+                app:graph="@navigation/home_navigation"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
             <com.google.android.material.bottomappbar.BottomAppBar

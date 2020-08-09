@@ -11,7 +11,7 @@ import app.chamich.library.authentication.exceptions.AuthenticatorException
 import app.chamich.library.logger.ILogger
 import kotlinx.coroutines.launch
 
-class ForgotPasswordViewModel @ViewModelInject constructor(
+internal class ForgotPasswordViewModel @ViewModelInject constructor(
     private val authenticator: IAuthenticator,
     private val logger: ILogger
 ) : ViewModel() {

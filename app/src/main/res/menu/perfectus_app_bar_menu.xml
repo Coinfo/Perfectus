@@ -3,8 +3,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/action_signin"
-        android:title="@string/home_menu_item_text_sign_in" />
+        android:id="@+id/action_sign_out"
+        android:title="@string/home_menu_item_text_sign_out" />
 
     <item
         android:id="@+id/action_settings"

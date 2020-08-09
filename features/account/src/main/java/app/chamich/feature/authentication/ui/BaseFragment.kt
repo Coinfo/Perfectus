@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-abstract class BaseFragment<VM : ViewModel, VDB : ViewDataBinding> : Fragment() {
+internal abstract class BaseFragment<VM : ViewModel, VDB : ViewDataBinding> : Fragment() {
 
     protected val viewModel: VM by lazy { ViewModelProvider(this).get(getViewModelClass()) }
 

@@ -1,6 +1,6 @@
 package app.chamich.feature.authentication.model
 
-enum class Status {
+internal enum class Status {
     SUCCESS,
     ERROR,
     LOADING

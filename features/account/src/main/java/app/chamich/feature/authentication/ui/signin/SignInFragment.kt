@@ -1,5 +1,6 @@
 package app.chamich.feature.authentication.ui.signin
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -13,14 +14,21 @@ import app.chamich.feature.authentication.model.Destinations
 import app.chamich.feature.authentication.model.Status
 import app.chamich.feature.authentication.ui.BaseFragment
 import app.chamich.library.authentication.IUser
+import app.chamich.library.logger.ILogger
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 /**
  * Fragment responsible for User Sign In with Email and Password
  */
 @AndroidEntryPoint
 internal class SignInFragment : BaseFragment<SignInViewModel, AccountFragmentSignInBinding>() {
+
+    @Inject
+    lateinit var logger: ILogger
+
+    private var listener: SignInListener? = null
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Fragment Override Functions
@@ -33,6 +41,19 @@ internal class SignInFragment : BaseFragment<SignInViewModel, AccountFragmentSig
         binding.fragment = this
 
         setupSignedInUserObservable()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        if (context !is SignInListener) {
+            logger.warn(
+                message = "In order to listen for Sign In Completion event," +
+                        " your activity should implement SignInFragment.SignInListener"
+            )
+        }
+
+        listener = context as? SignInListener
     }
 
     override fun onDestroyView() {
@@ -82,6 +103,8 @@ internal class SignInFragment : BaseFragment<SignInViewModel, AccountFragmentSig
 
     private fun handleStatusSuccess(user: IUser?) {
         showProgress(false)
+
+        user?.let { listener?.onSignInCompleted(it) }
     }
 
     private fun handleStatusLoading() {

@@ -1,5 +1,6 @@
 package app.chamich.feature.authentication.ui.signup
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -12,12 +13,19 @@ import app.chamich.feature.authentication.extenstion.textAsString
 import app.chamich.feature.authentication.model.Status
 import app.chamich.feature.authentication.ui.BaseFragment
 import app.chamich.library.authentication.IUser
+import app.chamich.library.logger.ILogger
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
 internal class SignUpFragment : BaseFragment<SignUpViewModel, AccountFragmentSignUpBinding>() {
+
+    @Inject
+    lateinit var logger: ILogger
+
+    private var listener: SignUpListener? = null
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Fragment Override Functions
@@ -30,6 +38,19 @@ internal class SignUpFragment : BaseFragment<SignUpViewModel, AccountFragmentSig
         binding.fragment = this
 
         setupSignedInUserObservable()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        if (context !is SignUpListener) {
+            logger.warn(
+                message = "In order to listen for Sign Up Completion event," +
+                        " your activity should implement SignUpFragment.SignUpListener"
+            )
+        }
+
+        listener = context as? SignUpListener
     }
 
     override fun onDestroyView() {
@@ -75,6 +96,8 @@ internal class SignUpFragment : BaseFragment<SignUpViewModel, AccountFragmentSig
 
     private fun handleStatusSuccess(user: IUser?) {
         showProgress(false)
+
+        user?.let { listener?.onSignUpCompleted(it) }
     }
 
     private fun handleStatusLoading() {

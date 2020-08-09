@@ -36,7 +36,7 @@ class FirebaseAuthenticator(
         } catch (exception: FirebaseException) {
             throw AuthenticatorException.SignUpException(exception)
         } catch (exception: IllegalArgumentException) {
-            throw AuthenticatorException.SignInException(exception)
+            throw AuthenticatorException.SignUpException(exception)
         }
     }
 
@@ -47,7 +47,7 @@ class FirebaseAuthenticator(
         } catch (exception: FirebaseException) {
             throw AuthenticatorException.PasswordResetException(exception)
         } catch (exception: IllegalArgumentException) {
-            throw AuthenticatorException.SignInException(exception)
+            throw AuthenticatorException.PasswordResetException(exception)
         }
     }
 

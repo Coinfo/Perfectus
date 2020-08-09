@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/perfectus"
-    app:startDestination="@id/destination_fragment_home">
+    android:id="@+id/navigation_home"
+    app:startDestination="@id/navigation_account">
 
     <include app:graph="@navigation/account_navigation" />
-
-    <fragment
-        android:id="@+id/destination_fragment_home"
-        android:name="app.chamich.feature.home.HomeFragment"
-        android:label="HomeFragment">
-        <action
-            android:id="@+id/action_homeFragment_to_account"
-            app:destination="@id/account" />
-    </fragment>
+    <include app:graph="@navigation/settings_navigation" />
 
 </navigation>

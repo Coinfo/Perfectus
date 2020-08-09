@@ -12,7 +12,7 @@ import app.chamich.library.authentication.exceptions.AuthenticatorException
 import app.chamich.library.logger.ILogger
 import kotlinx.coroutines.launch
 
-class SignUpViewModel @ViewModelInject constructor(
+internal class SignUpViewModel @ViewModelInject constructor(
     private val authenticator: IAuthenticator,
     private val logger: ILogger
 ) : ViewModel() {
