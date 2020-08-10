@@ -1,3 +1,4 @@
+include ':features:goals'
 include ':libraries:authenticator'
 include ':libraries:design'
 include ':libraries:preferences'
