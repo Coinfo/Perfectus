@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020 Chamich Apps. All rights reserved.
+ */
+
 package app.chamich.library.authentication
 
 data class FirebaseUser(

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020 Chamich Apps. All rights reserved.
+ */
+
 package app.chamich.feature.authentication.extenstion
 
 import androidx.databinding.ObservableField

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020 Chamich Apps. All rights reserved.
+ */
+
 include ':features:goals'
 include ':libraries:authenticator'
 include ':libraries:design'

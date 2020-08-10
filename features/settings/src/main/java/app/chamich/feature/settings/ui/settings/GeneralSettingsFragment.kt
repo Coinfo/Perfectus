@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020 Chamich Apps. All rights reserved.
+ */
+
 package app.chamich.feature.settings.ui.settings
 
 import android.content.res.Configuration

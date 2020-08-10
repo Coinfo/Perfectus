@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020 Chamich Apps. All rights reserved.
+ */
+
 apply plugin: 'io.gitlab.arturbosch.detekt'
 
 detekt {

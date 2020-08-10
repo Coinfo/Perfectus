@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!--
+  ~ Copyright (c) 2020 Chamich Apps. All rights reserved.
+  -->
+
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base theme for Night Mode. -->
