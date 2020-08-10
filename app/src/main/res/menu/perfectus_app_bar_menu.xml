@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2020 Chamich Apps. All rights reserved.
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_sign_out"
+        android:title="@string/home_menu_item_text_sign_out" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/home_menu_item_text_settings" />
+
+</menu>

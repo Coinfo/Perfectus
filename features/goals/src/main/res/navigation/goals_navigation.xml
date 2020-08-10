@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2020 Chamich Apps. All rights reserved.
+  -->
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_goals"
+    app:startDestination="@id/destination_goals">
+
+    <fragment
+        android:id="@+id/destination_goals"
+        android:name="app.chamich.feature.goals.ui.goals.GoalsFragment"
+        android:label="fragment_goals"
+        tools:layout="@layout/goals_fragment_goals" />
+
+</navigation>

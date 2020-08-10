@@ -1,8 +1,13 @@
+/*
+ * Copyright (c) 2020 Chamich Apps. All rights reserved.
+ */
+
+include ':features:goals'
+include ':libraries:authenticator'
 include ':libraries:design'
-include ':features:home'
 include ':libraries:preferences'
 include ':libraries:logger'
 include ':features:settings'
-include ':features:account'
+include ':features:authentication'
 include ':app'
 rootProject.name = "Perfectus"
