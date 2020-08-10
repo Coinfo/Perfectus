@@ -10,7 +10,7 @@
         android:id="@+id/destination_fragment_sign_in"
         android:name="app.chamich.feature.authentication.ui.signin.SignInFragment"
         android:label="fragment_sign_in"
-        tools:layout="@layout/account_fragment_sign_in">
+        tools:layout="@layout/authentication_fragment_sign_in">
         <action
             android:id="@+id/action_signInFragment_to_signUpFragment"
             app:destination="@id/destination_fragment_sign_up" />
@@ -23,10 +23,10 @@
         android:id="@+id/destination_fragment_sign_up"
         android:name="app.chamich.feature.authentication.ui.signup.SignUpFragment"
         android:label="fragment_sign_up"
-        tools:layout="@layout/account_fragment_sign_up" />
+        tools:layout="@layout/authentication_fragment_sign_up" />
     <fragment
         android:id="@+id/destination_forgot_password"
         android:name="app.chamich.feature.authentication.ui.password.forgot.ForgotPasswordFragment"
         android:label="fragment_forgot_password"
-        tools:layout="@layout/account_fragment_forgot_password" />
+        tools:layout="@layout/authentication_fragment_forgot_password" />
 </navigation>

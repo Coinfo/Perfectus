@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import app.chamich.feature.authentication.R
-import app.chamich.feature.authentication.databinding.AccountFragmentSignUpBinding
+import app.chamich.feature.authentication.databinding.AuthenticationFragmentSignUpBinding
 import app.chamich.feature.authentication.extenstion.hideKeyboardFrom
 import app.chamich.feature.authentication.extenstion.textAsString
 import app.chamich.feature.authentication.model.Status
@@ -20,7 +20,8 @@ import javax.inject.Inject
 
 
 @AndroidEntryPoint
-internal class SignUpFragment : BaseFragment<SignUpViewModel, AccountFragmentSignUpBinding>() {
+internal class SignUpFragment :
+    BaseFragment<SignUpViewModel, AuthenticationFragmentSignUpBinding>() {
 
     @Inject
     lateinit var logger: ILogger
@@ -30,7 +31,7 @@ internal class SignUpFragment : BaseFragment<SignUpViewModel, AccountFragmentSig
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Fragment Override Functions
 
-    override fun getLayoutId() = R.layout.account_fragment_sign_up
+    override fun getLayoutId() = R.layout.authentication_fragment_sign_up
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

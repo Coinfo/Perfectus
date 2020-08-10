@@ -6,7 +6,7 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import app.chamich.feature.authentication.R
-import app.chamich.feature.authentication.databinding.AccountFragmentForgotPasswordBinding
+import app.chamich.feature.authentication.databinding.AuthenticationFragmentForgotPasswordBinding
 import app.chamich.feature.authentication.extenstion.hideKeyboardFrom
 import app.chamich.feature.authentication.extenstion.textAsString
 import app.chamich.feature.authentication.model.Status
@@ -17,12 +17,12 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 internal class ForgotPasswordFragment :
-    BaseFragment<ForgotPasswordViewModel, AccountFragmentForgotPasswordBinding>() {
+    BaseFragment<ForgotPasswordViewModel, AuthenticationFragmentForgotPasswordBinding>() {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Fragment Override Functions
 
-    override fun getLayoutId() = R.layout.account_fragment_forgot_password
+    override fun getLayoutId() = R.layout.authentication_fragment_forgot_password
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

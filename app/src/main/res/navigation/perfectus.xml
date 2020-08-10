@@ -5,7 +5,7 @@
     android:id="@+id/navigation_home"
     app:startDestination="@id/navigation_account">
 
-    <include app:graph="@navigation/account_navigation" />
+    <include app:graph="@navigation/authentication_navigation" />
     <include app:graph="@navigation/settings_navigation" />
 
 </navigation>

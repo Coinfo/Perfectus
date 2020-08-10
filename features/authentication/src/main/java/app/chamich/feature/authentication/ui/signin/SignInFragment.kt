@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import app.chamich.feature.authentication.R
-import app.chamich.feature.authentication.databinding.AccountFragmentSignInBinding
+import app.chamich.feature.authentication.databinding.AuthenticationFragmentSignInBinding
 import app.chamich.feature.authentication.extenstion.hideKeyboardFrom
 import app.chamich.feature.authentication.extenstion.textAsString
 import app.chamich.feature.authentication.model.Destinations
@@ -23,7 +23,8 @@ import javax.inject.Inject
  * Fragment responsible for User Sign In with Email and Password
  */
 @AndroidEntryPoint
-internal class SignInFragment : BaseFragment<SignInViewModel, AccountFragmentSignInBinding>() {
+internal class SignInFragment :
+    BaseFragment<SignInViewModel, AuthenticationFragmentSignInBinding>() {
 
     @Inject
     lateinit var logger: ILogger
@@ -33,7 +34,7 @@ internal class SignInFragment : BaseFragment<SignInViewModel, AccountFragmentSig
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Fragment Override Functions
 
-    override fun getLayoutId() = R.layout.account_fragment_sign_in
+    override fun getLayoutId() = R.layout.authentication_fragment_sign_in
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
