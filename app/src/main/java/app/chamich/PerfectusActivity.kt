@@ -45,8 +45,6 @@ class PerfectusActivity : AppCompatActivity(),
             when (menuItem?.itemId) {
                 R.id.action_sign_out -> {
                     authenticator.signOut()
-                    binding.appbar.isVisible = false
-                    binding.fabSearch.isVisible = false
 //                    navController.setGraph(R.navigation.settings_navigation)
                 }
                 R.id.action_settings -> {
@@ -61,11 +59,32 @@ class PerfectusActivity : AppCompatActivity(),
             binding.appbar.isVisible = true
             binding.fabSearch.isVisible = true
             // Call navController.setGraph(...) with providing correct graph.
-        } else {
-            binding.appbar.isVisible = false
-            binding.fabSearch.isVisible = false
+        }
+
+        addDestinationChangeListener()
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //region Private Function
+
+    private fun addDestinationChangeListener() {
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            when (destination.id) {
+                R.id.destination_fragment_sign_in,
+                R.id.destination_fragment_sign_up,
+                R.id.destination_forgot_password -> {
+                    // Hides the Title and the Bottom Application Bar
+                    supportActionBar?.hide()
+                    binding.appbar.isVisible = false
+                    binding.fabSearch.isVisible = false
+                }
+            }
+
         }
     }
+
+    //endregion
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region SignInListener

@@ -28,12 +28,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/design_margin_large"
             android:layout_marginLeft="@dimen/design_margin_large"
-            android:layout_marginTop="128dp"
+            android:layout_marginTop="@dimen/design_margin_large"
             android:layout_marginEnd="@dimen/design_margin_large"
             android:layout_marginRight="@dimen/design_margin_large"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/label_sign_in_subtitle">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -59,7 +59,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/design_margin_small"
-                        android:hint="@string/account_edittext_hint_email">
+                        android:hint="@string/authentication_edit_text_hint_email">
 
                         <EditText
                             android:id="@+id/edit_text_sign_in_email"
@@ -77,7 +77,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/design_margin_small"
-                        android:hint="@string/account_edittext_hint_password">
+                        android:hint="@string/authentication_edit_text_hint_password">
 
                         <EditText
                             android:id="@+id/edit_text_sign_in_password"
@@ -96,7 +96,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/design_margin_small"
                         android:onClick="@{(view) -> fragment.onClickSignIn(view)}"
-                        android:text="@string/account_button_text_sign_in" />
+                        android:text="@string/authentication_button_text_sign_in" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/button_forgot_password"
@@ -104,7 +104,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:onClick="@{() -> fragment.onClickForgotPassword()}"
-                        android:text="@string/account_button_text_forgot_password" />
+                        android:text="@string/authentication_button_text_forgot_password" />
 
                 </LinearLayout>
 
@@ -130,11 +130,40 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/design_margin_large"
             android:onClick="@{() -> fragment.onClickSignUp()}"
-            android:text="@string/account_button_text_sign_up"
+            android:text="@string/authentication_button_text_sign_up"
             app:layout_constraintEnd_toEndOf="@+id/card_view_sign_in"
             app:layout_constraintStart_toStartOf="@+id/card_view_sign_in"
             app:layout_constraintTop_toBottomOf="@+id/card_view_sign_in" />
 
+        <TextView
+            android:id="@+id/label_sign_in_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/design_margin_large"
+            android:layout_marginLeft="@dimen/design_margin_large"
+            android:layout_marginTop="@dimen/design_margin_extra_large"
+            android:layout_marginEnd="@dimen/design_margin_large"
+            android:layout_marginRight="@dimen/design_margin_large"
+            android:text="@string/authentication_app_name"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/label_sign_in_subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/design_margin_large"
+            android:layout_marginLeft="@dimen/design_margin_large"
+            android:layout_marginEnd="@dimen/design_margin_large"
+            android:layout_marginRight="@dimen/design_margin_large"
+            android:text="@string/authentication_label_sign_in_subtitle"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/label_sign_in_title" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
