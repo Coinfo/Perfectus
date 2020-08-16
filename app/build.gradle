@@ -13,7 +13,7 @@ android {
     buildToolsVersion "30.0.0"
 
     defaultConfig {
-        applicationId "chamich.app"
+        applicationId "chamich.app.perfectus"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1

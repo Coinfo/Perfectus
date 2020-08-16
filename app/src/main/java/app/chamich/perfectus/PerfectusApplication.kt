@@ -2,7 +2,7 @@
  * Copyright (c) 2020 Chamich Apps. All rights reserved.
  */
 
-package app.chamich
+package app.chamich.perfectus
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

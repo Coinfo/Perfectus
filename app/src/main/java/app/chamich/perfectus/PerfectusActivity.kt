@@ -2,7 +2,7 @@
  * Copyright (c) 2020 Chamich Apps. All rights reserved.
  */
 
-package app.chamich
+package app.chamich.perfectus
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -11,12 +11,12 @@ import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import app.chamich.databinding.ActivityPerfectusBinding
 import app.chamich.feature.authentication.ui.signin.SignInListener
 import app.chamich.feature.authentication.ui.signup.SignUpListener
 import app.chamich.library.authentication.IAuthenticator
 import app.chamich.library.authentication.IUser
 import app.chamich.library.preferences.IPreferences
+import app.chamich.perfectus.databinding.ActivityPerfectusBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
