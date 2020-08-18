@@ -12,7 +12,7 @@ jobs:
       - run: echo "storePassword=$STORE_PASSWORD" >> keystore.properties
       - run: echo "keyAlias=$KEY_ALIAS" >> keystore.properties
       - run: echo "keyPassword=$KEY_PASSWORD" >> keystore.properties
-      - run: echo "storeFile=app/perfectus.jsk" >> keystore.properties
+      - run: echo "storeFile=perfectus.jsk" >> keystore.properties
       - run: echo $KEYSTORE_JSK | base64 -d > app/perfectus.jsk
       - run: echo $GOOGLE_SERVICES | base64 -di > libraries/authenticator/google-services.json
       - run: echo $GOOGLE_API | base64 -di > fastlane/api.json
