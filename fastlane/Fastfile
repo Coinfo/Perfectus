@@ -25,5 +25,6 @@ platform :android do
     supply(
       track: 'internal',
     )
+    upload_to_play_store
   end
 end
