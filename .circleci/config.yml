@@ -20,7 +20,19 @@ jobs:
           command: ./gradlew build
       - run:
           name: Install fastlane
-          command: bundle install
+          command: |
+            if [ "$CIRCLE_BRANCH" == "develop" ];
+            then
+              bundle install
+            else
+              echo "Install fastlane step skipped"
+            fi
       - run:
           name: Execute fastlane
-          command: bundle exec fastlane playstore
+          command: |
+            if [ "$CIRCLE_BRANCH" == "develop" ];
+            then
+              bundle exec fastlane playstore
+            else
+              echo "Execute fastlane step skipped"
+            fi
