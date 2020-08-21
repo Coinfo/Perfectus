@@ -44,7 +44,9 @@ class PerfectusActivity : AppCompatActivity(),
             AppCompatDelegate.setDefaultNightMode(mode)
         }
 
-        if (authenticator.isSignedIn()) {
+        // When the activity is created first time and user is signed in
+        // navigate to the Goals screen, instead of authentication (default)
+        if (savedInstanceState == null && authenticator.isSignedIn()) {
             navController.navigate(R.id.navigation_goals)
         }
 
@@ -71,10 +73,10 @@ class PerfectusActivity : AppCompatActivity(),
     }
 
     private fun addDestinationChangeListener() {
-        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            checkDestinationAndFinishApplicationIfNeeded(destination.id)
             when (destination.id) {
-                // In the case if the user is not signed in yet, the Action Bar,
-                // Bottom Application Bar and the Floating Action Button should be hidden.
+                // Bottom bar should not be visible in all the cases below
                 R.id.destination_fragment_sign_in,
                 R.id.destination_fragment_sign_up,
                 R.id.destination_forgot_password -> {
@@ -87,8 +89,32 @@ class PerfectusActivity : AppCompatActivity(),
                     binding.appbar.isVisible = true
                     binding.fabSearch.isVisible = true
                 }
+                R.id.destination_fragment_general_settings -> {
+                    supportActionBar?.show()
+                    binding.appbar.isVisible = false
+                    binding.fabSearch.isVisible = false
+                }
             }
 
+        }
+    }
+
+    // IMPROVEME: Find a better way of handling navigation
+    private fun checkDestinationAndFinishApplicationIfNeeded(destination: Int) {
+        if (authenticator.isSignedIn() && destination in listOf(
+                R.id.destination_fragment_sign_in,
+                R.id.destination_fragment_sign_up,
+                R.id.destination_forgot_password
+            )
+        ) {
+            finish()
+        } else if (!authenticator.isSignedIn() && destination !in listOf(
+                R.id.destination_fragment_sign_in,
+                R.id.destination_fragment_sign_up,
+                R.id.destination_forgot_password
+            )
+        ) {
+            finish()
         }
     }
 
