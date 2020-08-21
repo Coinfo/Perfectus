@@ -2,7 +2,7 @@
  * Copyright (c) 2020 Chamich Apps. All rights reserved.
  */
 
-package app.chamich.di
+package app.chamich.perfectus.di
 
 import android.content.Context
 import app.chamich.library.authentication.FirebaseAuthenticator

@@ -1,1 +1,4 @@
 /build
+/keystore.properties
+/perfectus.jks
+/release/
