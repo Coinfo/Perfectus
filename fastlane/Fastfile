@@ -17,11 +17,17 @@ default_platform(:android)
 
 platform :android do
   desc "Play Store Release Build"
-  lane :playstore do
+  lane :playstore do |options|
+   supply(
+     track: "internal",
+     skip_upload_metadata: true,
+     skip_upload_images: true,
+     skip_upload_screenshots: true
+   )
    gradle(
      task: 'bundle',
      build_type: 'Release'
    )
-   upload_to_play_store track:internal skip_upload_apk:true
+   upload_to_play_store skip_upload_apk:true
   end
 end
