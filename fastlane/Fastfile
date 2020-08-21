@@ -22,9 +22,6 @@ platform :android do
       task: 'bundle',
       build_type: 'Release'
     )
-    supply(
-      track: 'internal',
-    )
-    upload_to_play_store
+     upload_to_play_store(track: 'internal')
   end
 end
