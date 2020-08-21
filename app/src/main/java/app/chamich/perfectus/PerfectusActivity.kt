@@ -47,7 +47,7 @@ class PerfectusActivity : AppCompatActivity(),
         // When the activity is created first time and user is signed in
         // navigate to the Goals screen, instead of authentication (default)
         if (savedInstanceState == null && authenticator.isSignedIn()) {
-            navController.navigate(R.id.navigation_goals)
+            navigateToGoals()
         }
 
         addMenuItemClickListener()
@@ -62,6 +62,7 @@ class PerfectusActivity : AppCompatActivity(),
             when (menuItem?.itemId) {
                 R.id.action_sign_out -> {
                     authenticator.signOut()
+                    navController.popBackStack()
                     navController.navigate(R.id.navigation_authentication)
                 }
                 R.id.action_settings -> {
@@ -74,7 +75,6 @@ class PerfectusActivity : AppCompatActivity(),
 
     private fun addDestinationChangeListener() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            checkDestinationAndFinishApplicationIfNeeded(destination.id)
             when (destination.id) {
                 // Bottom bar should not be visible in all the cases below
                 R.id.destination_fragment_sign_in,
@@ -99,23 +99,9 @@ class PerfectusActivity : AppCompatActivity(),
         }
     }
 
-    // IMPROVEME: Find a better way of handling navigation
-    private fun checkDestinationAndFinishApplicationIfNeeded(destination: Int) {
-        if (authenticator.isSignedIn() && destination in listOf(
-                R.id.destination_fragment_sign_in,
-                R.id.destination_fragment_sign_up,
-                R.id.destination_forgot_password
-            )
-        ) {
-            finish()
-        } else if (!authenticator.isSignedIn() && destination !in listOf(
-                R.id.destination_fragment_sign_in,
-                R.id.destination_fragment_sign_up,
-                R.id.destination_forgot_password
-            )
-        ) {
-            finish()
-        }
+    private fun navigateToGoals() {
+        navController.popBackStack()
+        navController.navigate(R.id.navigation_goals)
     }
 
     //endregion
@@ -125,7 +111,7 @@ class PerfectusActivity : AppCompatActivity(),
     //region SignInListener
 
     override fun onSignInCompleted(user: IUser) {
-        navController.navigate(R.id.navigation_goals)
+        navigateToGoals()
     }
 
     //endregion
@@ -134,7 +120,7 @@ class PerfectusActivity : AppCompatActivity(),
     //region SignUpListener
 
     override fun onSignUpCompleted(user: IUser) {
-        navController.navigate(R.id.navigation_goals)
+        navigateToGoals()
     }
 
     //endregion
