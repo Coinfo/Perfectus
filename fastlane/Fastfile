@@ -28,7 +28,7 @@ platform :android do
   end
 
   desc "Submit to Internal Test Channel in the Play Store"
-  lane :internal do
+  lane :playstore do
     upload_to_play_store(track: 'internal', apk: 'app/build/outputs/apk/release/app-release.apk')
   end
 
