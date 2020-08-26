@@ -47,7 +47,7 @@ class PerfectusActivity : AppCompatActivity(),
         // When the activity is created first time and user is signed in
         // navigate to the Goals screen, instead of authentication (default)
         if (savedInstanceState == null && authenticator.isSignedIn()) {
-            navigateToGoals()
+            navigateToPerfectus()
         }
 
         addMenuItemClickListener()
@@ -84,7 +84,7 @@ class PerfectusActivity : AppCompatActivity(),
                     binding.appbar.isVisible = false
                     binding.fabSearch.isVisible = false
                 }
-                R.id.destination_goals -> {
+                R.id.destination_fragment_perfectus -> {
                     supportActionBar?.show()
                     binding.appbar.isVisible = true
                     binding.fabSearch.isVisible = true
@@ -99,10 +99,11 @@ class PerfectusActivity : AppCompatActivity(),
         }
     }
 
-    private fun navigateToGoals() {
+    private fun navigateToPerfectus() {
         navController.popBackStack()
-        navController.navigate(R.id.navigation_goals)
+        navController.navigate(R.id.destination_fragment_perfectus)
     }
+
 
     //endregion
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -111,7 +112,7 @@ class PerfectusActivity : AppCompatActivity(),
     //region SignInListener
 
     override fun onSignInCompleted(user: IUser) {
-        navigateToGoals()
+        navigateToPerfectus()
     }
 
     //endregion
@@ -120,7 +121,7 @@ class PerfectusActivity : AppCompatActivity(),
     //region SignUpListener
 
     override fun onSignUpCompleted(user: IUser) {
-        navigateToGoals()
+        navigateToPerfectus()
     }
 
     //endregion
