@@ -7,7 +7,6 @@ package app.chamich.perfectus
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -50,54 +49,12 @@ class PerfectusActivity : AppCompatActivity(),
             navigateToPerfectus()
         }
 
-        addMenuItemClickListener()
-        addDestinationChangeListener()
+        supportActionBar?.hide()
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Private Function
 
-    private fun addMenuItemClickListener() {
-        binding.appbar.setOnMenuItemClickListener { menuItem ->
-            when (menuItem?.itemId) {
-                R.id.action_sign_out -> {
-                    authenticator.signOut()
-                    navController.popBackStack()
-                    navController.navigate(R.id.navigation_authentication)
-                }
-                R.id.action_settings -> {
-                    navController.navigate(R.id.navigation_settings)
-                }
-            }
-            return@setOnMenuItemClickListener true
-        }
-    }
-
-    private fun addDestinationChangeListener() {
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                // Bottom bar should not be visible in all the cases below
-                R.id.destination_fragment_sign_in,
-                R.id.destination_fragment_sign_up,
-                R.id.destination_forgot_password -> {
-                    supportActionBar?.hide()
-                    binding.appbar.isVisible = false
-                    binding.fabSearch.isVisible = false
-                }
-                R.id.destination_fragment_perfectus -> {
-                    supportActionBar?.show()
-                    binding.appbar.isVisible = true
-                    binding.fabSearch.isVisible = true
-                }
-                R.id.destination_fragment_general_settings -> {
-                    supportActionBar?.show()
-                    binding.appbar.isVisible = false
-                    binding.fabSearch.isVisible = false
-                }
-            }
-
-        }
-    }
 
     private fun navigateToPerfectus() {
         navController.popBackStack()

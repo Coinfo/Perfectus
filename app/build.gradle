@@ -100,6 +100,8 @@ dependencies {
     implementation project(path: ':features:settings')
     implementation project(path: ':features:authentication')
     implementation project(path: ':features:goals')
+    implementation project(path: ':features:tasks')
+    implementation project(path: ':features:sharing')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.1'
