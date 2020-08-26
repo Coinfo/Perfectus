@@ -6,11 +6,18 @@
 
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_home"
     app:startDestination="@id/navigation_authentication">
 
     <include app:graph="@navigation/goals_navigation" />
     <include app:graph="@navigation/authentication_navigation" />
     <include app:graph="@navigation/settings_navigation" />
+
+    <fragment
+        android:id="@+id/destination_fragment_perfectus"
+        android:name="app.chamich.perfectus.PerfectusFragment"
+        android:label="fragment_perfectus"
+        tools:layout="@layout/fragment_perfectus" />
 
 </navigation>

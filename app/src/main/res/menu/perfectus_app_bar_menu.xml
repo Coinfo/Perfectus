@@ -8,10 +8,10 @@
 
     <item
         android:id="@+id/action_sign_out"
-        android:title="@string/home_menu_item_text_sign_out" />
+        android:title="@string/app_menu_item_text_sign_out" />
 
     <item
         android:id="@+id/action_settings"
-        android:title="@string/home_menu_item_text_settings" />
+        android:title="@string/app_menu_item_text_settings" />
 
 </menu>
