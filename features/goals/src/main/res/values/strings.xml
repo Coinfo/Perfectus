@@ -1,0 +1,10 @@
+<!--
+  ~ Copyright (c) 2020 Chamich Apps. All rights reserved.
+  -->
+
+<resources>
+
+    <string name="goals_label_fragment_goals">Goals</string>
+    <string name="goals_label_fragment_add_goal">Add Goal</string>
+
+</resources>

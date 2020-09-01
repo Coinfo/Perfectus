@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2020 Chamich Apps. All rights reserved.
   -->
 
@@ -13,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.goals.GoalsFragment">
+        tools:context=".ui.add.AddGoalDialogFragment">
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

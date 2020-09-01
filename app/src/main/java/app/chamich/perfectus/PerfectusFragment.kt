@@ -9,29 +9,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment.findNavController
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import app.chamich.feature.goals.ui.goals.GoalsFragment
-import app.chamich.feature.sharing.ui.sharing.SharingFragment
-import app.chamich.feature.tasks.ui.tasks.TasksFragment
+import app.chamich.feature.goals.ui.GoalsPagerFragment
 import app.chamich.library.authentication.IAuthenticator
-import com.google.android.material.tabs.TabLayoutMediator
+import app.chamich.library.core.CorePagerFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_perfectus.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class PerfectusFragment : Fragment() {
-
-    private val fragments by lazy {
-        listOf(
-            Pair(GoalsFragment(), R.string.app_tab_goals),
-            Pair(TasksFragment(), R.string.app_tab_tasks),
-            Pair(SharingFragment(), R.string.app_tab_sharing)
-        )
-    }
 
     @Inject
     lateinit var authenticator: IAuthenticator
@@ -51,9 +41,9 @@ class PerfectusFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initializeViewPager()
-        initializeTabLayout()
-        addMenuItemClickListener()
+        initializeViewPagerAndTabLayout()
+        handleMenuItemClicks()
+        handleFabClicks()
     }
 
     //endregion
@@ -62,7 +52,20 @@ class PerfectusFragment : Fragment() {
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Private Function
 
-    private fun addMenuItemClickListener() {
+    private fun initializeViewPagerAndTabLayout() {
+        view_pager_perfectus.adapter = PerfectusAdapter(requireActivity().supportFragmentManager)
+        tab_layout_perfectus.setupWithViewPager(view_pager_perfectus)
+    }
+
+    private fun handleFabClicks() {
+        val adapter = view_pager_perfectus.adapter as PerfectusAdapter
+        fab_add.setOnClickListener {
+            // Each fragment in the ViewPager handles "Floating Action Button" clicks itself.
+            adapter.getCurrentFragment()?.handleAddClicked()
+        }
+    }
+
+    private fun handleMenuItemClicks() {
         appbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem?.itemId) {
                 R.id.action_sign_out -> {
@@ -78,26 +81,34 @@ class PerfectusFragment : Fragment() {
         }
     }
 
-    private fun initializeViewPager() {
-        view_pager_perfectus.adapter = PerfectusAdapter(requireActivity())
-    }
-
-    private fun initializeTabLayout() {
-        TabLayoutMediator(tab_layout_perfectus, view_pager_perfectus) { tab, position ->
-            tab.text = getText(fragments[position].second)
-        }.attach()
-    }
-
     //endregion
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     inner class PerfectusAdapter(
-        activity: FragmentActivity
-    ) : FragmentStateAdapter(activity) {
+        fm: FragmentManager
+    ) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
-        override fun getItemCount() = fragments.size
+        private val fragments = listOf(
+            Pair(GoalsPagerFragment(), R.string.app_pager_goals)
+        )
 
-        override fun createFragment(position: Int) = fragments[position].first
+        private var currentPagerFragment: CorePagerFragment? = null
+
+        override fun setPrimaryItem(container: ViewGroup, position: Int, fragment: Any) {
+            if (currentPagerFragment != fragment) {
+                currentPagerFragment = fragment as CorePagerFragment
+            }
+            super.setPrimaryItem(container, position, fragment)
+        }
+
+        override fun getItem(position: Int) = fragments[position].first
+
+        override fun getCount() = fragments.size
+
+        override fun getPageTitle(position: Int) = context?.getString(fragments[position].second)
+
+        fun getCurrentFragment(): CorePagerFragment? = currentPagerFragment
+
     }
 
 }
