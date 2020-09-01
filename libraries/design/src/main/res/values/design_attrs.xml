@@ -13,5 +13,6 @@
     <attr name="design_card_corners_radius" format="dimension" />
     <attr name="design_card_elevation" format="dimension" />
     <attr name="design_button_height" format="dimension" />
+    <attr name="design_background_color" format="color" />
 
 </resources>

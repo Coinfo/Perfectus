@@ -18,6 +18,7 @@
         <item name="design_card_background_color">@color/design_card_background</item>
         <item name="design_card_corners_radius">16dp</item>
         <item name="design_card_elevation">8dp</item>
+        <item name="design_background_color">@color/design_background</item>
     </style>
 
 </resources>
