@@ -9,4 +9,8 @@ import androidx.fragment.app.Fragment
 abstract class CorePagerFragment : Fragment() {
 
     abstract fun handleAddClicked()
+
+    abstract fun getTitle(): String
+
+    abstract fun getSubtitle(): String
 }

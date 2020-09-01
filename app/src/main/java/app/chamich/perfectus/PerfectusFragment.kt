@@ -55,6 +55,7 @@ class PerfectusFragment : Fragment() {
     private fun initializeViewPagerAndTabLayout() {
         view_pager_perfectus.adapter = PerfectusAdapter(requireActivity().supportFragmentManager)
         tab_layout_perfectus.setupWithViewPager(view_pager_perfectus)
+
     }
 
     private fun handleFabClicks() {
@@ -97,6 +98,8 @@ class PerfectusFragment : Fragment() {
         override fun setPrimaryItem(container: ViewGroup, position: Int, fragment: Any) {
             if (currentPagerFragment != fragment) {
                 currentPagerFragment = fragment as CorePagerFragment
+                text_view_title.text = currentPagerFragment?.getTitle()
+                text_view_subtitle.text = currentPagerFragment?.getSubtitle()
             }
             super.setPrimaryItem(container, position, fragment)
         }

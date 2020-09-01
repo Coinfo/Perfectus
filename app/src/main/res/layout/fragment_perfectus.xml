@@ -23,6 +23,29 @@
             android:layout_height="wrap_content"
             android:theme="@style/ThemeOverlay.AppCompat">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <TextView
+                    android:id="@+id/text_view_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+                    tools:text="Hi, Viktor" />
+
+                <TextView
+                    android:id="@+id/text_view_subtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    tools:text="It's a great day to set some goals" />
+
+            </LinearLayout>
+
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout_perfectus"
                 android:layout_width="match_parent"

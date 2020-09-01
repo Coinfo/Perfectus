@@ -37,6 +37,14 @@ class GoalsPagerFragment : CorePagerFragment() {
         ).navigate(R.id.destination_add_goal)
     }
 
+    override fun getTitle(): String {
+        return "Hi, Viktor"
+    }
+
+    override fun getSubtitle(): String {
+        return "It's time to set the goal"
+    }
+
     //endregion
     ////////////////////////////////////////////////////////////////////////////////////////////////
 }
