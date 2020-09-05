@@ -21,4 +21,15 @@
         <item name="design_background_color">@color/design_background</item>
     </style>
 
+    <!-- Full Screen Dialog -->
+
+    <style name="Perfectus.FullScreenDialog" parent="Theme.MaterialComponents.Dialog" tools:ignore="ResourceName">
+        <item name="colorPrimaryDark">@color/design_brand_dark</item>
+        <item name="colorAccent">@color/design_accent</item>
+        <item name="colorPrimary">@color/design_brand</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="actionMenuTextColor">@color/design_accent</item>
+    </style>
+
 </resources>

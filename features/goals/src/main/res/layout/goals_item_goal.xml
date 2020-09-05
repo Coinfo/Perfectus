@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2020 Chamich Apps. All rights reserved.
   -->
 
@@ -9,23 +8,27 @@
 
     <data>
 
+        <variable
+            name="goal"
+            type="app.chamich.feature.goals.model.api.IGoal" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.goals.GoalsFragment">
+        android:layout_height="wrap_content">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview_goals"
+        <TextView
+            android:id="@+id/goals_textview"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_height="wrap_content"
+            android:text="@{goal.title}"
+            android:textColor="#FF00FF"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Item Title" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

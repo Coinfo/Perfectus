@@ -52,17 +52,6 @@
         <item name="cardBackgroundColor">?attr/design_card_background_color</item>
     </style>
 
-    <!-- Full Screen Dialog -->
-
-    <style name="Perfectus.FullScreenDialog" parent="Theme.MaterialComponents.Light.Dialog" tools:ignore="ResourceName">
-        <item name="colorPrimaryDark">?attr/colorPrimaryDark</item>
-        <item name="colorAccent">?attr/colorAccent</item>
-        <item name="colorPrimary">?attr/colorPrimary</item>
-        <item name="android:windowIsFloating">false</item>
-        <item name="android:windowBackground">@android:color/white</item>
-        <item name="actionMenuTextColor">?attr/colorAccent</item>
-    </style>
-
     <style name="Slide" tools:ignore="ResourceName">
         <item name="android:windowEnterAnimation">@anim/design_slide_up</item>
         <item name="android:windowExitAnimation">@anim/design_slide_down</item>

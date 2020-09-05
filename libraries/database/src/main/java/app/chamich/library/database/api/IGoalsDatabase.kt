@@ -14,7 +14,7 @@ import app.chamich.library.database.entity.GoalEntity
 interface IGoalsDatabase {
 
     @Insert
-    fun insert(goal: GoalEntity): Long
+    fun add(goal: GoalEntity): Long
 
     @Update
     fun update(goal: GoalEntity)

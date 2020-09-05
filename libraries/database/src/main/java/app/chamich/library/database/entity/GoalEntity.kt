@@ -18,8 +18,20 @@ data class GoalEntity(
     @ColumnInfo(name = "goal_title")
     val title: String,
 
-    @ColumnInfo(name = "goal_type")
-    val type: Int,
+    @ColumnInfo(name = "goal_measured_in")
+    val measuredIn: Int,
+
+    @ColumnInfo(name = "goal_total_effort")
+    val totalEffort: Int,
+
+    @ColumnInfo(name = "goal_progress")
+    val progress: Int,
+
+    @ColumnInfo(name = "goal_complete_date")
+    val completeDate: Long,
+
+    @ColumnInfo(name = "goal_category")
+    val category: Int,
 
     @ColumnInfo(name = "goal_color")
     val color: Int
