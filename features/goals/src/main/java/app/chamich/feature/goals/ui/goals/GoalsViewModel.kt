@@ -22,7 +22,7 @@ internal class GoalsViewModel @ViewModelInject constructor(
 
     private val result = MutableLiveData<Resource<List<IGoal>>>()
 
-    fun getGoal() {
+    fun loadGoals() {
         viewModelScope.launch {
             result.postValue(Resource.loading(null))
             withContext(Dispatchers.IO) {

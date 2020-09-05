@@ -29,7 +29,9 @@ internal class GoalsFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getGoal()
+        if (savedInstanceState == null) {
+            viewModel.loadGoals()
+        }
 
         setupRecyclerView()
         setupObservers()
