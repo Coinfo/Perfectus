@@ -13,5 +13,6 @@
     <color name="design_text_input_outline">#F5F5F5</color>
     <color name="design_fab_background">#45b84f</color>
     <color name="design_card_background">#F5F5F5</color>
+    <color name="design_background">#FFFFFF</color>
 
 </resources>

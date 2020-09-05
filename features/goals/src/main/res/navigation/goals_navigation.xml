@@ -13,7 +13,17 @@
     <fragment
         android:id="@+id/destination_goals"
         android:name="app.chamich.feature.goals.ui.goals.GoalsFragment"
-        android:label="fragment_goals"
-        tools:layout="@layout/goals_fragment_goals" />
+        android:label="@string/goals_label_fragment_goals"
+        tools:layout="@layout/goals_fragment_goals">
+        <action
+            android:id="@+id/goals_action_destination_goals_to_destination_add_goal"
+            app:destination="@id/destination_add_goal" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/destination_add_goal"
+        android:name="app.chamich.feature.goals.ui.add.AddGoalDialogFragment"
+        android:label="@string/goals_label_fragment_add_goal"
+        tools:layout="@layout/goals_dialog_fragment_add_goal" />
 
 </navigation>

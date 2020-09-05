@@ -1,0 +1,21 @@
+<!--
+  ~ Copyright (c) 2020 Chamich Apps. All rights reserved.
+  -->
+
+<resources>
+
+    <string name="goals_label_fragment_goals">Goals</string>
+    <string name="goals_label_fragment_add_goal">Add Goal</string>
+
+    <!-- Add Goals Dialog Fragment -->
+    <string name="goals_hint_goal_title">What\'s your goal?</string>
+    <string name="goals_text_label_measured_in">Measured in</string>
+    <string name="goals_text_label_total_effort">Total effort</string>
+    <string name="goals_text_label_progress_so_far">Progress so far</string>
+    <string name="goals_text_label_complete_by">Complete by</string>
+    <string name="goals_text_label_category">Category</string>
+    <string name="goals_text_label_color">Color</string>
+    <string name="goals_button_add_goal">Add Goal</string>
+    <string name="goals_button_cancel">Cancel</string>
+
+</resources>

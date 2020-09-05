@@ -16,10 +16,12 @@
             <option value="$PROJECT_DIR$/features/authentication" />
             <option value="$PROJECT_DIR$/features/goals" />
             <option value="$PROJECT_DIR$/features/settings" />
-            <option value="$PROJECT_DIR$/features/tasks" />
             <option value="$PROJECT_DIR$/features/sharing" />
+            <option value="$PROJECT_DIR$/features/tasks" />
             <option value="$PROJECT_DIR$/libraries" />
             <option value="$PROJECT_DIR$/libraries/authenticator" />
+            <option value="$PROJECT_DIR$/libraries/core" />
+            <option value="$PROJECT_DIR$/libraries/database" />
             <option value="$PROJECT_DIR$/libraries/design" />
             <option value="$PROJECT_DIR$/libraries/logger" />
             <option value="$PROJECT_DIR$/libraries/preferences" />

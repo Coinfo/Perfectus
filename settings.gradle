@@ -3,10 +3,12 @@
  */
 
 include ':app'
+include ':libraries:core'
 include ':libraries:authenticator'
 include ':libraries:design'
 include ':libraries:preferences'
 include ':libraries:logger'
+include ':libraries:database'
 include ':features:settings'
 include ':features:authentication'
 include ':features:goals'

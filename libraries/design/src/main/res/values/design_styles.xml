@@ -52,5 +52,10 @@
         <item name="cardBackgroundColor">?attr/design_card_background_color</item>
     </style>
 
+    <style name="Slide" tools:ignore="ResourceName">
+        <item name="android:windowEnterAnimation">@anim/design_slide_up</item>
+        <item name="android:windowExitAnimation">@anim/design_slide_down</item>
+    </style>
+
 
 </resources>
