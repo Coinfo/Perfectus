@@ -53,7 +53,7 @@ internal class GoalsFragment :
     }
 
     private fun setupObservers() {
-        viewModel.getResult().observe(this, Observer { result ->
+        viewModel.getResult().observe(viewLifecycleOwner, Observer { result ->
             when (result.status) {
                 Status.SUCCESS -> {
                     result.data?.let {

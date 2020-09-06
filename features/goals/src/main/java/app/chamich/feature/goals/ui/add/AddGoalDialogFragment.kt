@@ -87,7 +87,7 @@ internal class AddGoalDialogFragment :
     //region Private Functions
 
     private fun setupObservers() {
-        viewModel.getResult().observe(this, Observer { result ->
+        viewModel.getResult().observe(viewLifecycleOwner, Observer { result ->
             when (result.status) {
                 Status.SUCCESS -> {
                     findNavController().popBackStack()
