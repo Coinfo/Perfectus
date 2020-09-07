@@ -14,6 +14,10 @@
             name="fragment"
             type="app.chamich.feature.goals.ui.add.AddGoalDialogFragment" />
 
+        <variable
+            name="viewmodel"
+            type="app.chamich.feature.goals.ui.add.AddGoalViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,7 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/design_accent"
-                    android:hint="@string/goals_hint_goal_title"
+                    android:hint="@string/goals_add_goals_hint_goal_title"
                     android:padding="@dimen/design_padding_large"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +67,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
-                    android:text="@string/goals_text_label_measured_in"
+                    android:text="@string/goals_add_goals_text_label_measured_in"
                     app:layout_constraintEnd_toStartOf="@+id/goals_guideline"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/edit_text_title" />
@@ -77,7 +81,8 @@
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
                     android:gravity="end"
-                    android:text="TextView"
+                    android:onClick="@{() -> fragment.onMeasuredInClicked()}"
+                    android:text="@{viewmodel.measurement.stringRes}"
                     app:layout_constraintBottom_toBottomOf="@+id/label_goal_measured_in"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/goals_guideline"
@@ -106,7 +111,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
-                    android:text="@string/goals_text_label_total_effort"
+                    android:text="@string/goals_add_goals_text_label_total_effort"
                     app:layout_constraintEnd_toStartOf="@+id/goals_guideline"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/separator_goal_measured_in" />
@@ -126,7 +131,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/goals_guideline"
                     app:layout_constraintTop_toTopOf="@+id/label_total_effort"
-                    app:suffixText=" hour">
+                    app:suffixText="@{context.getString(viewmodel.measurement.stringRes)}">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
@@ -162,7 +167,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
-                    android:text="@string/goals_text_label_progress_so_far"
+                    android:text="@string/goals_add_goals_text_label_progress_so_far"
                     app:layout_constraintEnd_toStartOf="@+id/goals_guideline"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/separator_goal_total_effort" />
@@ -182,7 +187,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/goals_guideline"
                     app:layout_constraintTop_toTopOf="@+id/label_goal_effort_so_far"
-                    app:suffixText=" hour">
+                    app:suffixText="@{context.getString(viewmodel.measurement.stringRes)}">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
@@ -218,7 +223,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
-                    android:text="@string/goals_text_label_complete_by"
+                    android:text="@string/goals_add_goals_text_label_complete_by"
                     app:layout_constraintEnd_toStartOf="@+id/goals_guideline"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/separator_goal_effort_so_far" />
@@ -260,7 +265,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
-                    android:text="@string/goals_text_label_category"
+                    android:text="@string/goals_add_goals_text_label_category"
                     app:layout_constraintEnd_toStartOf="@+id/goals_guideline"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/separator_goal_complete_by" />
@@ -303,7 +308,7 @@
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
                     android:layout_marginBottom="16dp"
-                    android:text="@string/goals_text_label_color"
+                    android:text="@string/goals_add_goals_text_label_color"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/goals_guideline"
                     app:layout_constraintStart_toStartOf="parent"
@@ -328,7 +333,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="@{() -> fragment.onCancelClicked()}"
-            android:text="@string/goals_button_cancel"
+            android:text="@string/goals_add_goals_button_cancel"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -337,7 +342,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="@{() -> fragment.onAddGoalClicked()}"
-            android:text="@string/goals_button_add_goal"
+            android:text="@string/goals_add_goals_button_add_goal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
