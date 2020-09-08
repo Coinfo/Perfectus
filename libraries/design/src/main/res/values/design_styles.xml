@@ -57,5 +57,26 @@
         <item name="android:windowExitAnimation">@anim/design_slide_down</item>
     </style>
 
+    <!-- Bottom Sheet Style -->
+
+    <style name="Perfectus.BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal" tools:ignore="ResourceName">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <!-- Bottom Sheet Card View -->
+
+    <style name="Perfectus.BottomSheetCardView" parent="@style/Widget.MaterialComponents.CardView" tools:ignore="ResourceName">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay_card_custom_corners</item>
+        <item name="cardBackgroundColor">?attr/design_background_bottom_sheet_card_view_color</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay_card_custom_corners" parent="" tools:ignore="ResourceName">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">36dp</item>
+        <item name="cornerSizeTopLeft">36dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+
 
 </resources>

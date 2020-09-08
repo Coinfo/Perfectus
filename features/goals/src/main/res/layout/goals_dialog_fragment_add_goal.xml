@@ -10,6 +10,8 @@
 
     <data>
 
+        <import type="androidx.core.content.ContextCompat" />
+
         <variable
             name="fragment"
             type="app.chamich.feature.goals.ui.add.AddGoalDialogFragment" />
@@ -51,7 +53,7 @@
                     android:id="@+id/edit_text_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/design_accent"
+                    android:background="@{ContextCompat.getColor(context, viewmodel.color.colorRes)}"
                     android:hint="@string/goals_add_goals_hint_goal_title"
                     android:padding="@dimen/design_padding_large"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -320,6 +322,8 @@
                     android:layout_height="32dp"
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
+                    android:background="@{ContextCompat.getColor(context, viewmodel.color.colorRes)}"
+                    android:onClick="@{() -> fragment.onColorClicked()}"
                     app:layout_constraintBottom_toBottomOf="@+id/label_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/label_color" />

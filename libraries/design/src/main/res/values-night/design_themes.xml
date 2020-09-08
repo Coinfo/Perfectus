@@ -32,4 +32,13 @@
         <item name="actionMenuTextColor">@color/design_accent</item>
     </style>
 
+    <!-- Bottom Sheet Dialog -->
+
+    <style name="Perfectus.BottomSheetDialog" parent="Theme.MaterialComponents.BottomSheetDialog" tools:ignore="ResourceName">
+        <item name="bottomSheetStyle">@style/Perfectus.BottomSheetStyle</item>
+        <item name="design_background_bottom_sheet_card_view_color">
+            @color/design_bottom_sheet_card_view_background
+        </item>
+    </style>
+
 </resources>

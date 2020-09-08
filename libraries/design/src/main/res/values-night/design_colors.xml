@@ -14,5 +14,6 @@
     <color name="design_fab_background">#1DB854</color>
     <color name="design_card_background">#16151a</color>
     <color name="design_background">#000000</color>
+    <color name="design_bottom_sheet_card_view_background">#111322</color>
 
 </resources>

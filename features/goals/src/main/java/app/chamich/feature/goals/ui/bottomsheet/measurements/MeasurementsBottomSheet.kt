@@ -2,40 +2,38 @@
  * Copyright (c) 2020 Chamich Apps. All rights reserved.
  */
 
-package app.chamich.feature.goals.ui.measuredin
+package app.chamich.feature.goals.ui.bottomsheet.measurements
 
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.setFragmentResult
+import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import app.chamich.feature.goals.R
-import app.chamich.feature.goals.databinding.GoalsBottomSheetDialogMeasuredInBinding
+import app.chamich.feature.goals.databinding.GoalsBottomSheetDialogMeasurementsBinding
 import app.chamich.feature.goals.model.Measurement
-import app.chamich.library.core.CoreBottomSheetDialogFragment
-import com.google.android.material.chip.Chip
+import app.chamich.feature.goals.ui.bottomsheet.GoalsBottomSheet
 
-class MeasuredInBottomSheet
-    :
-    CoreBottomSheetDialogFragment<MeasuredInViewModel, GoalsBottomSheetDialogMeasuredInBinding>() {
+internal class MeasurementsBottomSheet :
+    GoalsBottomSheet<ViewModel, GoalsBottomSheetDialogMeasurementsBinding>() {
 
     private lateinit var selectedMeasurement: Measurement
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Fragment Override Functions
 
-    override fun getLayoutId() = R.layout.goals_bottom_sheet_dialog_measured_in
+    override fun getLayoutId() = R.layout.goals_bottom_sheet_dialog_measurements
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.fragment = this
-
-        setupChips(arguments?.getInt(KEY_SENT_MEASURED_ID) ?: Measurement.HOURS.id)
+        setupBindings()
+        setupChips(getMeasurementId())
     }
 
-    override fun getViewModelClass() = MeasuredInViewModel::class.java
+    override fun getViewModelClass() = ViewModel::class.java
 
     //endregion
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -61,28 +59,30 @@ class MeasuredInBottomSheet
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Private Functions
 
-    private fun setupChips(measurementId: Int) {
-
-        binding.chipGroupMeasuredIn.clearCheck()
-
-        Measurement.values().asList().sortedBy { it.position }.forEach { measurement ->
-            val chip = layoutInflater.inflate(
-                R.layout.goals_chip_measured_in, binding.chipGroupMeasuredIn, false
-            ) as Chip
-            chip.id = ViewCompat.generateViewId()
-            chip.isChecked = measurementId == measurement.id
-            chip.setText(measurement.stringRes)
-            chip.setOnClickListener { selectedMeasurement = measurement }
-            binding.chipGroupMeasuredIn.addView(chip)
-        }
+    private fun setupBindings() {
+        binding.fragment = this
     }
+
+    private fun setupChips(measurementId: Int) =
+        Measurement.asList().forEach { measurement ->
+            binding.chipGroupMeasuredIn.addView(
+                inflateAsChip(R.layout.goals_chip_measurement, binding.chipGroupMeasuredIn).apply {
+                    id = ViewCompat.generateViewId()
+                    isChecked = measurementId == measurement.id
+                    setText(measurement.stringRes)
+                    setOnClickListener { selectedMeasurement = measurement }
+                })
+        }
+
+    private fun getMeasurementId() =
+        arguments?.getInt(KEY_MEASURED_ID) ?: Measurement.defaultMeasurement().id
 
     //endregion
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     companion object {
-        const val KEY_RESULT_LISTENER = "key_measurement_in_result_listener"
-        const val KEY_SENT_MEASURED_ID = "key_measurement_sent_measured_id"
-        const val KEY_RESULT_MEASUREMENT = "key_measurement_result_measurement"
+        const val KEY_MEASURED_ID = "KEY_MEASURED_ID"
+        const val KEY_RESULT_MEASUREMENT = "KEY_RESULT_MEASUREMENT"
+        const val KEY_RESULT_LISTENER = "KEY_RESULT_LISTENER"
     }
 }
