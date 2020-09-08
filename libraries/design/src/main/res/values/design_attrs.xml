@@ -14,5 +14,6 @@
     <attr name="design_card_elevation" format="dimension" />
     <attr name="design_button_height" format="dimension" />
     <attr name="design_background_color" format="color" />
+    <attr name="design_background_bottom_sheet_card_view_color" format="color" />
 
 </resources>

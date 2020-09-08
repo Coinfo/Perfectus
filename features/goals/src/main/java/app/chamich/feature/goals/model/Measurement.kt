@@ -31,5 +31,10 @@ enum class Measurement(
     COURSES(17, 17, R.string.goals_measured_in_courses),
     SESSIONS(18, 18, R.string.goals_measured_in_sessions),
     CLASSES(19, 19, R.string.goals_measured_in_classes),
-    VIDEOS(20, 20, R.string.goals_measured_in_videos)
+    VIDEOS(20, 20, R.string.goals_measured_in_videos);
+
+    companion object {
+        fun asList() = values().asList().sortedBy { it.position }
+        fun defaultMeasurement() = HOURS
+    }
 }

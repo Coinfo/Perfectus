@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import app.chamich.feature.goals.model.Color
 import app.chamich.feature.goals.model.Measurement
 import app.chamich.feature.goals.model.api.IGoal
 import app.chamich.feature.goals.repository.api.IRepository
@@ -23,7 +24,8 @@ internal class AddGoalViewModel @ViewModelInject constructor(
 ) : ViewModel() {
 
     private val result = MutableLiveData<Resource<Long>>()
-    var measurement: Measurement = Measurement.HOURS
+    var measurement: Measurement = Measurement.defaultMeasurement()
+    var color: Color = Color.defaultColor()
 
     fun addGoal(goal: IGoal) {
         viewModelScope.launch {

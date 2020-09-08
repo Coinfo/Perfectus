@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020 Chamich Apps. All rights reserved.
+  -->
+
+<resources>
+
+    <color name="goals_color_blue">#076dfe</color>
+    <color name="goals_color_green">#56ac3f</color>
+    <color name="goals_color_orange">#fe6b1d</color>
+    <color name="goals_color_purple">#671dd4</color>
+    <color name="goals_color_red">#fa2835</color>
+    <color name="goals_color_yellow">#f2b119</color>
+
+</resources>

@@ -14,9 +14,11 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import app.chamich.feature.goals.R
 import app.chamich.feature.goals.databinding.GoalsDialogFragmentAddGoalBinding
+import app.chamich.feature.goals.model.Color
 import app.chamich.feature.goals.model.Goal
 import app.chamich.feature.goals.model.Measurement
-import app.chamich.feature.goals.ui.measuredin.MeasuredInBottomSheet
+import app.chamich.feature.goals.ui.bottomsheet.colors.ColorsBottomSheet
+import app.chamich.feature.goals.ui.bottomsheet.measurements.MeasurementsBottomSheet
 import app.chamich.library.core.CoreDialogFragment
 import app.chamich.library.core.model.Status
 import dagger.hilt.android.AndroidEntryPoint
@@ -77,28 +79,46 @@ internal class AddGoalDialogFragment :
                 progress = 1,
                 completeData = 1L,
                 category = 1,
-                color = 1
+                color = viewModel.color.id
             )
         )
     }
 
     fun onMeasuredInClicked() {
-        // IMPROVEME: If bottom sheet is already shown, do not show it again.
-        // This can happen when user very fast clicks more then once on the label.
-
         // Sets the fragment result listener
-        setFragmentResultListener(MeasuredInBottomSheet.KEY_RESULT_LISTENER) { key, bundle ->
-            if (MeasuredInBottomSheet.KEY_RESULT_LISTENER == key) {
+        setFragmentResultListener(MeasurementsBottomSheet.KEY_RESULT_LISTENER) { key, bundle ->
+            if (MeasurementsBottomSheet.KEY_RESULT_LISTENER == key) {
                 viewModel.measurement =
-                    bundle.getSerializable(MeasuredInBottomSheet.KEY_RESULT_MEASUREMENT) as Measurement
+                    bundle.getSerializable(MeasurementsBottomSheet.KEY_RESULT_MEASUREMENT) as Measurement
                 binding.viewmodel = viewModel
-                clearFragmentResult(MeasuredInBottomSheet.KEY_RESULT_LISTENER)
+                clearFragmentResult(MeasurementsBottomSheet.KEY_RESULT_LISTENER)
             }
         }
 
+        // IMPROVEME: If bottom sheet is already shown, do not show it again.
+        // This can happen when user very fast clicks more then once on the label.
         findNavController().navigate(
             R.id.destination_measured_in, bundleOf(
-                MeasuredInBottomSheet.KEY_SENT_MEASURED_ID to viewModel.measurement.id
+                MeasurementsBottomSheet.KEY_MEASURED_ID to viewModel.measurement.id
+            )
+        )
+    }
+
+    fun onColorClicked() {
+        setFragmentResultListener(ColorsBottomSheet.KEY_RESULT_LISTENER) { key, bundle ->
+            if (ColorsBottomSheet.KEY_RESULT_LISTENER == key) {
+                viewModel.color =
+                    bundle.getSerializable(ColorsBottomSheet.KEY_RESULT_COLOR) as Color
+                binding.viewmodel = viewModel
+                clearFragmentResult(ColorsBottomSheet.KEY_RESULT_LISTENER)
+            }
+        }
+
+        // IMPROVEME: If bottom sheet is already shown, do not show it again.
+        // This can happen when user very fast clicks more then once on the label.
+        findNavController().navigate(
+            R.id.destination_colors, bundleOf(
+                ColorsBottomSheet.KEY_COLOR_ID to viewModel.color.id
             )
         )
     }
