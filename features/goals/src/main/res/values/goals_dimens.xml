@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020 Chamich Apps. All rights reserved.
+  -->
+
+<resources>
+
+    <dimen name="goals_width_card_view_color">32dp</dimen>
+    <dimen name="goals_height_card_view_color">32dp</dimen>
+    <dimen name="goals_corner_radius_card_view_color">16dp</dimen>
+
+</resources>
