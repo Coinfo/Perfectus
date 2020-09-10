@@ -31,6 +31,9 @@
         <action
             android:id="@+id/goals_action_destination_add_goal_to_goals_corebottomsheetdialogfragment"
             app:destination="@id/destination_colors" />
+        <action
+            android:id="@+id/goals_action_destination_add_goal_to_goals_categoriesbottomsheet"
+            app:destination="@id/destination_categories" />
     </dialog>
     <dialog
         android:id="@+id/destination_measured_in"
@@ -42,5 +45,10 @@
         android:name="app.chamich.feature.goals.ui.bottomsheet.colors.ColorsBottomSheet"
         android:label="CoreBottomSheetDialogFragment"
         tools:layout="@layout/goals_bottom_sheet_dialog_colors" />
+    <dialog
+        android:id="@+id/destination_categories"
+        android:name="app.chamich.feature.goals.ui.bottomsheet.categories.CategoriesBottomSheet"
+        android:label="CategoriesBottomSheet"
+        tools:layout="@layout/goals_bottom_sheet_dialog_categories" />
 
 </navigation>

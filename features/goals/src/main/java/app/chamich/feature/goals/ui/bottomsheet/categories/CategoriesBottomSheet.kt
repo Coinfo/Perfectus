@@ -2,7 +2,7 @@
  * Copyright (c) 2020 Chamich Apps. All rights reserved.
  */
 
-package app.chamich.feature.goals.ui.bottomsheet.measurements
+package app.chamich.feature.goals.ui.bottomsheet.categories
 
 import android.os.Bundle
 import android.view.View
@@ -12,25 +12,26 @@ import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import app.chamich.feature.goals.R
-import app.chamich.feature.goals.databinding.GoalsBottomSheetDialogMeasurementsBinding
-import app.chamich.feature.goals.model.Measurement
+import app.chamich.feature.goals.databinding.GoalsBottomSheetDialogCategoriesBinding
+import app.chamich.feature.goals.model.Category
 import app.chamich.feature.goals.ui.bottomsheet.GoalsBottomSheet
+import app.chamich.feature.goals.ui.bottomsheet.measurements.MeasurementsBottomSheet
 
-internal class MeasurementsBottomSheet :
-    GoalsBottomSheet<ViewModel, GoalsBottomSheetDialogMeasurementsBinding>() {
+internal class CategoriesBottomSheet :
+    GoalsBottomSheet<ViewModel, GoalsBottomSheetDialogCategoriesBinding>() {
 
-    private lateinit var selectedMeasurement: Measurement
+    private lateinit var selectedCategory: Category
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Fragment Override Functions
 
-    override fun getLayoutId() = R.layout.goals_bottom_sheet_dialog_measurements
+    override fun getLayoutId() = R.layout.goals_bottom_sheet_dialog_categories
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setupBindings()
-        setupChips(getMeasurementId())
+        setupChips(getCategoryId())
     }
 
     override fun getViewModelClass() = ViewModel::class.java
@@ -43,8 +44,8 @@ internal class MeasurementsBottomSheet :
 
     fun onUseMeasurementClicked() {
         setFragmentResult(
-            KEY_RESULT_LISTENER,
-            bundleOf(KEY_RESULT_MEASUREMENT to selectedMeasurement)
+            MeasurementsBottomSheet.KEY_RESULT_LISTENER,
+            bundleOf(KEY_RESULT_CATEGORY to selectedCategory)
         )
         findNavController().navigateUp()
     }
@@ -63,26 +64,26 @@ internal class MeasurementsBottomSheet :
         binding.fragment = this
     }
 
-    private fun setupChips(measurementId: Int) =
-        Measurement.asList().forEach { measurement ->
-            binding.chipGroupMeasuredIn.addView(
-                inflateAsChip(R.layout.goals_chip_measurement, binding.chipGroupMeasuredIn).apply {
+    private fun setupChips(categoryId: Int) =
+        Category.asList().forEach { category ->
+            binding.chipGroupCategory.addView(
+                inflateAsChip(R.layout.goals_chip_category, binding.chipGroupCategory).apply {
                     id = ViewCompat.generateViewId()
-                    isChecked = measurementId == measurement.id
-                    setText(measurement.stringRes)
-                    setOnClickListener { selectedMeasurement = measurement }
+                    isChecked = categoryId == category.id
+                    setText(category.stringRes)
+                    setOnClickListener { selectedCategory = category }
                 })
         }
 
-    private fun getMeasurementId() =
-        arguments?.getInt(KEY_MEASURED_ID) ?: Measurement.default().id
+    private fun getCategoryId() =
+        arguments?.getInt(KEY_CATEGORY_ID) ?: Category.default().id
 
     //endregion
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     companion object {
-        const val KEY_MEASURED_ID = "KEY_MEASURED_ID"
-        const val KEY_RESULT_MEASUREMENT = "KEY_RESULT_MEASUREMENT"
+        const val KEY_CATEGORY_ID = "KEY_CATEGORY_ID"
+        const val KEY_RESULT_CATEGORY = "KEY_RESULT_CATEGORY"
         const val KEY_RESULT_LISTENER = "KEY_RESULT_LISTENER"
     }
 }

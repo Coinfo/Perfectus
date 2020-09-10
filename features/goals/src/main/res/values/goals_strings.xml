@@ -21,7 +21,7 @@
     <string name="goals_add_goals_button_add_goal">Add Goal</string>
     <string name="goals_add_goals_button_cancel">@string/goals_text_cancel</string>
 
-    <!-- Measured In Bottom Sheet Dialog Fragment -->
+    <!-- Measurement Bottom Sheet Dialog Fragment -->
     <string name="goals_measured_in_text_title_measured_in">Goal measured in</string>
     <string name="goals_measured_in_button_cancel">@string/goals_text_cancel</string>
     <string name="goals_measured_in_button_use">Use</string>
@@ -30,6 +30,9 @@
     <string name="goals_colors_text_title_colors">Goal color is</string>
     <string name="goals_colors_text_check_mark">✔</string>
     <string name="goals_colors_text_empty">&#160;&#160;</string>
+
+    <!--Categories Bottom Sheet Dialog Fragment -->
+    <string name="goals_categories_text_title_categories">Goal category is</string>
 
     <!-- Measurement -->
     <string name="goals_measured_in_steps">Steps</string>
@@ -53,5 +56,16 @@
     <string name="goals_measured_in_sessions">Sessions</string>
     <string name="goals_measured_in_classes">Classes</string>
     <string name="goals_measured_in_videos">Videos</string>
+
+    <!-- Categories -->
+    <string name="goals_category_not_set">Not set</string>
+    <string name="goals_category_mindfulness_and_self">Mindfulness &amp; Self</string>
+    <string name="goals_category_physical_health">Physical health</string>
+    <string name="goals_category_family_and_love">Family &amp; Love</string>
+    <string name="goals_category_financial">Financial</string>
+    <string name="goals_category_creativity_and_fun">Creativity &amp; Fun</string>
+    <string name="goals_category_learning">Learning</string>
+    <string name="goals_catgeory_career_and_impact">Career &amp; Impact</string>
+    <string name="goals_category_friends_and_networking">Friends &amp; Networking</string>
 
 </resources>

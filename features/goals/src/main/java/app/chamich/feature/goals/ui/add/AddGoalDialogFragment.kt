@@ -14,9 +14,11 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import app.chamich.feature.goals.R
 import app.chamich.feature.goals.databinding.GoalsDialogFragmentAddGoalBinding
+import app.chamich.feature.goals.model.Category
 import app.chamich.feature.goals.model.Color
 import app.chamich.feature.goals.model.Goal
 import app.chamich.feature.goals.model.Measurement
+import app.chamich.feature.goals.ui.bottomsheet.categories.CategoriesBottomSheet
 import app.chamich.feature.goals.ui.bottomsheet.colors.ColorsBottomSheet
 import app.chamich.feature.goals.ui.bottomsheet.measurements.MeasurementsBottomSheet
 import app.chamich.library.core.CoreDialogFragment
@@ -78,7 +80,7 @@ internal class AddGoalDialogFragment :
                 totalEffort = 1,
                 progress = 1,
                 completeData = 1L,
-                category = 1,
+                category = viewModel.category.id,
                 color = viewModel.color.id
             )
         )
@@ -119,6 +121,25 @@ internal class AddGoalDialogFragment :
         findNavController().navigate(
             R.id.destination_colors, bundleOf(
                 ColorsBottomSheet.KEY_COLOR_ID to viewModel.color.id
+            )
+        )
+    }
+
+    fun onCategoryClicked() {
+        setFragmentResultListener(CategoriesBottomSheet.KEY_RESULT_LISTENER) { key, bundle ->
+            if (CategoriesBottomSheet.KEY_RESULT_LISTENER == key) {
+                viewModel.category =
+                    bundle.getSerializable(CategoriesBottomSheet.KEY_RESULT_CATEGORY) as Category
+                binding.viewmodel = viewModel
+                clearFragmentResult(CategoriesBottomSheet.KEY_RESULT_LISTENER)
+            }
+        }
+
+        // IMPROVEME: If bottom sheet is already shown, do not show it again.
+        // This can happen when user very fast clicks more then once on the label.
+        findNavController().navigate(
+            R.id.destination_categories, bundleOf(
+                CategoriesBottomSheet.KEY_CATEGORY_ID to viewModel.category.id
             )
         )
     }

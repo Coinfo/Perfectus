@@ -281,6 +281,8 @@
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
                     android:gravity="end"
+                    android:onClick="@{() -> fragment.onCategoryClicked()}"
+                    android:text="@{viewmodel.category.stringRes}"
                     app:layout_constraintBottom_toBottomOf="@+id/label_category"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/goals_guideline"

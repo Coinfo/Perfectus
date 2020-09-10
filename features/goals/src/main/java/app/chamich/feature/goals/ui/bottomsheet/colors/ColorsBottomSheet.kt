@@ -80,7 +80,7 @@ internal class ColorsBottomSheet :
     private fun getColor(@ColorRes color: Int) =
         ColorStateList.valueOf(ContextCompat.getColor(requireContext(), color))
 
-    private fun getColorId() = arguments?.getInt(KEY_COLOR_ID) ?: Color.defaultColor().id
+    private fun getColorId() = arguments?.getInt(KEY_COLOR_ID) ?: Color.default().id
 
     private fun getCheckedText(checked: Boolean) =
         if (checked) R.string.goals_colors_text_check_mark else R.string.goals_colors_text_empty
