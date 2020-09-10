@@ -7,7 +7,7 @@ package app.chamich.feature.goals.model
 import androidx.annotation.ColorRes
 import app.chamich.feature.goals.R
 
-enum class Color(
+internal enum class Color(
     val id: Int, val position: Int, @ColorRes val colorRes: Int
 ) {
 
@@ -20,6 +20,6 @@ enum class Color(
 
     companion object {
         fun asList() = values().asList().sortedBy { it.position }
-        fun defaultColor() = BLUE
+        fun default() = BLUE
     }
 }

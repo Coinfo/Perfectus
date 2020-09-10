@@ -7,7 +7,7 @@ package app.chamich.feature.goals.model
 import androidx.annotation.StringRes
 import app.chamich.feature.goals.R
 
-enum class Measurement(
+internal enum class Measurement(
     val id: Int, val position: Int, @StringRes val stringRes: Int
 ) {
 
@@ -35,6 +35,6 @@ enum class Measurement(
 
     companion object {
         fun asList() = values().asList().sortedBy { it.position }
-        fun defaultMeasurement() = HOURS
+        fun default() = HOURS
     }
 }
