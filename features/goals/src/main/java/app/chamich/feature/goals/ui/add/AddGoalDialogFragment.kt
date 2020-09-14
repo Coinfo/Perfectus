@@ -72,10 +72,10 @@ internal class AddGoalDialogFragment :
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Binding Functions
 
-    fun onAddGoalClicked() {
+    fun onAddClicked() {
         viewModel.addGoal(
             Goal(
-                title = binding.editTextTitle.text.toString(),
+                title = binding.editTextGoalTitle.text.toString(),
                 measuredIn = viewModel.measurement.id,
                 totalEffort = 1,
                 progress = 1,
@@ -86,7 +86,7 @@ internal class AddGoalDialogFragment :
         )
     }
 
-    fun onMeasuredInClicked() {
+    fun onMeasurementClicked() {
         // Sets the fragment result listener
         setFragmentResultListener(MeasurementsBottomSheet.KEY_RESULT_LISTENER) { key, bundle ->
             if (MeasurementsBottomSheet.KEY_RESULT_LISTENER == key) {
@@ -144,7 +144,7 @@ internal class AddGoalDialogFragment :
         )
     }
 
-    fun onCancelClicked() {
+    fun onCloseClicked() {
         findNavController().popBackStack()
     }
 

@@ -19,6 +19,7 @@
     <string name="goals_add_goals_text_label_category">Category</string>
     <string name="goals_add_goals_text_label_color">Color</string>
     <string name="goals_add_goals_button_add_goal">Add Goal</string>
+    <string name="goals_add_goals_button_close">Close</string>
     <string name="goals_add_goals_button_cancel">@string/goals_text_cancel</string>
 
     <!-- Measurement Bottom Sheet Dialog Fragment -->

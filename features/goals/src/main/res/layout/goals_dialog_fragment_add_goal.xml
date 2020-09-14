@@ -6,6 +6,7 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -19,339 +20,332 @@
         <variable
             name="viewmodel"
             type="app.chamich.feature.goals.ui.add.AddGoalViewModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout_add_goals"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?attr/design_background_color"
-        tools:context=".ui.add.AddGoalDialogFragment">
+        android:background="#0d0d15">
 
         <ScrollView
-            android:id="@+id/goals_scrollview"
+            android:id="@+id/scroll_view_add_goals"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/button_cancel"
+            app:layout_constraintBottom_toTopOf="@+id/button_close"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
+                android:id="@+id/linear_layout_gaol_main_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/design_card_background"
                 android:orientation="vertical">
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/goals_guideline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.5" />
-
-                <EditText
-                    android:id="@+id/edit_text_title"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_goal_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:lines="3"
+                    android:maxLength="160"
+                    android:maxLines="3"
+                    android:padding="@dimen/design_padding_normal"
+                    android:textStyle="bold"
                     android:background="@{ContextCompat.getColor(context, viewmodel.color.colorRes)}"
                     android:hint="@string/goals_add_goals_hint_goal_title"
-                    android:padding="@dimen/design_padding_large"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    tools:text="What do you aspire to do?" />
 
-                <TextView
-                    android:id="@+id/label_goal_measured_in"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:text="@string/goals_add_goals_text_label_measured_in"
-                    app:layout_constraintEnd_toStartOf="@+id/goals_guideline"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/edit_text_title" />
+                <LinearLayout
+                    android:id="@+id/linear_layout_measurement"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:onClick="@{() -> fragment.onMeasurementClicked()}"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/design_padding_normal">
 
-                <TextView
-                    android:id="@+id/text_view_goal_measured_in"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:gravity="end"
-                    android:onClick="@{() -> fragment.onMeasuredInClicked()}"
-                    android:text="@{viewmodel.measurement.stringRes}"
-                    app:layout_constraintBottom_toBottomOf="@+id/label_goal_measured_in"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/goals_guideline"
-                    app:layout_constraintTop_toTopOf="@+id/label_goal_measured_in" />
-
-                <View
-                    android:id="@+id/separator_goal_measured_in"
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="?attr/colorOnBackground"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/label_goal_measured_in" />
-
-                <TextView
-                    android:id="@+id/label_total_effort"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:text="@string/goals_add_goals_text_label_total_effort"
-                    app:layout_constraintEnd_toStartOf="@+id/goals_guideline"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/separator_goal_measured_in" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    app:boxBackgroundMode="none"
-                    app:errorEnabled="false"
-                    app:helperTextEnabled="false"
-                    app:hintEnabled="false"
-                    app:layout_constraintBottom_toBottomOf="@+id/label_total_effort"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/goals_guideline"
-                    app:layout_constraintTop_toTopOf="@+id/label_total_effort"
-                    app:suffixText="@{context.getString(viewmodel.measurement.stringRes)}">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_label_measurement"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:gravity="end"
-                        android:inputType="number"
-                        android:text="0"
-                        app:boxBackgroundColor="@android:color/transparent" />
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:text="@string/goals_add_goals_text_label_measured_in"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:textColor="#dddde5" />
 
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <View
-                    android:id="@+id/separator_goal_total_effort"
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="?attr/colorOnBackground"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/label_total_effort" />
-
-                <TextView
-                    android:id="@+id/label_goal_effort_so_far"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:text="@string/goals_add_goals_text_label_progress_so_far"
-                    app:layout_constraintEnd_toStartOf="@+id/goals_guideline"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/separator_goal_total_effort" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    app:boxBackgroundMode="none"
-                    app:errorEnabled="false"
-                    app:helperTextEnabled="false"
-                    app:hintEnabled="false"
-                    app:layout_constraintBottom_toBottomOf="@+id/label_goal_effort_so_far"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/goals_guideline"
-                    app:layout_constraintTop_toTopOf="@+id/label_goal_effort_so_far"
-                    app:suffixText="@{context.getString(viewmodel.measurement.stringRes)}">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_measurement"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:focusable="false"
                         android:gravity="end"
+                        android:text="@{viewmodel.measurement.stringRes}"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:textColor="#dddde5"
+                        android:textStyle="bold"
+                        tools:text="Hours" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#232438" />
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_effort"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/design_padding_normal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_label_effort"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:text="@string/goals_add_goals_text_label_total_effort"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:textColor="#dddde5" />
+
+                    <EditText
+                        android:id="@+id/edit_text_effort"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/design_margin_tiny"
+                        android:layout_marginRight="@dimen/design_margin_tiny"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:ems="10"
+                        android:gravity="end"
+                        android:hint="0"
                         android:inputType="number"
-                        android:text="0"
-                        app:boxBackgroundColor="@android:color/transparent" />
+                        android:maxLength="8"
+                        android:maxLines="1" />
 
-                </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_effort"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:gravity="end"
+                        android:text="@{context.getString(viewmodel.measurement.stringRes).toLowerCase()}"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:textColor="#dddde5"
+                        android:textStyle="bold"
+                        tools:text="hour" />
 
-                <View
-                    android:id="@+id/separator_goal_effort_so_far"
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="?attr/colorOnBackground"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/label_goal_effort_so_far" />
-
-                <TextView
-                    android:id="@+id/label_goal_complete_by"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:text="@string/goals_add_goals_text_label_complete_by"
-                    app:layout_constraintEnd_toStartOf="@+id/goals_guideline"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/separator_goal_effort_so_far" />
-
-                <TextView
-                    android:id="@+id/text_view_goal_complete_by"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:gravity="end"
-                    app:layout_constraintBottom_toBottomOf="@+id/label_goal_complete_by"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/goals_guideline"
-                    app:layout_constraintTop_toTopOf="@+id/label_goal_complete_by" />
+                </LinearLayout>
 
                 <View
-                    android:id="@+id/separator_goal_complete_by"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="?attr/colorOnBackground"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/label_goal_complete_by" />
+                    android:background="#232438" />
 
-                <TextView
-                    android:id="@+id/label_category"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:text="@string/goals_add_goals_text_label_category"
-                    app:layout_constraintEnd_toStartOf="@+id/goals_guideline"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/separator_goal_complete_by" />
+                <LinearLayout
+                    android:id="@+id/linear_layout_progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/design_padding_normal">
 
-                <TextView
-                    android:id="@+id/text_view_category"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:gravity="end"
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_label_progress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:text="@string/goals_add_goals_text_label_progress_so_far"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:textColor="#dddde5" />
+
+                    <EditText
+                        android:id="@+id/edit_text_progress"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/design_margin_tiny"
+                        android:layout_marginRight="@dimen/design_margin_tiny"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:ems="10"
+                        android:gravity="end"
+                        android:hint="0"
+                        android:inputType="number"
+                        android:maxLength="8"
+                        android:maxLines="1" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_eprogress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:gravity="end"
+                        android:text="@{context.getString(viewmodel.measurement.stringRes).toLowerCase()}"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:textColor="#dddde5"
+                        android:textStyle="bold"
+                        tools:text="hour" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#232438" />
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_completion_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/design_padding_normal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_label_completion_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:text="@string/goals_add_goals_text_label_complete_by"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:textColor="#dddde5" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_completion_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:gravity="end"
+                        android:text="Not Set"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:textColor="#dddde5"
+                        android:textStyle="bold"
+                        tools:text="Not Set" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#232438" />
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
                     android:onClick="@{() -> fragment.onCategoryClicked()}"
-                    android:text="@{viewmodel.category.stringRes}"
-                    app:layout_constraintBottom_toBottomOf="@+id/label_category"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/goals_guideline"
-                    app:layout_constraintTop_toTopOf="@+id/label_category" />
+                    android:orientation="horizontal"
+                    android:padding="@dimen/design_padding_normal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_label_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:text="@string/goals_add_goals_text_label_category"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:textColor="#dddde5" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:gravity="end"
+                        android:text="@{viewmodel.category.stringRes}"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:textColor="#dddde5"
+                        android:textStyle="bold"
+                        tools:text="Not Set" />
+
+                </LinearLayout>
 
                 <View
-                    android:id="@+id/separator_category"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="?attr/colorOnBackground"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/label_category" />
+                    android:background="#232438" />
 
-                <TextView
-                    android:id="@+id/label_color"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="@string/goals_add_goals_text_label_color"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/goals_guideline"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/separator_category" />
+                <LinearLayout
+                    android:id="@+id/linear_layout_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:onClick="@{() -> fragment.onColorClicked()}"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/design_padding_normal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_label_color"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:text="@string/goals_add_goals_text_label_color"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:textColor="#dddde5" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_view_color"
+                        android:layout_width="@dimen/goals_width_card_view_color"
+                        android:layout_height="@dimen/goals_height_card_view_color"
+                        android:clickable="false"
+                        android:focusable="false"
+                        card_view:cardBackgroundColor="@{ContextCompat.getColor(context, viewmodel.color.colorRes)}"
+                        card_view:cardCornerRadius="@dimen/goals_corner_radius_card_view_color" />
+
+                </LinearLayout>
 
                 <View
-                    android:id="@+id/view_color"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@{ContextCompat.getColor(context, viewmodel.color.colorRes)}"
-                    android:onClick="@{() -> fragment.onColorClicked()}"
-                    app:layout_constraintBottom_toBottomOf="@+id/label_color"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/label_color" />
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#232438" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
         </ScrollView>
 
-        <Button
-            android:id="@+id/button_cancel"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_close"
+            style="@style/Widget.Perfectus.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> fragment.onCancelClicked()}"
-            android:text="@string/goals_add_goals_button_cancel"
+            android:onClick="@{() -> fragment.onCloseClicked()}"
+            android:text="@string/goals_add_goals_button_close"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/button_add_goal"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_add"
+            style="@style/Widget.Perfectus.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> fragment.onAddGoalClicked()}"
             android:text="@string/goals_add_goals_button_add_goal"
+            android:onClick="@{() -> fragment.onAddClicked()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

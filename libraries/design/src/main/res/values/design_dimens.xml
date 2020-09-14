@@ -12,7 +12,7 @@
     <dimen name="design_margin_large">24dp</dimen>
     <dimen name="design_margin_extra_large">32dp</dimen>
 
-
+    <dimen name="design_padding_normal">16dp</dimen>
     <dimen name="design_padding_large">24dp</dimen>
 
 </resources>
