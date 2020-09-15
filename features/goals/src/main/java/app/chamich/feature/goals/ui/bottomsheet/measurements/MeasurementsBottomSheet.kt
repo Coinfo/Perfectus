@@ -9,7 +9,6 @@ import android.view.View
 import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.setFragmentResult
-import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import app.chamich.feature.goals.R
 import app.chamich.feature.goals.databinding.GoalsBottomSheetDialogMeasurementsBinding
@@ -17,7 +16,7 @@ import app.chamich.feature.goals.model.Measurement
 import app.chamich.feature.goals.ui.bottomsheet.GoalsBottomSheet
 
 internal class MeasurementsBottomSheet :
-    GoalsBottomSheet<ViewModel, GoalsBottomSheetDialogMeasurementsBinding>() {
+    GoalsBottomSheet<GoalsBottomSheetDialogMeasurementsBinding>() {
 
     private lateinit var selectedMeasurement: Measurement
 
@@ -32,8 +31,6 @@ internal class MeasurementsBottomSheet :
         setupBindings()
         setupChips(getMeasurementId())
     }
-
-    override fun getViewModelClass() = ViewModel::class.java
 
     //endregion
     ////////////////////////////////////////////////////////////////////////////////////////////////

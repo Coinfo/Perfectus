@@ -9,7 +9,6 @@ import android.view.View
 import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.setFragmentResult
-import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import app.chamich.feature.goals.R
 import app.chamich.feature.goals.databinding.GoalsBottomSheetDialogCategoriesBinding
@@ -18,7 +17,7 @@ import app.chamich.feature.goals.ui.bottomsheet.GoalsBottomSheet
 import app.chamich.feature.goals.ui.bottomsheet.measurements.MeasurementsBottomSheet
 
 internal class CategoriesBottomSheet :
-    GoalsBottomSheet<ViewModel, GoalsBottomSheetDialogCategoriesBinding>() {
+    GoalsBottomSheet<GoalsBottomSheetDialogCategoriesBinding>() {
 
     private lateinit var selectedCategory: Category
 
@@ -33,8 +32,6 @@ internal class CategoriesBottomSheet :
         setupBindings()
         setupChips(getCategoryId())
     }
-
-    override fun getViewModelClass() = ViewModel::class.java
 
     //endregion
     ////////////////////////////////////////////////////////////////////////////////////////////////

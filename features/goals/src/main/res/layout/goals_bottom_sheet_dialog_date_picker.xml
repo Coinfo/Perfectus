@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020 Chamich Apps. All rights reserved.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="fragment"
+            type="app.chamich.feature.goals.ui.bottomsheet.datepicker.DatePickerBottomSheet" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Perfectus.BottomSheetCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/label_measured_in_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="@dimen/design_margin_large"
+                android:text="@string/goals_date_picker_text_title_completed_by"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <NumberPicker
+                android:id="@+id/number_picker_days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:descendantFocusability="blocksDescendants"
+                app:layout_constraintEnd_toStartOf="@+id/number_picker_months"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/label_measured_in_title" />
+
+            <NumberPicker
+                android:id="@+id/number_picker_months"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:descendantFocusability="blocksDescendants"
+                app:layout_constraintBottom_toBottomOf="@+id/number_picker_days"
+                app:layout_constraintEnd_toStartOf="@+id/number_picker_years"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/number_picker_days"
+                app:layout_constraintTop_toTopOf="@+id/number_picker_days" />
+
+            <NumberPicker
+                android:id="@+id/number_picker_years"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:descendantFocusability="blocksDescendants"
+                app:layout_constraintBottom_toBottomOf="@+id/number_picker_months"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/number_picker_months"
+                app:layout_constraintTop_toTopOf="@+id/number_picker_months" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_cancel"
+                style="@style/Widget.Perfectus.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/design_margin_large"
+                android:layout_marginLeft="@dimen/design_margin_large"
+                android:layout_marginTop="@dimen/design_margin_normal"
+                android:layout_marginBottom="@dimen/design_margin_large"
+                android:onClick="@{() -> fragment.onCancelClicked()}"
+                android:text="@string/goals_measured_in_button_cancel"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/number_picker_days" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_use"
+                style="@style/Widget.Perfectus.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/design_margin_normal"
+                android:layout_marginEnd="@dimen/design_margin_large"
+                android:layout_marginRight="@dimen/design_margin_large"
+                android:layout_marginBottom="@dimen/design_margin_large"
+                android:onClick="@{() -> fragment.onUseClicked()}"
+                android:text="@string/goals_measured_in_button_use"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/number_picker_days" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
