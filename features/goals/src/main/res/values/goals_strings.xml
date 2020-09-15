@@ -9,6 +9,7 @@
 
     <!-- General -->
     <string name="goals_text_cancel">Cancel</string>
+    <string name="goals_text_not_set">Not Set</string>
 
     <!-- Add Goals Dialog Fragment -->
     <string name="goals_add_goals_hint_goal_title">What\'s your goal?</string>
@@ -35,6 +36,10 @@
     <!--Categories Bottom Sheet Dialog Fragment -->
     <string name="goals_categories_text_title_categories">Goal category is</string>
 
+    <!-- Date Picker -->
+    <string name="goals_date_picker_text_title_completed_by">Goal completed by</string>
+
+
     <!-- Measurement -->
     <string name="goals_measured_in_steps">Steps</string>
     <string name="goals_measured_in_hours">Hours</string>
@@ -59,7 +64,7 @@
     <string name="goals_measured_in_videos">Videos</string>
 
     <!-- Categories -->
-    <string name="goals_category_not_set">Not set</string>
+    <string name="goals_category_not_set">@string/goals_text_not_set</string>
     <string name="goals_category_mindfulness_and_self">Mindfulness &amp; Self</string>
     <string name="goals_category_physical_health">Physical health</string>
     <string name="goals_category_family_and_love">Family &amp; Love</string>

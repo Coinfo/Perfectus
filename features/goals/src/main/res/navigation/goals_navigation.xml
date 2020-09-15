@@ -34,6 +34,9 @@
         <action
             android:id="@+id/goals_action_destination_add_goal_to_goals_categoriesbottomsheet"
             app:destination="@id/destination_categories" />
+        <action
+            android:id="@+id/goals_action_destination_add_goal_to_goals_datepickerbottomsheet"
+            app:destination="@id/destination_date_picker" />
     </dialog>
     <dialog
         android:id="@+id/destination_measured_in"
@@ -50,5 +53,11 @@
         android:name="app.chamich.feature.goals.ui.bottomsheet.categories.CategoriesBottomSheet"
         android:label="CategoriesBottomSheet"
         tools:layout="@layout/goals_bottom_sheet_dialog_categories" />
+
+    <dialog
+        android:id="@+id/destination_date_picker"
+        android:name="app.chamich.feature.goals.ui.bottomsheet.datepicker.DatePickerBottomSheet"
+        android:label="DatePickerBottomSheet"
+        tools:layout="@layout/goals_bottom_sheet_dialog_date_picker" />
 
 </navigation>

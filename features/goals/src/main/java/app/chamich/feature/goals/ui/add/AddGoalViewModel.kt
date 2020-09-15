@@ -18,6 +18,7 @@ import app.chamich.library.core.model.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
 
 
 internal class AddGoalViewModel @ViewModelInject constructor(
@@ -28,6 +29,8 @@ internal class AddGoalViewModel @ViewModelInject constructor(
     var measurement: Measurement = Measurement.default()
     var color: Color = Color.default()
     var category: Category = Category.default()
+    var date: Long = 0L
+    var dateString = SimpleDateFormat("MMM").format(date)
 
     fun addGoal(goal: IGoal) {
         viewModelScope.launch {

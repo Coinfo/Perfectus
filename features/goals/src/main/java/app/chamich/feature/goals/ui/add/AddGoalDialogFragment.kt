@@ -20,10 +20,12 @@ import app.chamich.feature.goals.model.Goal
 import app.chamich.feature.goals.model.Measurement
 import app.chamich.feature.goals.ui.bottomsheet.categories.CategoriesBottomSheet
 import app.chamich.feature.goals.ui.bottomsheet.colors.ColorsBottomSheet
+import app.chamich.feature.goals.ui.bottomsheet.datepicker.DatePickerBottomSheet
 import app.chamich.feature.goals.ui.bottomsheet.measurements.MeasurementsBottomSheet
 import app.chamich.library.core.CoreDialogFragment
 import app.chamich.library.core.model.Status
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
 
 
 @AndroidEntryPoint
@@ -79,7 +81,7 @@ internal class AddGoalDialogFragment :
                 measuredIn = viewModel.measurement.id,
                 totalEffort = 1,
                 progress = 1,
-                completeData = 1L,
+                completeData = viewModel.date,
                 category = viewModel.category.id,
                 color = viewModel.color.id
             )
@@ -141,6 +143,21 @@ internal class AddGoalDialogFragment :
             R.id.destination_categories, bundleOf(
                 CategoriesBottomSheet.KEY_CATEGORY_ID to viewModel.category.id
             )
+        )
+    }
+
+    fun onDatePickerClicked() {
+        setFragmentResultListener(DatePickerBottomSheet.KEY_RESULT_LISTENER) { key, bundle ->
+            if (DatePickerBottomSheet.KEY_RESULT_LISTENER == key) {
+                viewModel.date = bundle.getLong(DatePickerBottomSheet.KEY_RESULT_DATE)
+                viewModel.dateString = SimpleDateFormat("MMM dd yyyy").format(viewModel.date)
+                binding.viewmodel = viewModel
+                clearFragmentResult(DatePickerBottomSheet.KEY_RESULT_LISTENER)
+            }
+        }
+        findNavController().navigate(
+            R.id.destination_date_picker,
+            bundleOf(DatePickerBottomSheet.KEY_DATE to viewModel.date)
         )
     }
 

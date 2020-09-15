@@ -12,6 +12,7 @@
     <data>
 
         <import type="androidx.core.content.ContextCompat" />
+        <import type="java.text.SimpleDateFormat" />
 
         <variable
             name="fragment"
@@ -211,6 +212,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:onClick="@{() -> fragment.onDatePickerClicked()}"
                     android:orientation="horizontal"
                     android:padding="@dimen/design_padding_normal">
 
@@ -233,7 +235,7 @@
                         android:clickable="false"
                         android:focusable="false"
                         android:gravity="end"
-                        android:text="Not Set"
+                        android:text="@{viewmodel.date == 0 ? @string/goals_text_not_set : viewmodel.dateString}"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                         android:textColor="#dddde5"
                         android:textStyle="bold"
