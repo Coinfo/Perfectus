@@ -46,6 +46,10 @@
 
     <!-- Card View -->
 
+    <style name="Widget.Perfectus.Card.Snackbar" parent="" tools:ignore="ResourceName">
+        <item name="cardBackgroundColor">?attr/design_card_background_snackbar_color</item>
+    </style>
+
     <style name="Widget.Perfectus.Card" parent="" tools:ignore="ResourceName">
         <item name="cardElevation">?attr/design_card_elevation</item>
         <item name="cardCornerRadius">?attr/design_card_corners_radius</item>

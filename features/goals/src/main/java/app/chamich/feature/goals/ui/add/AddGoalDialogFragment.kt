@@ -23,7 +23,10 @@ import app.chamich.feature.goals.ui.bottomsheet.colors.ColorsBottomSheet
 import app.chamich.feature.goals.ui.bottomsheet.datepicker.DatePickerBottomSheet
 import app.chamich.feature.goals.ui.bottomsheet.measurements.MeasurementsBottomSheet
 import app.chamich.library.core.CoreDialogFragment
+import app.chamich.library.core.extensions.asLong
+import app.chamich.library.core.extensions.hasText
 import app.chamich.library.core.model.Status
+import app.chamich.library.snackbar.PerfectusSnackbar
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 
@@ -75,12 +78,31 @@ internal class AddGoalDialogFragment :
     //region Binding Functions
 
     fun onAddClicked() {
+        // Validate the goal input data for being valid.
+        val totalEffort = binding.editTextEffort.asLong
+        val progress = binding.editTextProgress.asLong
+
+        if (!binding.editTextGoalTitle.hasText) {
+            view?.let {
+                PerfectusSnackbar.make(it, R.string.goals_error_text_missing_title).show()
+            }
+            return
+        }
+
+        if (progress > totalEffort) {
+            view?.let {
+                PerfectusSnackbar.make(it, R.string.goals_error_text_progress_more_then_effort)
+                    .show()
+            }
+            return
+        }
+
         viewModel.addGoal(
             Goal(
                 title = binding.editTextGoalTitle.text.toString(),
                 measuredIn = viewModel.measurement.id,
-                totalEffort = 1,
-                progress = 1,
+                totalEffort = totalEffort,
+                progress = progress,
                 completeData = viewModel.date,
                 category = viewModel.category.id,
                 color = viewModel.color.id
