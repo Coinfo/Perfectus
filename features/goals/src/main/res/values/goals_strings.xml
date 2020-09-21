@@ -40,6 +40,16 @@
     <string name="goals_date_picker_text_title_completed_by">Goal completed by</string>
 
 
+    <!-- Errors -->
+    <string name="goals_error_text_progress_more_then_effort">
+        Total Effort should be more then the Progress
+    </string>
+
+    <string name="goals_error_text_missing_title">
+        To add the Goal please specify the title
+    </string>
+
+
     <!-- Measurement -->
     <string name="goals_measured_in_steps">Steps</string>
     <string name="goals_measured_in_hours">Hours</string>

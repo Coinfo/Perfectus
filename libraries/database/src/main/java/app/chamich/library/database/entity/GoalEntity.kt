@@ -22,10 +22,10 @@ data class GoalEntity(
     val measuredIn: Int,
 
     @ColumnInfo(name = "goal_total_effort")
-    val totalEffort: Int,
+    val totalEffort: Long,
 
     @ColumnInfo(name = "goal_progress")
-    val progress: Int,
+    val progress: Long,
 
     @ColumnInfo(name = "goal_complete_date")
     val completeDate: Long,

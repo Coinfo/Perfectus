@@ -29,7 +29,7 @@ class GoalsModule {
     ): IRepository = GoalsRepository(
         Room.databaseBuilder(
             context, IDatabase::class.java, GOALS_DATABASE_NAME
-        ).build().getGoalsDatabase(), logger
+        ).fallbackToDestructiveMigration().build().getGoalsDatabase(), logger
     )
 
 

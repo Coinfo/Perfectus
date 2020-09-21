@@ -10,6 +10,7 @@
     <attr name="design_hint_text_color" format="color" />
     <attr name="design_box_stroke_color" format="color" />
     <attr name="design_card_background_color" format="color" />
+    <attr name="design_card_background_snackbar_color" format="color" />
     <attr name="design_card_corners_radius" format="dimension" />
     <attr name="design_card_elevation" format="dimension" />
     <attr name="design_button_height" format="dimension" />

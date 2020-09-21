@@ -30,6 +30,9 @@
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowBackground">@android:color/white</item>
         <item name="actionMenuTextColor">@color/design_accent</item>
+        <item name="design_card_background_snackbar_color">
+            @color/design_full_screen_dialog_snackbar_error_background_color
+        </item>
     </style>
 
     <!-- Bottom Sheet Dialog -->
