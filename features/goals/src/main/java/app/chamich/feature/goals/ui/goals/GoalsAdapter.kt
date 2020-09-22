@@ -4,16 +4,26 @@
 
 package app.chamich.feature.goals.ui.goals
 
+import android.content.Context
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import androidx.annotation.ColorRes
+import androidx.core.graphics.BlendModeColorFilterCompat
+import androidx.core.graphics.BlendModeCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import app.chamich.feature.goals.R
 import app.chamich.feature.goals.databinding.GoalsItemGoalBinding
+import app.chamich.feature.goals.model.Color
 import app.chamich.feature.goals.model.api.IGoal
+import app.chamich.library.core.extensions.getColorAsInt
+
 
 internal class GoalsAdapter(
-    private val listener: (Long) -> Unit
+    private val listener: (Long) -> Unit,
+    private val context: Context
 ) : RecyclerView.Adapter<GoalsAdapter.GoalsViewHolder>() {
 
     private val goals: MutableList<IGoal> = mutableListOf()
@@ -37,6 +47,8 @@ internal class GoalsAdapter(
         val goal = goals[position]
         holder.binding.goal = goal
         holder.binding.root.setOnClickListener { listener(goal.id) }
+        setProgressBarColor(holder.binding.progressBarProgress, Color.asColorResource(goal.color))
+
     }
 
     //endregion
@@ -49,6 +61,28 @@ internal class GoalsAdapter(
         this.goals.clear()
         this.goals.addAll(goals)
         this.notifyDataSetChanged()
+    }
+
+    //endregion
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //region Private Functions
+
+    private fun setProgressBarColor(progressBar: ProgressBar, @ColorRes colorRes: Int) {
+        // IMPROVEME: After dropping support for SDK VERSION < 21 move the code to the XML file
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            progressBar.progressBackgroundTintList = ColorStateList.valueOf(
+                context.getColorAsInt(R.color.design_background_goal_progress)
+            )
+            progressBar.progressTintList = ColorStateList.valueOf(context.getColorAsInt(colorRes))
+        } else {
+            progressBar.progressDrawable = progressBar.progressDrawable.mutate().apply {
+                colorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(
+                    context.getColorAsInt(colorRes), BlendModeCompat.SRC_ATOP
+                )
+            }
+        }
     }
 
     //endregion

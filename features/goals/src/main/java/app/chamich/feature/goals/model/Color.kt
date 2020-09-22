@@ -19,6 +19,7 @@ internal enum class Color(
     YELLOW(5, 5, R.color.goals_color_yellow);
 
     companion object {
+        fun asColorResource(id: Int) = values().asList().first { it.id == id }.colorRes
         fun asList() = values().asList().sortedBy { it.position }
         fun default() = BLUE
     }
