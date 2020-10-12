@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:max="@{goal.totalEffort}"
-                android:progress="30"
+                android:progress="@{goal.progress}"
                 android:progressTint="@{ContextCompat.getColor(context, Color.asColorResource(goal.color))}"
                 android:progressBackgroundTint="@color/design_background_goal_progress"
                 android:scaleY="25"
