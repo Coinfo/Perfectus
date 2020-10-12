@@ -23,7 +23,7 @@ import app.chamich.feature.goals.ui.bottomsheet.colors.ColorsBottomSheet
 import app.chamich.feature.goals.ui.bottomsheet.datepicker.DatePickerBottomSheet
 import app.chamich.feature.goals.ui.bottomsheet.measurements.MeasurementsBottomSheet
 import app.chamich.library.core.CoreDialogFragment
-import app.chamich.library.core.extensions.asLong
+import app.chamich.library.core.extensions.asInt
 import app.chamich.library.core.extensions.hasText
 import app.chamich.library.core.model.Status
 import app.chamich.library.snackbar.PerfectusSnackbar
@@ -79,8 +79,8 @@ internal class AddGoalDialogFragment :
 
     fun onAddClicked() {
         // Validate the goal input data for being valid.
-        val totalEffort = binding.editTextEffort.asLong
-        val progress = binding.editTextProgress.asLong
+        val totalEffort = binding.editTextEffort.asInt
+        val progress = binding.editTextProgress.asInt
 
         if (!binding.editTextGoalTitle.hasText) {
             view?.let {
