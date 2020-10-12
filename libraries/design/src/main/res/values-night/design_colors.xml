@@ -17,6 +17,8 @@
     <color name="design_bottom_sheet_card_view_background">#111322</color>
 
 
+    <color name="design_background_goal_progress">#1b1c30</color>
+
     <!-- Colors used in the Perfectus.FullScreenDialog -->
     <color name="design_full_screen_dialog_brand_color">#4b4cff</color>
     <color name="design_full_screen_dialog_snackbar_error_background_color">#fa2835</color>

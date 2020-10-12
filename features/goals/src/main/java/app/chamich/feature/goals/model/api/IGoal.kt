@@ -8,8 +8,8 @@ interface IGoal {
     val id: Long
     val title: String
     val measuredIn: Int
-    val totalEffort: Long
-    val progress: Long
+    val totalEffort: Int
+    val progress: Int
     val completeData: Long
     val category: Int
     val color: Int

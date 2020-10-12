@@ -16,6 +16,13 @@ val EditText.asLong
         0L
     }
 
+val EditText.asInt
+    get() = try {
+        if (!this.hasText) 0 else this.text.toString().toInt()
+    } catch (e: NumberFormatException) {
+        0
+    }
+
 /**
  * Returns the {@see EditText} text as String
  */
