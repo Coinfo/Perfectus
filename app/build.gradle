@@ -52,11 +52,10 @@ android {
 
     defaultConfig {
         applicationId "chamich.app.perfectus"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode generateVersionCode()
         versionName generateVersionName()
-        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

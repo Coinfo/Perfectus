@@ -10,8 +10,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.annotation.ColorRes
-import androidx.core.graphics.BlendModeColorFilterCompat
-import androidx.core.graphics.BlendModeCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import app.chamich.feature.goals.R
@@ -70,19 +68,7 @@ internal class GoalsAdapter(
     //region Private Functions
 
     private fun setProgressBarColor(progressBar: ProgressBar, @ColorRes colorRes: Int) {
-        // IMPROVEME: After dropping support for SDK VERSION < 21 move the code to the XML file
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            progressBar.progressBackgroundTintList = ColorStateList.valueOf(
-                context.getColorAsInt(R.color.design_background_goal_progress)
-            )
-            progressBar.progressTintList = ColorStateList.valueOf(context.getColorAsInt(colorRes))
-        } else {
-            progressBar.progressDrawable = progressBar.progressDrawable.mutate().apply {
-                colorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(
-                    context.getColorAsInt(colorRes), BlendModeCompat.SRC_ATOP
-                )
-            }
-        }
+        progressBar.progressTintList = ColorStateList.valueOf(context.getColorAsInt(colorRes))
     }
 
     //endregion
