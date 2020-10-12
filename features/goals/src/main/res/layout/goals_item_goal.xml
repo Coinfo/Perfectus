@@ -31,6 +31,7 @@
                 android:max="@{goal.totalEffort}"
                 android:progress="@{goal.progress}"
                 android:scaleY="25"
+                android:progressBackgroundTint="@color/design_background_goal_progress"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
