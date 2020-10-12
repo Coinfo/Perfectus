@@ -4,24 +4,17 @@
 
 package app.chamich.feature.goals.ui.goals
 
-import android.content.Context
-import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ProgressBar
-import androidx.annotation.ColorRes
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import app.chamich.feature.goals.R
 import app.chamich.feature.goals.databinding.GoalsItemGoalBinding
-import app.chamich.feature.goals.model.Color
 import app.chamich.feature.goals.model.api.IGoal
-import app.chamich.library.core.extensions.getColorAsInt
 
 
 internal class GoalsAdapter(
-    private val listener: (Long) -> Unit,
-    private val context: Context
+    private val listener: (Long) -> Unit
 ) : RecyclerView.Adapter<GoalsAdapter.GoalsViewHolder>() {
 
     private val goals: MutableList<IGoal> = mutableListOf()
@@ -45,8 +38,6 @@ internal class GoalsAdapter(
         val goal = goals[position]
         holder.binding.goal = goal
         holder.binding.root.setOnClickListener { listener(goal.id) }
-        setProgressBarColor(holder.binding.progressBarProgress, Color.asColorResource(goal.color))
-
     }
 
     //endregion
@@ -67,9 +58,6 @@ internal class GoalsAdapter(
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Private Functions
 
-    private fun setProgressBarColor(progressBar: ProgressBar, @ColorRes colorRes: Int) {
-        progressBar.progressTintList = ColorStateList.valueOf(context.getColorAsInt(colorRes))
-    }
 
     //endregion
     ////////////////////////////////////////////////////////////////////////////////////////////////

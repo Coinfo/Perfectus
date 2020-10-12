@@ -46,9 +46,9 @@ internal class GoalsFragment :
     //region Private Functions
 
     private fun setupRecyclerView() {
-        adapter = GoalsAdapter({
+        adapter = GoalsAdapter {
 
-        }, requireContext())
+        }
         binding.recyclerviewGoals.adapter = adapter
 
     }

@@ -7,6 +7,12 @@
 
     <data>
 
+        <import type="app.chamich.feature.goals.model.Color" />
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <import type="android.content.res.ColorStateList" />
+
         <variable
             name="goal"
             type="app.chamich.feature.goals.model.api.IGoal" />
@@ -29,9 +35,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:max="@{goal.totalEffort}"
-                android:progress="@{goal.progress}"
-                android:scaleY="25"
+                android:progress="30"
+                android:progressTint="@{ContextCompat.getColor(context, Color.asColorResource(goal.color))}"
                 android:progressBackgroundTint="@color/design_background_goal_progress"
+                android:scaleY="25"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
