@@ -39,6 +39,10 @@
     <!-- Date Picker -->
     <string name="goals_date_picker_text_title_completed_by">Goal completed by</string>
 
+    <!-- Goals -->
+    <string name="goals_item_goal_percent">%d %%</string>
+    <string name="goals_item_goal_subtitle">%d / %d %s completed</string>
+
 
     <!-- Errors -->
     <string name="goals_error_text_progress_more_then_effort">
