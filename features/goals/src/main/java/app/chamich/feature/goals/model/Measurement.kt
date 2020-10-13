@@ -34,6 +34,8 @@ internal enum class Measurement(
     VIDEOS(20, 20, R.string.goals_measured_in_videos);
 
     companion object {
+        @JvmStatic
+        fun asStringResource(id: Int) = values().asList().first { it.id == id }.stringRes
         fun asList() = values().asList().sortedBy { it.position }
         fun default() = HOURS
     }

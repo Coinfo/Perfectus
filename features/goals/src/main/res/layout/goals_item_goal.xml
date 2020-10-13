@@ -7,6 +7,8 @@
 
     <data>
 
+        <import type="app.chamich.feature.goals.model.Measurement" />
+
         <import type="app.chamich.feature.goals.model.Color" />
 
         <import type="androidx.core.content.ContextCompat" />
@@ -62,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="16dp"
-                android:text="TextView"
+                android:text="@{@string/goals_item_goal_subtitle(goal.progress, goal.totalEffort, context.getString(Measurement.asStringResource(goal.measuredIn)))}"
                 app:layout_constraintBottom_toTopOf="@+id/progress_bar_progress"
                 app:layout_constraintEnd_toStartOf="@+id/text_view_percentage"
                 app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"
-                android:text="TextView"
+                android:text="@{@string/goals_item_goal_percent(goal.progress * 100 / goal.totalEffort)}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/progress_bar_progress"
                 app:layout_constraintTop_toTopOf="parent" />
