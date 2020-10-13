@@ -76,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:text="@{@string/goals_item_goal_percent(goal.progress * 100 / goal.totalEffort)}"
+                android:text="@{goal.totalEffort == 0 ? @string/goals_item_goal_percent(0) : @string/goals_item_goal_percent(goal.progress * 100 / goal.totalEffort)}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/progress_bar_progress"
                 android:layout_marginEnd="@dimen/design_margin_large"
