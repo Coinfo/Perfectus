@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020 Chamich Apps. All rights reserved.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="app.chamich.feature.goals.model.Measurement" />
+
+        <import type="app.chamich.feature.goals.model.Color" />
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="goal"
+            type="app.chamich.feature.goals.model.api.IGoal" />
+
+        <variable
+            name="fragment"
+            type="app.chamich.feature.goals.ui.details.GoalDetailsDialogFragment" />
+
+        <variable
+            name="viewmodel"
+            type="app.chamich.feature.goals.ui.details.GoalDetailsViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout_goal_details"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#0d0d15">
+
+        <ScrollView
+            android:id="@+id/scroll_view_goal_details"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/button_close"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/text_view_goal_details_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="TextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_goal_details"
+                    style="@style/Widget.Perfectus.Card"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="4dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_view_goal_details_title">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ProgressBar
+                            android:id="@+id/progress_bar_progress"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:max="@{goal.totalEffort}"
+                            android:progress="@{goal.progress}"
+                            android:progressBackgroundTint="@color/design_background_goal_progress"
+                            android:progressTint="@{ContextCompat.getColor(context, Color.asColorResource(goal.color))}"
+                            android:scaleY="25"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/text_view_title"
+                            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/design_margin_large"
+                            android:layout_marginEnd="@dimen/design_margin_normal"
+                            android:text="@{goal.title}"
+                            app:layout_constraintBottom_toTopOf="@+id/text_view_subtitle"
+                            app:layout_constraintEnd_toStartOf="@+id/text_view_percentage"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/progress_bar_progress" />
+
+                        <TextView
+                            android:id="@+id/text_view_subtitle"
+                            style="@style/TextAppearance.MaterialComponents.Caption"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/design_margin_large"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginEnd="@dimen/design_margin_normal"
+                            android:text="@{@string/goals_item_goal_subtitle(goal.progress, goal.totalEffort, context.getString(Measurement.asStringResource(goal.measuredIn)))}"
+                            app:layout_constraintBottom_toTopOf="@+id/progress_bar_progress"
+                            app:layout_constraintEnd_toStartOf="@+id/text_view_percentage"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/text_view_title" />
+
+                        <TextView
+                            android:id="@+id/text_view_percentage"
+                            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/design_margin_large"
+                            android:text="@{goal.totalEffort == 0 ? @string/goals_item_goal_percent(0) : @string/goals_item_goal_percent(goal.progress * 100 / goal.totalEffort)}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/progress_bar_progress"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <include
+                    layout="@layout/goals_view_goal_progress_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/card_view_goal_details" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_close"
+            style="@style/Widget.Perfectus.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/goals_add_goals_button_close"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_add"
+            style="@style/Widget.Perfectus.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/goals_add_goals_button_add_goal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

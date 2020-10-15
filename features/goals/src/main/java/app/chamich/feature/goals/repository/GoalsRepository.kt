@@ -68,6 +68,24 @@ class GoalsRepository(
         return goals
     }
 
+    override suspend fun getGoal(id: Long): IGoal {
+        logger.debug(TAG, "|------------------------------------------------------------|")
+        logger.debug(TAG, "|                         Get Goal                           |")
+
+        val goal = database.getGoal(id)
+        logger.debug(TAG, "|----> Goal is: $goal")
+        return Goal(
+            id = goal.id,
+            title = goal.title,
+            measuredIn = goal.measuredIn,
+            totalEffort = goal.totalEffort,
+            progress = goal.progress,
+            completeData = goal.completeDate,
+            category = goal.category,
+            color = goal.color
+        )
+    }
+
     private companion object {
         const val TAG = "GoalsRepository"
     }

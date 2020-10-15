@@ -7,10 +7,12 @@ package app.chamich.feature.goals.ui.goals
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import app.chamich.feature.goals.R
 import app.chamich.feature.goals.databinding.GoalsFragmentGoalsBinding
+import app.chamich.feature.goals.ui.details.GoalDetailsDialogFragment
 import app.chamich.library.core.CoreFragment
 import app.chamich.library.core.model.Status
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,8 +49,12 @@ internal class GoalsFragment :
     //region Private Functions
 
     private fun setupRecyclerView() {
-        adapter = GoalsAdapter {
-            findNavController().navigate(R.id.destination_goal)
+        adapter = GoalsAdapter { id ->
+            findNavController().navigate(
+                R.id.destination_goal, bundleOf(
+                    GoalDetailsDialogFragment.EXTRA_GOAL_ID to id
+                )
+            )
         }
         binding.recyclerviewGoals.adapter = adapter
 

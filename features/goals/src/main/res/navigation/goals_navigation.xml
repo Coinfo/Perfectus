@@ -65,8 +65,8 @@
 
     <dialog
         android:id="@+id/destination_goal"
-        android:name="app.chamich.feature.goals.ui.goal.GoalDialogFragment"
+        android:name="app.chamich.feature.goals.ui.details.GoalDetailsDialogFragment"
         android:label="GoalDialogFragment"
-        tools:layout="@layout/goals_dialog_fragment_goal" />
+        tools:layout="@layout/goals_dialog_fragment_goal_details" />
 
 </navigation>
