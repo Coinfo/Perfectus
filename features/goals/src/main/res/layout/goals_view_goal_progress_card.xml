@@ -4,77 +4,93 @@
   ~ Copyright (c) 2020 Chamich Apps. All rights reserved.
   -->
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_view_goal_details_progress"
-        style="@style/Widget.Perfectus.Card"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <data>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <variable
+            name="viewmodel"
+            type="app.chamich.feature.goals.ui.details.GoalDetailsViewModel" />
 
-            <TextView
-                android:id="@+id/text_view_goal_progress_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:text="@string/goals_add_progress"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    </data>
 
-            <ImageButton
-                android:id="@+id/goals_button2"
-                android:layout_width="@dimen/goals_progress_image_button_width"
-                android:layout_height="@dimen/goals_progress_image_button_height"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:scaleType="center"
-                android:src="@drawable/ic_progress_less"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/goals_textview2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/text_view_goal_progress_title"
-                app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/goals_textview2"
-                android:layout_width="47dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/goals_button2"
-                app:layout_constraintEnd_toStartOf="@+id/goals_button3"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/goals_button2"
-                app:layout_constraintTop_toTopOf="@+id/goals_button2"
-                tools:text="0 hours" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_goal_details_progress"
+            style="@style/Widget.Perfectus.Card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <ImageButton
-                android:id="@+id/goals_button3"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/goals_progress_image_button_height"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:scaleType="center"
-                android:src="@drawable/ic_progress_more"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/goals_textview2"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/text_view_goal_progress_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/goals_add_progress"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.cardview.widget.CardView>
+                <ImageButton
+                    android:id="@+id/button_less"
+                    android:layout_width="@dimen/goals_progress_image_button_width"
+                    android:layout_height="@dimen/goals_progress_image_button_height"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="@{viewmodel.progress > 0}"
+                    android:focusable="@{viewmodel.progress > 0}"
+                    android:onClick="@{() -> (viewmodel.progress > 0 ? viewmodel.lessProgress() : null)}"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_progress_less"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/label_progress"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/text_view_goal_progress_title"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/label_progress"
+                    android:layout_width="47dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewmodel.progress.toString()}"
+                    app:layout_constraintBottom_toBottomOf="@+id/button_less"
+                    app:layout_constraintEnd_toStartOf="@+id/button_more"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/button_less"
+                    app:layout_constraintTop_toTopOf="@+id/button_less"
+                    tools:text="0 hours" />
+
+                <ImageButton
+                    android:id="@+id/button_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/goals_progress_image_button_height"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:onClick="@{() -> viewmodel.moreProgress()}"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_progress_more"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/label_progress"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

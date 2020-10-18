@@ -20,16 +20,27 @@ internal class GoalDetailsViewModel @ViewModelInject constructor(
     private val repository: IRepository
 ) : ViewModel() {
 
-    private val result = MutableLiveData<Resource<IGoal>>()
+    private val goal = MutableLiveData<Resource<IGoal>>()
+    private val progress = MutableLiveData<Int>(0)
 
     fun loadGoal(id: Long) {
         viewModelScope.launch {
-            result.postValue(Resource.loading(null))
+            goal.postValue(Resource.loading(null))
             withContext(Dispatchers.IO) {
-                result.postValue(Resource.success(repository.getGoal(id)))
+                goal.postValue(Resource.success(repository.getGoal(id)))
             }
         }
     }
 
-    fun getResult(): LiveData<Resource<IGoal>> = result
+    fun getGoal(): LiveData<Resource<IGoal>> = goal
+
+    fun getProgress(): LiveData<Int> = progress
+
+    fun lessProgress() {
+        progress.postValue(progress.value?.minus(1))
+    }
+
+    fun moreProgress() {
+        progress.postValue(progress.value?.plus(1))
+    }
 }

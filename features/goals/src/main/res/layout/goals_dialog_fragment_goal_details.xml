@@ -3,7 +3,8 @@
   -->
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
 
     <data>
 
@@ -79,7 +80,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:max="@{goal.totalEffort}"
-                            android:progress="@{goal.progress}"
+                            android:progress="@{(goal.progress + viewmodel.progress)}"
                             android:progressBackgroundTint="@color/design_background_goal_progress"
                             android:progressTint="@{ContextCompat.getColor(context, Color.asColorResource(goal.color))}"
                             android:scaleY="25"
@@ -109,7 +110,7 @@
                             android:layout_marginStart="@dimen/design_margin_large"
                             android:layout_marginTop="4dp"
                             android:layout_marginEnd="@dimen/design_margin_normal"
-                            android:text="@{@string/goals_item_goal_subtitle(goal.progress, goal.totalEffort, context.getString(Measurement.asStringResource(goal.measuredIn)))}"
+                            android:text="@{@string/goals_item_goal__details_subtitle(goal.progress, viewmodel.progress, goal.totalEffort, context.getString(Measurement.asStringResource(goal.measuredIn)))}"
                             app:layout_constraintBottom_toTopOf="@+id/progress_bar_progress"
                             app:layout_constraintEnd_toStartOf="@+id/text_view_percentage"
                             app:layout_constraintStart_toStartOf="parent"
@@ -121,7 +122,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/design_margin_large"
-                            android:text="@{goal.totalEffort == 0 ? @string/goals_item_goal_percent(0) : @string/goals_item_goal_percent(goal.progress * 100 / goal.totalEffort)}"
+                            android:text="@{goal.totalEffort == 0 ? @string/goals_item_goal_percent(0) : @string/goals_item_goal_percent((goal.progress + viewmodel.progress) * 100 / goal.totalEffort)}"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="@+id/progress_bar_progress"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -131,9 +132,11 @@
                 </androidx.cardview.widget.CardView>
 
                 <include
+                    android:id="@+id/include_goal_progress"
                     layout="@layout/goals_view_goal_progress_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    bind:viewmodel="@={viewmodel}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/card_view_goal_details" />
