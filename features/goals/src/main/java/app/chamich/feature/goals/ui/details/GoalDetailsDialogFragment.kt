@@ -64,7 +64,7 @@ internal class GoalDetailsDialogFragment :
     //region Private Functions
 
     private fun setupObservers() {
-        viewModel.getResult().observe(viewLifecycleOwner, Observer { result ->
+        viewModel.getGoal().observe(viewLifecycleOwner, Observer { result ->
             when (result.status) {
                 Status.SUCCESS -> renderGoal(result.data)
                 Status.LOADING -> { /* Do nothing */
@@ -72,6 +72,10 @@ internal class GoalDetailsDialogFragment :
                 Status.FAILURE -> { /* Do nothing */
                 }
             }
+        })
+
+        viewModel.getProgress().observe(viewLifecycleOwner, Observer { result ->
+            binding.viewmodel = viewModel
         })
     }
 
@@ -83,7 +87,7 @@ internal class GoalDetailsDialogFragment :
     }
 
     private fun getGoalIdFromExtras() = arguments?.getLong(EXTRA_GOAL_ID)
-        ?: throw IllegalStateException("Unable to get Goal ID")
+        ?: throw IllegalStateException("An error occurred while trying get Goal ID from extras")
 
     //endregion
     ////////////////////////////////////////////////////////////////////////////////////////////////
