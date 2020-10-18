@@ -69,7 +69,7 @@ internal class GoalDetailsDialogFragment :
                 Status.SUCCESS -> renderGoal(result.data)
                 Status.LOADING -> { /* Do nothing */
                 }
-                Status.ERROR -> { /* Do nothing */
+                Status.FAILURE -> { /* Do nothing */
                 }
             }
         })

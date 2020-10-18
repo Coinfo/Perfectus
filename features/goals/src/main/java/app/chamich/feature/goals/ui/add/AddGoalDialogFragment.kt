@@ -201,7 +201,7 @@ internal class AddGoalDialogFragment :
                 }
                 Status.LOADING -> { /* Do nothing */
                 }
-                Status.ERROR -> { /* Do nothing */
+                Status.FAILURE -> { /* Do nothing */
                 }
             }
         })

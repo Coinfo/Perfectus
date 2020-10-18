@@ -6,6 +6,6 @@ package app.chamich.library.core.model
 
 enum class Status {
     SUCCESS,
-    ERROR,
+    FAILURE,
     LOADING
 }

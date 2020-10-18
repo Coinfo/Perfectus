@@ -13,7 +13,7 @@ data class Resource<out T>(val status: Status, val data: T?, val exception: Exce
         }
 
         fun <T> error(exception: Exception?): Resource<T> {
-            return Resource(Status.ERROR, null, exception)
+            return Resource(Status.FAILURE, null, exception)
         }
 
         fun <T> loading(data: T?): Resource<T> {
