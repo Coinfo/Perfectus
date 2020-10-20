@@ -13,7 +13,7 @@ data class GoalEntity(
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "goal_id")
-    val id: Long = 0L,
+    val id: Long,
 
     @ColumnInfo(name = "goal_title")
     val title: String,

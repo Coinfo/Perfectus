@@ -45,7 +45,10 @@
 
     <!-- Goal Details -->
     <string name="goals_add_progress">Add Progress</string>
-    <string name="goals_item_goal__details_subtitle">%d + %d / %d %s completed</string>
+    <string name="goals_item_goal_details_subtitle">%d + %d / %d %s completed</string>
+    <string name="goals_progress">%d %s</string>
+    <string name="goals_button_text_add_progress">Add Progress</string>
+    <string name="goals_goal_details_label">Did you make progress?</string>
 
 
     <!-- Errors -->

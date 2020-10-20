@@ -7,10 +7,15 @@ package app.chamich.feature.goals.ui.details
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import app.chamich.feature.goals.R
 import app.chamich.feature.goals.databinding.GoalsDialogFragmentGoalDetailsBinding
 import app.chamich.feature.goals.model.api.IGoal
+import app.chamich.feature.goals.utils.EXTRA_GOAL_ID
+import app.chamich.feature.goals.utils.REQUEST_KEY_GOAL_DETAILS
 import app.chamich.library.core.CoreDialogFragment
 import app.chamich.library.core.model.Status
 import dagger.hilt.android.AndroidEntryPoint
@@ -61,16 +66,36 @@ internal class GoalDetailsDialogFragment :
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
+    //region Binding Functions
+
+    fun onAddProgressClicked() {
+        viewModel.updateGoal()
+    }
+
+    fun onCloseClicked() {
+        findNavController().navigateUp()
+    }
+
+    //endregion
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Private Functions
 
     private fun setupObservers() {
-        viewModel.getGoal().observe(viewLifecycleOwner, Observer { result ->
+        viewModel.getLoadGoalResult().observe(viewLifecycleOwner, Observer { result ->
             when (result.status) {
-                Status.SUCCESS -> renderGoal(result.data)
-                Status.LOADING -> { /* Do nothing */
-                }
-                Status.FAILURE -> { /* Do nothing */
-                }
+                Status.SUCCESS -> handleLoadGoalSuccess(result.data)
+                Status.LOADING -> handleLoading()
+                Status.FAILURE -> handleFailure(result.exception)
+            }
+        })
+
+        viewModel.getUpdateGoalResult().observe(viewLifecycleOwner, Observer { result ->
+            when (result.status) {
+                Status.SUCCESS -> handleUpdateGoalSuccess()
+                Status.LOADING -> handleLoading()
+                Status.FAILURE -> handleFailure(result.exception)
             }
         })
 
@@ -79,11 +104,24 @@ internal class GoalDetailsDialogFragment :
         })
     }
 
-    private fun renderGoal(goal: IGoal?) {
+    private fun handleLoadGoalSuccess(goal: IGoal?) {
         goal?.let {
             binding.goal = it
             binding.executePendingBindings()
         }
+    }
+
+    private fun handleUpdateGoalSuccess() {
+        setFragmentResult(REQUEST_KEY_GOAL_DETAILS, bundleOf())
+        findNavController().navigateUp()
+    }
+
+    private fun handleLoading() {
+        /* This function does nothing */
+    }
+
+    private fun handleFailure(e: Exception?) {
+        /* This function does nothing */
     }
 
     private fun getGoalIdFromExtras() = arguments?.getLong(EXTRA_GOAL_ID)
@@ -91,8 +129,4 @@ internal class GoalDetailsDialogFragment :
 
     //endregion
     ////////////////////////////////////////////////////////////////////////////////////////////////
-
-    companion object {
-        const val EXTRA_GOAL_ID = "app.chamich.feature.goals.EXTRA_GOAL_ID"
-    }
 }

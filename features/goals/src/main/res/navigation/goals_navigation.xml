@@ -20,7 +20,7 @@
             app:destination="@id/destination_add_goal" />
         <action
             android:id="@+id/goals_action_destination_goals_to_goals_goaldialogfragment"
-            app:destination="@id/destination_goal" />
+            app:destination="@id/destination_goal_details" />
     </fragment>
 
     <dialog
@@ -64,7 +64,7 @@
         tools:layout="@layout/goals_bottom_sheet_dialog_date_picker" />
 
     <dialog
-        android:id="@+id/destination_goal"
+        android:id="@+id/destination_goal_details"
         android:name="app.chamich.feature.goals.ui.details.GoalDetailsDialogFragment"
         android:label="GoalDialogFragment"
         tools:layout="@layout/goals_dialog_fragment_goal_details" />
