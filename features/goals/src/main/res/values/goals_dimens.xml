@@ -8,4 +8,8 @@
     <dimen name="goals_height_card_view_color">32dp</dimen>
     <dimen name="goals_corner_radius_card_view_color">16dp</dimen>
 
+
+    <dimen name="goals_progress_image_button_height">32dp</dimen>
+    <dimen name="goals_progress_image_button_width">32dp</dimen>
+
 </resources>

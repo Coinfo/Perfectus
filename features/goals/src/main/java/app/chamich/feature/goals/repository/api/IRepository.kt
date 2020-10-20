@@ -21,4 +21,19 @@ interface IRepository {
      * @return List of goals
      */
     suspend fun getGoals(): List<IGoal>
+
+    /**
+     * Gets the goal by given id
+     *
+     * @param id Id of the goal
+     * @return goal
+     */
+    suspend fun getGoal(id: Long): IGoal
+
+    /**
+     * Updates given goal
+     *
+     * @param goal Goal to be updated
+     */
+    suspend fun updateGoal(goal: IGoal)
 }

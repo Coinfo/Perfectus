@@ -14,17 +14,17 @@ import app.chamich.library.database.entity.GoalEntity
 interface IGoalsDatabase {
 
     @Insert
-    fun add(goal: GoalEntity): Long
+    suspend fun add(goal: GoalEntity): Long
 
     @Update
-    fun update(goal: GoalEntity)
+    suspend fun update(goal: GoalEntity)
 
     @Query("DELETE FROM goals WHERE goal_id = :id")
-    fun delete(id: Long)
+    suspend fun delete(id: Long)
 
     @Query("SELECT * FROM goals WHERE goal_id == :id")
-    fun getGoal(id: Long): GoalEntity
+    suspend fun getGoal(id: Long): GoalEntity
 
     @Query("SELECT * FROM goals")
-    fun getGoals(): List<GoalEntity>
+    suspend fun getGoals(): List<GoalEntity>
 }
