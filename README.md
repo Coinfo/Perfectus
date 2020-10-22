@@ -3,6 +3,10 @@
 > “Le mieux est l'ennemi du bien.
 
 [![CircleCI](https://circleci.com/gh/ChamichApps/Perfectus/tree/develop.svg?style=shield)](https://circleci.com/gh/ChamichApps/Perfectus/tree/develop)
+[![Kotlin Version](https://img.shields.io/badge/kotlin-1.4.10-blue.svg)](http://kotlinlang.org/)
+[![Gradle](https://img.shields.io/badge/gradle-6.6.1-blue.svg)](https://lv.binarybabel.org/catalog/gradle/latest)
+[![API](https://img.shields.io/badge/API-21%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=21)
+[![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 
 
