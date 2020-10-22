@@ -42,6 +42,7 @@ class PerfectusFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initializeViewPagerAndTabLayout()
+        initializeBottomActionBar()
         handleMenuItemClicks()
         handleFabClicks()
     }
@@ -79,6 +80,12 @@ class PerfectusFragment : Fragment() {
                 }
             }
             return@setOnMenuItemClickListener true
+        }
+    }
+
+    private fun initializeBottomActionBar() {
+        appbar.setNavigationOnClickListener {
+
         }
     }
 
