@@ -18,7 +18,7 @@ class ProfileApi(private val logger: ILogger) {
     init {
         logger.debug(TAG, "|------------------------------------------------------------|")
         logger.debug(TAG, "|                         Profile API                        |")
-        logger.debug(TAG, "|---->Profile API object created: ${System.identityHashCode(this)}")
+        logger.debug(TAG, "|----> Object created: ${System.identityHashCode(this)}")
     }
 
     /**
