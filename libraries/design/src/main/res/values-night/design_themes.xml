@@ -37,8 +37,8 @@
 
     <!-- Bottom Sheet Dialog -->
 
-    <style name="Perfectus.BottomSheetDialog" parent="Theme.MaterialComponents.BottomSheetDialog" tools:ignore="ResourceName">
-        <item name="bottomSheetStyle">@style/Perfectus.BottomSheetStyle</item>
+    <style name="Perfectus.BottomSheetMenu" parent="Theme.MaterialComponents.BottomSheetDialog" tools:ignore="ResourceName">
+        <item name="bottomSheetStyle">@style/Perfectus.BottomSheetMenuStyle</item>
         <item name="design_background_bottom_sheet_card_view_color">
             @color/design_bottom_sheet_card_view_background
         </item>

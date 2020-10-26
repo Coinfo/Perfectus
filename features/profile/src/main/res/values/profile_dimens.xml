@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2020 Chamich Apps. All rights reserved.
+  -->
+
+<resources>
+
+    <dimen name="profile_avatar_card_width">80dp</dimen>
+    <dimen name="profile_avatar_card_height">80dp</dimen>
+    <dimen name="profile_avatar_card_corner_radius">40dp</dimen>
+    <dimen name="profile_avatar_card_elevation">10dp</dimen>
+
+</resources>

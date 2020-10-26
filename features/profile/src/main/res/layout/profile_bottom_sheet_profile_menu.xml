@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2020 Chamich Apps. All rights reserved.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="fragment"
+            type="app.chamich.feature.profile.ui.menu.ProfileMenuBottomSheet" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view_profile_avatar"
+            android:layout_width="@dimen/profile_avatar_card_width"
+            android:layout_height="@dimen/profile_avatar_card_height"
+            app:cardCornerRadius="@dimen/profile_avatar_card_corner_radius"
+            app:cardElevation="@dimen/profile_avatar_card_elevation"
+            app:layout_constraintBottom_toTopOf="@+id/card_view_profile_menu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/card_view_profile_menu">
+
+            <ImageView
+                android:id="@+id/image_view_profile_avatar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/profile_avatar_image_content_description"
+                app:srcCompat="@drawable/ic_profile_avatar_placeholder" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view_profile_menu"
+            style="@style/Profile.CardViewProfileMenu"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/button_edit_profile"
+                    style="@style/Profile.Widget.TextButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/design_margin_extra_large"
+                    android:layout_marginTop="46dp"
+                    android:layout_marginEnd="@dimen/design_margin_extra_large"
+                    android:onClick="@{() -> fragment.onEditProfileClicked()}"
+                    android:text="@string/profile_menu_button_text_edit_profile"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -75,6 +75,7 @@
             app:fabCradleMargin="10dp"
             app:fabCradleRoundedCornerRadius="10dp"
             app:hideOnScroll="true"
+            app:navigationIcon="@drawable/ic_dehaze"
             app:menu="@menu/perfectus_app_bar_menu" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton

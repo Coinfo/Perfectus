@@ -18,7 +18,7 @@ internal abstract class GoalsBottomSheet<VDB : ViewDataBinding> :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, R.style.Perfectus_BottomSheetDialog)
+        setStyle(STYLE_NORMAL, R.style.Perfectus_BottomSheetMenu)
     }
 
     protected fun inflateAsChip(@LayoutRes layoutRes: Int, parent: ViewGroup) =
