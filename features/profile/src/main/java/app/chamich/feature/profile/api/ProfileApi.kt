@@ -2,7 +2,7 @@
  * Copyright (c) 2020 Chamich Apps. All rights reserved.
  */
 
-package app.chamich.feature.profile
+package app.chamich.feature.profile.api
 
 import androidx.fragment.app.FragmentManager
 import app.chamich.feature.profile.ui.menu.ProfileMenuBottomSheet
@@ -27,7 +27,10 @@ class ProfileApi(private val logger: ILogger) {
     fun showProfileMenuBottomSheet(fm: FragmentManager?) {
         fm?.let {
             (it.findFragmentByTag(TAG_PROFILE_MENU_BOTTOM_SHEET) as? ProfileMenuBottomSheet
-                ?: ProfileMenuBottomSheet()).show(it, TAG_PROFILE_MENU_BOTTOM_SHEET)
+                ?: ProfileMenuBottomSheet()).show(
+                it,
+                TAG_PROFILE_MENU_BOTTOM_SHEET
+            )
         }
     }
 
