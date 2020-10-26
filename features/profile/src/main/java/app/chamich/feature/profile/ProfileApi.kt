@@ -5,7 +5,7 @@
 package app.chamich.feature.profile
 
 import androidx.fragment.app.FragmentManager
-import app.chamich.feature.profile.ui.ProfileMenuBottomSheet
+import app.chamich.feature.profile.ui.menu.ProfileMenuBottomSheet
 import app.chamich.library.logger.ILogger
 import javax.inject.Singleton
 

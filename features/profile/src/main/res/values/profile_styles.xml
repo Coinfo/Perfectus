@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2020 Chamich Apps. All rights reserved.
+  -->
+
+<resources>
+
+    <style name="Profile.CardViewProfileMenu" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ProfileShapeCardViewProfileMenuRoundCorners
+        </item>
+    </style>
+
+    <style name="ProfileShapeCardViewProfileMenuRoundCorners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">36dp</item>
+        <item name="cornerSizeTopLeft">36dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+
+    <style name="Profile.BottomSheetMenuStyle" parent="Perfectus.BottomSheetMenuStyle">
+        <!-- Define your own style here -->
+    </style>
+
+    <style name="Profile.Widget.TextButton" parent="Widget.Perfectus.TextButton">
+        <!-- Define your own style here -->
+    </style>
+
+</resources>
+
+
+

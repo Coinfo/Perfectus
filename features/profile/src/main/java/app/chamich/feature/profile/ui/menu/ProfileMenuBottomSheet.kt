@@ -2,7 +2,7 @@
  * Copyright (c) 2020 Chamich Apps. All rights reserved.
  */
 
-package app.chamich.feature.profile.ui
+package app.chamich.feature.profile.ui.menu
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -23,6 +23,11 @@ internal class ProfileMenuBottomSheet :
 
     override fun getLayoutId() = R.layout.profile_bottom_sheet_profile_menu
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setStyle(STYLE_NORMAL, R.style.Profile_BottomSheetMenu)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -32,9 +37,34 @@ internal class ProfileMenuBottomSheet :
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initializeBindings()
+    }
+
     override fun getViewModelClass() = ProfileMenuViewModel::class.java
 
     //endregion
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //region Binding Functions
+
+    fun onEditProfileClicked() {
+        // Not Implemented
+    }
+
+    //endregion
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //region Fragment Override Functions
+
+    private fun initializeBindings() {
+        binding.fragment = this
+    }
+
+    //endregion
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 }

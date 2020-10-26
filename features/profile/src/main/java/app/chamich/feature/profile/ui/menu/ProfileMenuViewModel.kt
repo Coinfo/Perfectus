@@ -2,7 +2,7 @@
  * Copyright (c) 2020 Chamich Apps. All rights reserved.
  */
 
-package app.chamich.feature.profile.ui
+package app.chamich.feature.profile.ui.menu
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel

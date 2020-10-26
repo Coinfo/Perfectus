@@ -63,7 +63,7 @@
 
     <!-- Bottom Sheet Style -->
 
-    <style name="Perfectus.BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal" tools:ignore="ResourceName">
+    <style name="Perfectus.BottomSheetMenuStyle" parent="Widget.Design.BottomSheet.Modal" tools:ignore="ResourceName">
         <item name="android:background">@android:color/transparent</item>
     </style>
 
