@@ -18,16 +18,16 @@ def keystoreProperties = new Properties()
 // Load your keystore.properties file into the keystoreProperties object.
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
-ext.versionMajor = 1
-ext.versionMinor = 15
+ext.versionMajor = 0
+ext.versionMinor = 0
 ext.versionPatch = 0
 ext.versionClassifier = null
 ext.isSnapShot = false
 ext.minSdkVersion = 21
 
 private Integer generateVersionCode() {
-    return ext.minSdkVersion * 10000000 + ext.versionMajor * 10000 +
-            ext.versionMinor * 100 + ext.versionPatch
+    //return 1000 + (ext.versionMajor * 100) + (ext.versionMinor * 10) + ext.versionPatch
+    return 2
 }
 
 private String generateVersionName() {
@@ -51,7 +51,7 @@ android {
     buildToolsVersion "30.0.0"
 
     defaultConfig {
-        applicationId "chamich.app.perfectus"
+        applicationId "app.chamich.perfectus"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode generateVersionCode()

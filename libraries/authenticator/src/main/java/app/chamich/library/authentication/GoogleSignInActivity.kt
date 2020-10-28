@@ -7,6 +7,7 @@ package app.chamich.library.authentication
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -35,6 +36,11 @@ class GoogleSignInActivity : AppCompatActivity() {
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)
+
+                val a = account?.displayName
+                val b = account?.email
+
+                Toast.makeText(this, "$a [$b]", Toast.LENGTH_LONG).show()
 
                 //firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: ApiException) {
