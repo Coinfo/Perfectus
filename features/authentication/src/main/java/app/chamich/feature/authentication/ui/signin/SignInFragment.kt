@@ -5,6 +5,7 @@
 package app.chamich.feature.authentication.ui.signin
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -17,11 +18,13 @@ import app.chamich.feature.authentication.extenstion.textAsString
 import app.chamich.feature.authentication.model.Destinations
 import app.chamich.feature.authentication.model.Status
 import app.chamich.feature.authentication.ui.BaseFragment
+import app.chamich.library.authentication.GoogleSignInActivity
 import app.chamich.library.authentication.IUser
 import app.chamich.library.logger.ILogger
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+
 
 /**
  * Fragment responsible for User Sign In with Email and Password
@@ -43,8 +46,7 @@ internal class SignInFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.fragment = this
-
+        setupBindings()
         setupSignedInUserObservable()
     }
 
@@ -95,6 +97,13 @@ internal class SignInFragment :
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Private Functions
+
+    private fun setupBindings() {
+        binding.fragment = this
+        binding.buttonGoogleSignIn.setOnClickListener {
+            startActivity(Intent(requireContext(), GoogleSignInActivity::class.java))
+        }
+    }
 
     private fun setupSignedInUserObservable() {
         viewModel.getSignedInUser().observe(viewLifecycleOwner, Observer { result ->

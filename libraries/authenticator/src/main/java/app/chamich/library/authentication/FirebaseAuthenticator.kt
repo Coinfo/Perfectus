@@ -5,13 +5,15 @@
 package app.chamich.library.authentication
 
 
+import android.content.Context
 import app.chamich.library.authentication.exceptions.AuthenticatorException
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.tasks.await
 
 class FirebaseAuthenticator(
-    private val authenticator: FirebaseAuth = FirebaseAuth.getInstance()
+    private val authenticator: FirebaseAuth = FirebaseAuth.getInstance(),
+    private val context: Context
 ) : IAuthenticator {
 
     @Throws(AuthenticatorException.SignInException::class)
