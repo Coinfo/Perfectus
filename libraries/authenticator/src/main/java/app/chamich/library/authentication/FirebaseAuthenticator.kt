@@ -10,11 +10,13 @@ import app.chamich.library.authentication.exceptions.AuthenticatorException
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.tasks.await
+import kotlin.Throws
 
 class FirebaseAuthenticator(
     private val authenticator: FirebaseAuth = FirebaseAuth.getInstance(),
     private val context: Context
 ) : IAuthenticator {
+
 
     @Throws(AuthenticatorException.SignInException::class)
     override suspend fun signIn(email: String, password: String): IUser {
