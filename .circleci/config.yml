@@ -14,7 +14,8 @@ jobs:
       - run: echo "keyPassword=$KEY_PASSWORD" >> keystore.properties
       - run: echo "storeFile=perfectus.jsk" >> keystore.properties
       - run: echo $KEYSTORE_JSK | base64 -d > app/perfectus.jsk
-      - run: echo $GOOGLE_SERVICES | base64 -di > libraries/authenticator/google-services.json
+      - run: echo GOOGLE_SERVICE_AUTHENTICATOR | base64 -di > libraries/authenticator/google-services.json
+      - run: echo GOOGLE_SERVICE_PERFECTUS | base64 -di > app/google-services.json
       - run: echo $GOOGLE_API | base64 -di > fastlane/api.json
       - run:
           command: ./gradlew build
