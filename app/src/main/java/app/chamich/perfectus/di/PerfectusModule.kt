@@ -39,7 +39,5 @@ object PerfectusModule {
 
     @Provides
     @Singleton
-    fun providesAuthenticator(
-        @ApplicationContext context: Context
-    ): IAuthenticator = FirebaseAuthenticator(context = context)
+    fun providesAuthenticator(): IAuthenticator = FirebaseAuthenticator()
 }

@@ -4,7 +4,10 @@
 
 package app.chamich.library.authentication
 
+import android.content.Context
+import android.content.Intent
 import app.chamich.library.authentication.exceptions.AuthenticatorException
+import kotlin.Throws
 
 /**
  * An interface which provides authentication functionality
@@ -36,6 +39,11 @@ interface IAuthenticator {
      */
     @Throws(AuthenticatorException.PasswordResetException::class)
     suspend fun resetPassword(email: String)
+
+    @Throws(AuthenticatorException.GoogleSignInException::class)
+    suspend fun finalizeGoogleSignIn(data: Intent?): IUser
+
+    fun createGoogleSignInIntent(context: Context): Intent
 
     /**
      * Signs out the user
