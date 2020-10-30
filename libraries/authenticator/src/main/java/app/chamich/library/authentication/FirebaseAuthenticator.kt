@@ -18,7 +18,8 @@ import kotlinx.coroutines.tasks.await
 import kotlin.Throws
 
 class FirebaseAuthenticator(
-    private val authenticator: FirebaseAuth = FirebaseAuth.getInstance()
+    private val authenticator: FirebaseAuth = FirebaseAuth.getInstance(),
+    private val context: Context
 ) : IAuthenticator {
 
     @Throws(AuthenticatorException.SignInException::class)

@@ -109,10 +109,9 @@ internal class SignInFragment :
     private fun setupBindings() {
         binding.fragment = this
         binding.buttonGoogleSignIn.setOnClickListener {
-
-            startActivity(Intent(requireContext(), GoogleSignInActivity::class.java))
 //            startActivityForResult(
 //                viewModel.createGoogleSignInIntent(requireContext()), REQUEST_CODE_GOOGLE_SIGN_IN)
+            startActivity(Intent(requireContext(), GoogleSignInActivity::class.java))
         }
     }
 
