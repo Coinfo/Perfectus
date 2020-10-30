@@ -4,6 +4,8 @@
 
 package app.chamich.feature.authentication.ui.signin
 
+import android.content.Context
+import android.content.Intent
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -40,6 +42,20 @@ internal class SignInViewModel @ViewModelInject constructor(
     }
 
     fun getSignedInUser(): LiveData<Resource<IUser>> = user
+
+    fun createGoogleSignInIntent(context: Context) = authenticator.createGoogleSignInIntent(context)
+
+    fun finalizeGoogleSignIn(intent: Intent?) {
+        viewModelScope.launch {
+            user.postValue(Resource.loading(null))
+            try {
+                user.postValue(Resource.success(authenticator.finalizeGoogleSignIn(intent)))
+            } catch (exception: AuthenticatorException.GoogleSignInException) {
+                logger.error(message = "Exception while Sign In", throwable = exception)
+                user.postValue(Resource.error(exception))
+            }
+        }
+    }
 
     fun resetSignedInUser() {
         user = MutableLiveData()

@@ -63,6 +63,14 @@ internal class SignInFragment :
         listener = context as? SignInListener
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == REQUEST_CODE_GOOGLE_SIGN_IN) {
+            viewModel.finalizeGoogleSignIn(data)
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
 
@@ -101,6 +109,8 @@ internal class SignInFragment :
     private fun setupBindings() {
         binding.fragment = this
         binding.buttonGoogleSignIn.setOnClickListener {
+//            startActivityForResult(
+//                viewModel.createGoogleSignInIntent(requireContext()), REQUEST_CODE_GOOGLE_SIGN_IN)
             startActivity(Intent(requireContext(), GoogleSignInActivity::class.java))
         }
     }
@@ -156,6 +166,7 @@ internal class SignInFragment :
 
     companion object {
         private const val SNACKBAR_MAX_LINES = 5
+        private const val REQUEST_CODE_GOOGLE_SIGN_IN = 1000
     }
 
     //endregion

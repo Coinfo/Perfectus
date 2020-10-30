@@ -19,6 +19,7 @@ class GoogleSignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            //.requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
 
@@ -39,8 +40,10 @@ class GoogleSignInActivity : AppCompatActivity() {
 
                 val a = account?.displayName
                 val b = account?.email
+                val c = account?.idToken
 
-                Toast.makeText(this, "$a [$b]", Toast.LENGTH_LONG).show()
+
+                Toast.makeText(this, "$a [$b] - $c", Toast.LENGTH_LONG).show()
 
                 //firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: ApiException) {
