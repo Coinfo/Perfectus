@@ -32,4 +32,12 @@ sealed class AuthenticatorException(
         exception.cause,
         exception.cause?.localizedMessage
     )
+
+    class GoogleSignInException(
+        exception: Exception
+    ) : AuthenticatorException(
+        exception.message,
+        exception.cause,
+        exception.cause?.localizedMessage
+    )
 }

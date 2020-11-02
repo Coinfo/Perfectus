@@ -8,7 +8,10 @@
 [![API](https://img.shields.io/badge/API-21%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=21)
 [![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
+## Table of Contents
 
+-   [Authors](https://github.com/ChamichApps/Perfectus#authors)
+-   [License](https://github.com/ChamichApps/Perfectus#license)
 
 ## Author
 

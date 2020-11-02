@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/profile_avatar_image_content_description"
-                app:srcCompat="@drawable/ic_profile_avatar_placeholder" />
+                app:srcCompat="@drawable/profile_avatar_placeholder" />
 
         </com.google.android.material.card.MaterialCardView>
 
