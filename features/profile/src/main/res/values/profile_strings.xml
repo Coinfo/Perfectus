@@ -8,6 +8,7 @@
 
     <string name="profile_avatar_image_content_description">Avatar image</string>
 
-    <string name="profile_menu_button_text_edit_profile">Edit Profile</string>
+    <string name="profile_menu_button_text_profile">Profile</string>
+    <string name="profile_menu_button_text_settings">Settings</string>
 
 </resources>

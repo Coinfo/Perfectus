@@ -5,6 +5,7 @@
   -->
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -43,7 +44,7 @@
             android:id="@+id/card_view_profile_menu"
             style="@style/Profile.CardViewProfileMenu"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="200dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -53,18 +54,31 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/button_edit_profile"
+                    android:id="@+id/button_profile"
                     style="@style/Profile.Widget.TextButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/design_margin_extra_large"
                     android:layout_marginTop="46dp"
                     android:layout_marginEnd="@dimen/design_margin_extra_large"
-                    android:onClick="@{() -> fragment.onEditProfileClicked()}"
-                    android:text="@string/profile_menu_button_text_edit_profile"
+                    android:onClick="@{() -> fragment.onProfileClicked()}"
+                    android:text="@string/profile_menu_button_text_profile"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/button_settings"
+                    style="@style/Profile.Widget.TextButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/design_margin_extra_large"
+                    android:layout_marginEnd="@dimen/design_margin_extra_large"
+                    android:onClick="@{() -> fragment.onSettingsClicked()}"
+                    android:text="@string/profile_menu_button_text_settings"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/button_profile" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

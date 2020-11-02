@@ -51,7 +51,11 @@ internal class ProfileMenuBottomSheet :
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Binding Functions
 
-    fun onEditProfileClicked() {
+    fun onProfileClicked() {
+        // Not Implemented
+    }
+
+    fun onSettingsClicked() {
         // Not Implemented
     }
 
