@@ -16,3 +16,5 @@
 /perfectus.jks
 /fastlane/api.json
 /app/google-services.json
+/buildSrc/build/generated-sources/kotlin-dsl-plugins/kotlin/commons/AndroidLibraryPlugin.kt
+/buildSrc/build/generated-sources/kotlin-dsl-external-plugin-spec-builders/kotlin/gradle/kotlin/dsl/plugins/_0bdb0a9033d4e47995d1de031e9d8971/

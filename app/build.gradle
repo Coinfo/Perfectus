@@ -2,11 +2,14 @@
  * Copyright (c) 2020 Chamich Apps. All rights reserved.
  */
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
 
 // Create a variable called keystorePropertiesFile, and initialize it to your
 // keystore.properties file, in the rootProject folder.
@@ -47,13 +50,13 @@ private String generateVersionName() {
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.0"
+    compileSdkVersion BuildAndroidConfig.COMPILE_SDK_VERSION
+    buildToolsVersion BuildAndroidConfig.BUILD_TOOLS_VERSION
 
     defaultConfig {
-        applicationId "app.chamich.perfectus"
-        minSdkVersion 21
-        targetSdkVersion 30
+        applicationId BuildAndroidConfig.APPLICATION_ID
+        minSdkVersion BuildAndroidConfig.MIN_SDK_VERSION
+        targetSdkVersion BuildAndroidConfig.TARGET_SDK_VERSION
         versionCode generateVersionCode()
         versionName generateVersionName()
 
