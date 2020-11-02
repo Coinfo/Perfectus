@@ -8,10 +8,7 @@ jobs:
     executor: android/android
 
     environment:
-      // Circle CI build failure fix
-      // https://github.com/circleci/circleci-docs/issues/2945#issuecomment-471637158
-      // In the case of test failure switch back to -Xmx4g -Dorg.gradle.daemon=false
-      GRADLE_OPTS: -Xmx1536m -XX:+HeapDumpOnOutOfMemoryError -Dorg.gradle.caching=true -Dorg.gradle.configureondemand=true -Dkotlin.compiler.execution.strategy=in-process -Dkotlin.incremental=false
+      GRADLE_OPTS: -Xmx4g -Dorg.gradle.daemon=false
       JVM_OPTS: -Xmx4g
 
     steps:
