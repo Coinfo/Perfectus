@@ -18,6 +18,8 @@ Perfectus is an open-source application running on Android. With the help of Per
 
 ## Structure
 
+The project consists of feature and library modules
+
 ```
 - app
 - features
