@@ -49,6 +49,7 @@ dependencies {
     implementation project(path: ':libraries:core')
     implementation project(path: ':libraries:design')
     implementation project(path: ':libraries:logger')
+    implementation project(path: ':libraries:authenticator')
 
     // Hilt
     implementation "com.google.dagger:hilt-android:2.28-alpha"
