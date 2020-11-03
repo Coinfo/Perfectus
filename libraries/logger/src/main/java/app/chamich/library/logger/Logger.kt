@@ -14,15 +14,19 @@ class Logger: ILogger {
     }
 
     override fun error(tag: String?, message: String?, throwable: Throwable?) {
-        Log.e(if(!tag.isNullOrBlank()) tag else TAG_ERROR, message, throwable)
+        Log.e(if (!tag.isNullOrBlank()) tag else TAG_ERROR, message, throwable)
+    }
+
+    override fun error(tag: String?, message: String) {
+        Log.e(if (!tag.isNullOrBlank()) tag else TAG_ERROR, message)
     }
 
     override fun info(tag: String?, message: String) {
-        Log.i(if(!tag.isNullOrBlank()) tag else TAG_INFO, message)
+        Log.i(if (!tag.isNullOrBlank()) tag else TAG_INFO, message)
     }
 
     override fun debug(tag: String?, message: String) {
-        Log.d(if(!tag.isNullOrBlank()) tag else TAG_DEBUG, message)
+        Log.d(if (!tag.isNullOrBlank()) tag else TAG_DEBUG, message)
     }
 
     override fun warn(tag: String?, message: String) {

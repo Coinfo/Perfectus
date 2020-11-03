@@ -14,7 +14,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import app.chamich.feature.goals.ui.GoalsPagerFragment
-import app.chamich.feature.profile.api.ProfileApi
+import app.chamich.feature.profile.api.Profile
 import app.chamich.library.authentication.IAuthenticator
 import app.chamich.library.core.CorePagerFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,7 +28,7 @@ class PerfectusFragment : Fragment() {
     lateinit var authenticator: IAuthenticator
 
     @Inject
-    lateinit var profileApi: ProfileApi
+    lateinit var profile: Profile
 
     private val navController: NavController by lazy { findNavController(this) }
 
@@ -73,23 +73,13 @@ class PerfectusFragment : Fragment() {
 
     private fun handleMenuItemClicks() {
         appbar.setOnMenuItemClickListener { menuItem ->
-            when (menuItem?.itemId) {
-                R.id.action_sign_out -> {
-                    authenticator.signOut()
-                    navController.popBackStack()
-                    navController.navigate(R.id.navigation_authentication)
-                }
-                R.id.action_settings -> {
-                    navController.navigate(R.id.navigation_settings)
-                }
-            }
             return@setOnMenuItemClickListener true
         }
     }
 
     private fun initializeBottomActionBar() {
         appbar.setNavigationOnClickListener {
-            profileApi.showProfileMenuBottomSheet(childFragmentManager)
+            profile.showProfileScreen(childFragmentManager)
         }
     }
 

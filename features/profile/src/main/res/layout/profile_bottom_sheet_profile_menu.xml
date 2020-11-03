@@ -53,32 +53,94 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <Button
-                    android:id="@+id/button_profile"
-                    style="@style/Profile.Widget.TextButton"
+                <TextView
+                    android:id="@+id/text_view_username"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/design_margin_extra_large"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="46dp"
-                    android:layout_marginEnd="@dimen/design_margin_extra_large"
-                    android:onClick="@{() -> fragment.onProfileClicked()}"
-                    android:text="@string/profile_menu_button_text_profile"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/button_sign_out"
+                    tools:text="Viktor Apoyan"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
-                    android:id="@+id/button_settings"
-                    style="@style/Profile.Widget.TextButton"
+                <TextView
+                    android:id="@+id/text_view_email"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/design_margin_extra_large"
-                    android:layout_marginEnd="@dimen/design_margin_extra_large"
-                    android:onClick="@{() -> fragment.onSettingsClicked()}"
-                    android:text="@string/profile_menu_button_text_settings"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/button_sign_out"
+                    app:layout_constraintTop_toBottomOf="@+id/text_view_username"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="chamich.apps@gmail.com" />
+
+                <Button
+                    android:id="@+id/button_sign_out"
+                    style="@style/Profile.Widget.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:onClick="@{() -> fragment.onSignOutClicked()}"
+                    android:text="@string/profile_menu_button_text_sign_out"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_view_email"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/text_view_username" />
+
+                <View
+                    android:id="@+id/separator"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="#232438"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/button_profile" />
+                    app:layout_constraintTop_toBottomOf="@+id/text_view_email" />
+
+                <TextView
+                    android:id="@+id/label_theme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/profile_menu_label_text_theme"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/separator" />
+
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/togglebutton_theme"
+                    style="?attr/materialButtonToggleGroupStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center_horizontal"
+                    app:layout_constraintBottom_toBottomOf="@+id/label_theme"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/label_theme"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/button_theme_light"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/profile_menu_button_text_mode_light" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/button_theme_dark"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/profile_menu_button_text_mode_dark" />
+
+
+                </com.google.android.material.button.MaterialButtonToggleGroup>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

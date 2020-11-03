@@ -2,9 +2,9 @@
  * Copyright (c) 2020 Chamich Apps. All rights reserved.
  */
 
-package app.chamich.feature.profile.di
+package app.chamich.feature.settings.di
 
-import app.chamich.feature.profile.api.Profile
+import app.chamich.feature.settings.api.Settings
 import app.chamich.library.logger.ILogger
 import dagger.Module
 import dagger.Provides
@@ -14,9 +14,9 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(ApplicationComponent::class)
-class ProfileModule {
+class SettingsModule {
 
     @Provides
     @Singleton
-    fun providesProfile(logger: ILogger) = Profile(logger)
+    fun providesSettings(logger: ILogger) = Settings(logger)
 }

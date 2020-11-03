@@ -8,7 +8,9 @@
 
     <string name="profile_avatar_image_content_description">Avatar image</string>
 
-    <string name="profile_menu_button_text_profile">Profile</string>
-    <string name="profile_menu_button_text_settings">Settings</string>
+    <string name="profile_menu_button_text_sign_out">Sign out</string>
+    <string name="profile_menu_button_text_mode_dark">Dark</string>
+    <string name="profile_menu_button_text_mode_light">Light</string>
+    <string name="profile_menu_label_text_theme">Theme</string>
 
 </resources>

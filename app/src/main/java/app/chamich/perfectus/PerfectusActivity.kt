@@ -12,6 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import app.chamich.feature.authentication.ui.signin.SignInListener
 import app.chamich.feature.authentication.ui.signup.SignUpListener
+import app.chamich.feature.profile.ui.menu.SignOutListener
 import app.chamich.library.authentication.IAuthenticator
 import app.chamich.library.authentication.IUser
 import app.chamich.library.preferences.IPreferences
@@ -22,7 +23,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class PerfectusActivity : AppCompatActivity(),
-    SignInListener, SignUpListener {
+    SignInListener, SignUpListener, SignOutListener {
 
     private lateinit var binding: ActivityPerfectusBinding
 
@@ -82,6 +83,12 @@ class PerfectusActivity : AppCompatActivity(),
     }
 
     //endregion
+
+    override fun onSignOut() {
+        authenticator.signOut()
+        navController.popBackStack()
+        navController.navigate(R.id.navigation_authentication)
+    }
 
     private companion object {
         const val KEY_PREFERENCE_THEME_MODE = "key_preference_mode"
