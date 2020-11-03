@@ -27,7 +27,7 @@ ext.minSdkVersion = 21
 
 private Integer generateVersionCode() {
     //return 1000 + (ext.versionMajor * 100) + (ext.versionMinor * 10) + ext.versionPatch
-    return 3
+    return 4
 }
 
 private String generateVersionName() {
@@ -97,7 +97,6 @@ dependencies {
     implementation project(path: ':libraries:logger')
     implementation project(path: ':libraries:preferences')
     implementation project(path: ':libraries:authenticator')
-    implementation project(path: ':features:settings')
     implementation project(path: ':features:authentication')
     implementation project(path: ':features:goals')
     implementation project(path: ':features:tasks')

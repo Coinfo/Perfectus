@@ -4,7 +4,7 @@
 
 package app.chamich.feature.profile.di
 
-import app.chamich.feature.profile.api.ProfileApi
+import app.chamich.feature.profile.api.Profile
 import app.chamich.library.logger.ILogger
 import dagger.Module
 import dagger.Provides
@@ -18,6 +18,5 @@ class ProfileModule {
 
     @Provides
     @Singleton
-    fun providesProfileAPI(logger: ILogger) =
-        ProfileApi(logger)
+    fun providesProfile(logger: ILogger) = Profile(logger)
 }

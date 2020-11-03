@@ -105,6 +105,13 @@ class FirebaseAuthenticator(
 
     override fun isSignedIn() = authenticator.currentUser != null
 
+    override fun getCurrentUser(): IUser? {
+        authenticator.currentUser?.let {
+            return FirebaseUser(it.uid, it.email!!, it.phoneNumber, it.displayName)
+        }
+        return null
+    }
+
     companion object {
         private const val WEB_CLIENT_ID =
             "354909374087-hobh3odq8dbnoo3gu800se52oka8fp9g.apps.googleusercontent.com"

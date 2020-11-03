@@ -56,4 +56,11 @@ interface IAuthenticator {
      * @return true if user is signed in otherwise false
      */
     fun isSignedIn(): Boolean
+
+    /**
+     * Gets the current signed in user
+     *
+     * @return current signed in user; otherwise null
+     */
+    fun getCurrentUser(): IUser?
 }
