@@ -12,7 +12,6 @@
 
     <include app:graph="@navigation/goals_navigation" />
     <include app:graph="@navigation/authentication_navigation" />
-    <include app:graph="@navigation/settings_navigation" />
 
     <fragment
         android:id="@+id/destination_fragment_perfectus"
