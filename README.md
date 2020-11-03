@@ -8,6 +8,8 @@
 [![API](https://img.shields.io/badge/API-21%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=21)
 [![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
+Perfectus is an open-source application running on Android. With the help of Perfectus, you can manage your daily, monthly, and yearly goals, keep track of the progress and share your goals with your friends.
+
 ## Table of Contents
 
 -   [Authors](https://github.com/ChamichApps/Perfectus#authors)
