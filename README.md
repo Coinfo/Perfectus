@@ -14,6 +14,24 @@ Perfectus is an open-source application running on Android. With the help of Per
 
 -   [Authors](https://github.com/ChamichApps/Perfectus#authors)
 -   [License](https://github.com/ChamichApps/Perfectus#license)
+-   [Structure](https://github.com/ChamichApps/Perfectus#structure)
+
+## Structure
+
+```
+- app
+- features
+  | - goals
+  | - profile
+  | - friends
+- libraries
+  | - authenticator
+  | - core
+  | - database
+  | - design
+  | - logger
+  | - preferences
+```
 
 ## Author
 
