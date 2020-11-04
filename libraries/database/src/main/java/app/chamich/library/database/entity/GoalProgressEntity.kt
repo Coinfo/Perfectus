@@ -16,7 +16,10 @@ data class GoalProgressEntity(
     @ColumnInfo(name = Constants.COLUMN_GOAL_PROGRESS_ID)
     val id: Long,
 
-    @ColumnInfo(name = Constants.COLUMN_GOAL_PROGRESS_ADDED_PROGRESS)
+    @ColumnInfo(name = Constants.COLUMN_GOAL_PROGRESS_GOAL_ID)
+    val goalId: Long,
+
+    @ColumnInfo(name = Constants.COLUMN_GOAL_PROGRESS_CURRENT_PROGRESS)
     val progress: Int,
 
     @ColumnInfo(name = Constants.COLUMN_GOAL_PROGRESS_ADDED_DATE)

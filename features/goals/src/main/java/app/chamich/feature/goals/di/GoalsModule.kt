@@ -26,11 +26,11 @@ class GoalsModule {
     fun providesRepository(
         @ApplicationContext context: Context,
         logger: ILogger
-    ): IRepository = GoalsRepository(
-        Room.databaseBuilder(
-            context, IDatabase::class.java, GOALS_DATABASE_NAME
-        ).fallbackToDestructiveMigration().build().getGoalsDatabase(), logger
-    )
+    ): IRepository {
+        val db = Room.databaseBuilder(context, IDatabase::class.java, GOALS_DATABASE_NAME)
+            .fallbackToDestructiveMigration().build()
+        return GoalsRepository(db.getGoalsDatabase(), db.getGoalsProgressDatabase(), logger)
+    }
 
 
     private companion object {
