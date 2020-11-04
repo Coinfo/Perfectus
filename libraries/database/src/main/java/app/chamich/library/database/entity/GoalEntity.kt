@@ -7,32 +7,33 @@ package app.chamich.library.database.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import app.chamich.library.database.utils.Constants
 
-@Entity(tableName = "goals")
+@Entity(tableName = Constants.TABLE_NAME_GOALS)
 data class GoalEntity(
 
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "goal_id")
+    @ColumnInfo(name = Constants.COLUMN_GOAL_ID)
     val id: Long,
 
-    @ColumnInfo(name = "goal_title")
+    @ColumnInfo(name = Constants.COLUMN_GOAL_TITLE)
     val title: String,
 
-    @ColumnInfo(name = "goal_measured_in")
+    @ColumnInfo(name = Constants.COLUMN_GOAL_MEASURED_IN)
     val measuredIn: Int,
 
-    @ColumnInfo(name = "goal_total_effort")
+    @ColumnInfo(name = Constants.COLUMN_GOAL_TOTAL_EFFORT)
     val totalEffort: Int,
 
-    @ColumnInfo(name = "goal_progress")
+    @ColumnInfo(name = Constants.COLUMN_GOAL_PROGRESS)
     val progress: Int,
 
-    @ColumnInfo(name = "goal_complete_date")
+    @ColumnInfo(name = Constants.COLUMN_GOAL_COMPLETE_DATE)
     val completeDate: Long,
 
-    @ColumnInfo(name = "goal_category")
+    @ColumnInfo(name = Constants.COLUMN_GOAL_CATEGORY)
     val category: Int,
 
-    @ColumnInfo(name = "goal_color")
+    @ColumnInfo(name = Constants.COLUMN_GOAL_COLOR)
     val color: Int
 )
