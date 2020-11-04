@@ -8,13 +8,16 @@ import app.chamich.feature.goals.model.Goal
 import app.chamich.feature.goals.model.api.IGoal
 import app.chamich.feature.goals.repository.api.IRepository
 import app.chamich.library.database.api.IGoalsDatabase
+import app.chamich.library.database.api.IGoalsProgressDatabase
 import app.chamich.library.database.entity.GoalEntity
+import app.chamich.library.database.entity.GoalProgressEntity
 import app.chamich.library.logger.ILogger
 
 
 class GoalsRepository(
-    private val database: IGoalsDatabase,
-    private val logger: ILogger
+    private val goalsDatabase: IGoalsDatabase,
+    private val goalProgressDatabase: IGoalsProgressDatabase,
+    private val logger: ILogger,
 ) : IRepository {
 
     init {
@@ -28,11 +31,13 @@ class GoalsRepository(
 
     override suspend fun addGoal(goal: IGoal): Long {
         logger.debug(TAG, "|------------------------------------------------------------|")
-        logger.debug(TAG, "|                          Add Goal                          |")
+        logger.debug(TAG, "|                Add Initial Goal and Progress               |")
         logger.debug(TAG, "|----> Goal Details: $goal")
-        val id = database.add(goal.toGoalEntry())
-        logger.debug(TAG, "|----> Goal Added With ID: $id")
-        return id
+        val goalId = goalsDatabase.add(goal.toGoalEntry())
+        logger.debug(TAG, "|----> Goal Added With ID: $goalId")
+        val goalProgressId = goalProgressDatabase.add(goal.toGoalProgressEntity(goalId = goalId))
+        logger.debug(TAG, "|----> Goal Progress Added With ID: $goalProgressId")
+        return goalId
     }
 
     override suspend fun getGoals(): List<IGoal> {
@@ -40,7 +45,7 @@ class GoalsRepository(
         logger.debug(TAG, "|                         Get Goals                          |")
 
         val goals = mutableListOf<IGoal>()
-        database.getGoals().map { goalEntity -> goals.add(goalEntity.toGoal()) }
+        goalsDatabase.getGoals().map { goalEntity -> goals.add(goalEntity.toGoal()) }
         logger.debug(TAG, "|----> Number of Goals: ${goals.size}")
         return goals
     }
@@ -49,18 +54,21 @@ class GoalsRepository(
         logger.debug(TAG, "|------------------------------------------------------------|")
         logger.debug(TAG, "|                         Get Goal                           |")
 
-        val goalEntity = database.getGoal(id)
+        val goalEntity = goalsDatabase.getGoal(id)
         logger.debug(TAG, "|----> Goal is: $goalEntity")
         return goalEntity.toGoal()
     }
 
     override suspend fun updateGoal(goal: IGoal) {
         logger.debug(TAG, "|------------------------------------------------------------|")
-        logger.debug(TAG, "|                       Update Goal                          |")
+        logger.debug(TAG, "|               Update Goal and Add Progress                 |")
         val goalEntity = goal.toGoalEntry()
         logger.debug(TAG, "|----> Updated goal data: $goalEntity")
+        goalsDatabase.update(goalEntity)
 
-        database.update(goalEntity)
+        val goalProgressEntity = goal.toGoalProgressEntity(goalId = goal.id)
+        logger.debug(TAG, "|----> Add goal progress: $goalProgressEntity")
+        goalProgressDatabase.add(goalProgressEntity)
     }
 
     private fun IGoal.toGoalEntry() = GoalEntity(
@@ -83,6 +91,13 @@ class GoalsRepository(
         completeData = completeDate,
         category = category,
         color = color
+    )
+
+    private fun IGoal.toGoalProgressEntity(goalId: Long) = GoalProgressEntity(
+        id = 0L,
+        goalId = goalId,
+        progress = progress,
+        date = System.currentTimeMillis()
     )
 
     private companion object {

@@ -19,10 +19,10 @@ interface IGoalsDatabase {
     @Update
     suspend fun update(goal: GoalEntity)
 
-    @Query("DELETE FROM goals WHERE goal_id = :id")
+    @Query("DELETE FROM goals WHERE id == :id")
     suspend fun delete(id: Long)
 
-    @Query("SELECT * FROM goals WHERE goal_id == :id")
+    @Query("SELECT * FROM goals WHERE id == :id")
     suspend fun getGoal(id: Long): GoalEntity
 
     @Query("SELECT * FROM goals")
