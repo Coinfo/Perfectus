@@ -16,11 +16,11 @@
 
         <variable
             name="fragment"
-            type="app.chamich.feature.goals.ui.add.AddGoalDialogFragment" />
+            type="app.chamich.feature.goals.ui.modify.add.AddGoalDialogFragment" />
 
         <variable
             name="viewmodel"
-            type="app.chamich.feature.goals.ui.add.AddGoalViewModel" />
+            type="app.chamich.feature.goals.ui.modify.add.AddGoalViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
