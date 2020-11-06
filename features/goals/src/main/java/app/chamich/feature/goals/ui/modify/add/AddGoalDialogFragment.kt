@@ -41,10 +41,6 @@ internal class AddGoalDialogFragment :
 
     override fun getLayoutId() = R.layout.goals_dialog_fragment_add_goal
 
-
-
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

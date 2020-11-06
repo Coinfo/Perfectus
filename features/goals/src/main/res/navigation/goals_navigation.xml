@@ -21,6 +21,9 @@
         <action
             android:id="@+id/goals_action_destination_goals_to_goals_goaldialogfragment"
             app:destination="@id/destination_goal_details" />
+        <action
+            android:id="@+id/goals_action_destination_goals_to_goals_editgoaldialogfragment"
+            app:destination="@id/destination_edit_goal" />
     </fragment>
 
     <dialog
@@ -68,5 +71,23 @@
         android:name="app.chamich.feature.goals.ui.details.GoalDetailsDialogFragment"
         android:label="GoalDialogFragment"
         tools:layout="@layout/goals_dialog_fragment_goal_details" />
+
+    <dialog
+        android:id="@+id/destination_edit_goal"
+        android:name="app.chamich.feature.goals.ui.modify.edit.EditGoalDialogFragment"
+        android:label="EditGoalDialogFragment">
+        <action
+            android:id="@+id/goals_action_goals_editgoaldialogfragment_to_destination_date_picker"
+            app:destination="@id/destination_date_picker" />
+        <action
+            android:id="@+id/goals_action_goals_editgoaldialogfragment_to_destination_measured_in"
+            app:destination="@id/destination_measured_in" />
+        <action
+            android:id="@+id/goals_action_goals_editgoaldialogfragment_to_destination_colors"
+            app:destination="@id/destination_colors" />
+        <action
+            android:id="@+id/goals_action_goals_editgoaldialogfragment_to_destination_categories"
+            app:destination="@id/destination_categories" />
+    </dialog>
 
 </navigation>

@@ -47,7 +47,6 @@ internal abstract class ModifyGoalDialogFragment<VM : ModifyGoalViewModel, VDB :
         }
     }
 
-
     fun onMeasurementClicked() {
         // Sets the fragment result listener
         setFragmentResultListener(MeasurementsBottomSheet.KEY_RESULT_LISTENER) { key, bundle ->
@@ -120,6 +119,4 @@ internal abstract class ModifyGoalDialogFragment<VM : ModifyGoalViewModel, VDB :
             bundleOf(DatePickerBottomSheet.KEY_DATE to viewModel.date)
         )
     }
-
-
 }
