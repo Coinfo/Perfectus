@@ -8,13 +8,20 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.fragment.app.clearFragmentResult
 import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import app.chamich.feature.goals.R
 import app.chamich.feature.goals.databinding.GoalsDialogFragmentGoalDetailsBinding
+import app.chamich.feature.goals.model.Goal
+import app.chamich.feature.goals.model.Measurement
 import app.chamich.feature.goals.model.api.IGoal
+import app.chamich.feature.goals.ui.bottomsheet.measurements.MeasurementsBottomSheet
+import app.chamich.feature.goals.utils.EXTRA_EDITED_GOAL
 import app.chamich.feature.goals.utils.EXTRA_GOAL_ID
+import app.chamich.feature.goals.utils.REQUEST_KEY_EDIT_GOAL
 import app.chamich.feature.goals.utils.REQUEST_KEY_GOAL_DETAILS
 import app.chamich.library.core.CoreDialogFragment
 import app.chamich.library.core.model.Status
@@ -77,7 +84,19 @@ internal class GoalDetailsDialogFragment :
     }
 
     fun onEditGoalClicked() {
-        TODO("Not Implemented")
+        setFragmentResultListener(REQUEST_KEY_EDIT_GOAL) { key, bundle ->
+            if (REQUEST_KEY_EDIT_GOAL == key) {
+                val goal = bundle.getParcelable<Goal>(EXTRA_EDITED_GOAL)
+                binding.goal = goal
+
+                clearFragmentResult(REQUEST_KEY_EDIT_GOAL)
+            }
+        }
+
+        findNavController().navigate(
+            R.id.destination_edit_goal,
+            bundleOf(EXTRA_GOAL_ID to getGoalIdFromExtras())
+        )
     }
 
     //endregion
@@ -87,7 +106,7 @@ internal class GoalDetailsDialogFragment :
     //region Private Functions
 
     private fun setupObservers() {
-        viewModel.getLoadGoalResult().observe(viewLifecycleOwner, Observer { result ->
+        viewModel.getLoadGoalResult().observe(viewLifecycleOwner, { result ->
             when (result.status) {
                 Status.SUCCESS -> handleLoadGoalSuccess(result.data)
                 Status.LOADING -> handleLoading()
@@ -95,7 +114,7 @@ internal class GoalDetailsDialogFragment :
             }
         })
 
-        viewModel.getUpdateGoalResult().observe(viewLifecycleOwner, Observer { result ->
+        viewModel.getUpdateGoalResult().observe(viewLifecycleOwner, { result ->
             when (result.status) {
                 Status.SUCCESS -> handleUpdateGoalSuccess()
                 Status.LOADING -> handleLoading()
@@ -103,7 +122,7 @@ internal class GoalDetailsDialogFragment :
             }
         })
 
-        viewModel.getProgress().observe(viewLifecycleOwner, Observer { result ->
+        viewModel.getProgress().observe(viewLifecycleOwner, { result ->
             binding.viewmodel = viewModel
         })
     }

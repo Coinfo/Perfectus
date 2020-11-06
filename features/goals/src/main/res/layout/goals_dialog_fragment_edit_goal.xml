@@ -1,16 +1,358 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
   ~ Copyright (c) 2020 Chamich Apps. All rights reserved.
   -->
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <import type="androidx.core.content.ContextCompat" />
+
+        <import type="java.text.SimpleDateFormat" />
+
+        <variable
+            name="fragment"
+            type="app.chamich.feature.goals.ui.modify.edit.EditGoalDialogFragment" />
+
+        <variable
+            name="viewmodel"
+            type="app.chamich.feature.goals.ui.modify.edit.EditGoalViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout_add_goals"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#0d0d15">
+
+        <ScrollView
+            android:id="@+id/scroll_view_add_goals"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/button_close"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/linear_layout_gaol_main_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/design_card_background"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_goal_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@{ContextCompat.getColor(context, viewmodel.color.colorRes)}"
+                    android:ems="10"
+                    android:hint="@string/goals_add_goals_hint_goal_title"
+                    android:inputType="textMultiLine"
+                    android:lines="3"
+                    android:maxLength="160"
+                    android:maxLines="3"
+                    android:padding="@dimen/design_padding_normal"
+                    android:text="@={viewmodel.title}"
+                    android:textStyle="bold"
+                    tools:text="What do you aspire to do?" />
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_measurement"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:onClick="@{() -> fragment.onMeasurementClicked()}"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/design_padding_normal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_label_measurement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:text="@string/goals_add_goals_text_label_measured_in"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:textColor="#dddde5" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_measurement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:gravity="end"
+                        android:text="@{viewmodel.measurement.stringRes}"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:textColor="#dddde5"
+                        android:textStyle="bold"
+                        tools:text="Hours" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#232438" />
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_effort"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/design_padding_normal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_label_effort"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:text="@string/goals_add_goals_text_label_total_effort"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:textColor="#dddde5" />
+
+                    <EditText
+                        android:id="@+id/edit_text_effort"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/design_margin_tiny"
+                        android:layout_marginRight="@dimen/design_margin_tiny"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:ems="10"
+                        android:gravity="end"
+                        android:hint="0"
+                        android:inputType="number"
+                        android:maxLength="8"
+                        android:maxLines="1"
+                        android:text="@={viewmodel.effort}" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_effort"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:gravity="end"
+                        android:text="@{context.getString(viewmodel.measurement.stringRes).toLowerCase()}"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:textColor="#dddde5"
+                        android:textStyle="bold"
+                        tools:text="hour" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#232438" />
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/design_padding_normal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_label_progress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:text="@string/goals_add_goals_text_label_progress_so_far"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:textColor="#dddde5" />
+
+                    <EditText
+                        android:id="@+id/edit_text_progress"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/design_margin_tiny"
+                        android:layout_marginRight="@dimen/design_margin_tiny"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:ems="10"
+                        android:gravity="end"
+                        android:hint="0"
+                        android:inputType="number"
+                        android:maxLength="8"
+                        android:maxLines="1"
+                        android:text="@={viewmodel.progress}" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_eprogress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:gravity="end"
+                        android:text="@{context.getString(viewmodel.measurement.stringRes).toLowerCase()}"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:textColor="#dddde5"
+                        android:textStyle="bold"
+                        tools:text="hour" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#232438" />
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_completion_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:onClick="@{() -> fragment.onDatePickerClicked()}"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/design_padding_normal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_label_completion_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:text="@string/goals_add_goals_text_label_complete_by"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:textColor="#dddde5" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_completion_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:gravity="end"
+                        android:text="@{viewmodel.date == 0 ? @string/goals_text_not_set : viewmodel.dateString}"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:textColor="#dddde5"
+                        android:textStyle="bold"
+                        tools:text="Not Set" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#232438" />
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:onClick="@{() -> fragment.onCategoryClicked()}"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/design_padding_normal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_label_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:text="@string/goals_add_goals_text_label_category"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:textColor="#dddde5" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:gravity="end"
+                        android:text="@{viewmodel.category.stringRes}"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:textColor="#dddde5"
+                        android:textStyle="bold"
+                        tools:text="Not Set" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#232438" />
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:onClick="@{() -> fragment.onColorClicked()}"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/design_padding_normal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_label_color"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:text="@string/goals_add_goals_text_label_color"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:textColor="#dddde5" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_view_color"
+                        android:layout_width="@dimen/goals_width_card_view_color"
+                        android:layout_height="@dimen/goals_height_card_view_color"
+                        android:clickable="false"
+                        android:focusable="false"
+                        card_view:cardBackgroundColor="@{ContextCompat.getColor(context, viewmodel.color.colorRes)}"
+                        card_view:cardCornerRadius="@dimen/goals_corner_radius_card_view_color" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#232438" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_close"
+            style="@style/Widget.Perfectus.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> fragment.onCloseClicked()}"
+            android:text="@string/goals_add_goals_button_close"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_edit"
+            style="@style/Widget.Perfectus.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> fragment.onEditClicked()}"
+            android:text="@string/goals_add_goals_button_edit_goal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

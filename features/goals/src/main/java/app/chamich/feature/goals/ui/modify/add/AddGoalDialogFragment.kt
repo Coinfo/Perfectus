@@ -52,6 +52,10 @@ internal class AddGoalDialogFragment :
 
     override fun getViewModelClass() = AddGoalViewModel::class.java
 
+    override fun updateBindings() {
+        binding.viewmodel = viewModel
+    }
+
     //endregion
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -114,10 +118,6 @@ internal class AddGoalDialogFragment :
                 }
             }
         })
-    }
-
-    override fun updateBindings() {
-        binding.viewmodel = viewModel
     }
 
     //endregion

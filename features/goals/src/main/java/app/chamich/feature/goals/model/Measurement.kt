@@ -38,5 +38,6 @@ internal enum class Measurement(
         fun asStringResource(id: Int) = values().asList().first { it.id == id }.stringRes
         fun asList() = values().asList().sortedBy { it.position }
         fun default() = HOURS
+        fun valueOf(id: Int) = values()[id]
     }
 }
