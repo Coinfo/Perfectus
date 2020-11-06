@@ -76,6 +76,10 @@ internal class GoalDetailsDialogFragment :
         findNavController().navigateUp()
     }
 
+    fun onEditGoalClicked() {
+        TODO("Not Implemented")
+    }
+
     //endregion
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
