@@ -14,7 +14,7 @@ internal fun View?.findSuitableParent(): ViewGroup? {
     var fallback: ViewGroup?
 
     do {
-        if (view is CoordinatorLayout || (view is FrameLayout && view.id == android.R.id.content)) {
+        if (view is CoordinatorLayout || view is FrameLayout && view.id == android.R.id.content) {
             return view as? ViewGroup
         } else {
             fallback = view as? ViewGroup

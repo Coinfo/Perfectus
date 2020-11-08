@@ -6,30 +6,17 @@ package app.chamich.feature.goals.ui.modify.add
 
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
-import androidx.core.os.bundleOf
-import androidx.fragment.app.clearFragmentResult
-import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import app.chamich.feature.goals.R
 import app.chamich.feature.goals.databinding.GoalsDialogFragmentAddGoalBinding
-import app.chamich.feature.goals.model.Category
-import app.chamich.feature.goals.model.Color
 import app.chamich.feature.goals.model.Goal
-import app.chamich.feature.goals.model.Measurement
-import app.chamich.feature.goals.ui.bottomsheet.categories.CategoriesBottomSheet
-import app.chamich.feature.goals.ui.bottomsheet.colors.ColorsBottomSheet
-import app.chamich.feature.goals.ui.bottomsheet.datepicker.DatePickerBottomSheet
-import app.chamich.feature.goals.ui.bottomsheet.measurements.MeasurementsBottomSheet
 import app.chamich.feature.goals.ui.modify.ModifyGoalDialogFragment
-import app.chamich.library.core.CoreDialogFragment
 import app.chamich.library.core.extensions.asInt
 import app.chamich.library.core.extensions.hasText
 import app.chamich.library.core.model.Status
 import app.chamich.library.snackbar.PerfectusSnackbar
 import dagger.hilt.android.AndroidEntryPoint
-import java.text.SimpleDateFormat
 
 
 @AndroidEntryPoint

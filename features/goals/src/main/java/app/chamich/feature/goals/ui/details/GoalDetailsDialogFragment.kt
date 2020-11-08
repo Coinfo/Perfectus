@@ -11,14 +11,11 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.clearFragmentResult
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import app.chamich.feature.goals.R
 import app.chamich.feature.goals.databinding.GoalsDialogFragmentGoalDetailsBinding
 import app.chamich.feature.goals.model.Goal
-import app.chamich.feature.goals.model.Measurement
 import app.chamich.feature.goals.model.api.IGoal
-import app.chamich.feature.goals.ui.bottomsheet.measurements.MeasurementsBottomSheet
 import app.chamich.feature.goals.utils.EXTRA_EDITED_GOAL
 import app.chamich.feature.goals.utils.EXTRA_GOAL_ID
 import app.chamich.feature.goals.utils.REQUEST_KEY_EDIT_GOAL
