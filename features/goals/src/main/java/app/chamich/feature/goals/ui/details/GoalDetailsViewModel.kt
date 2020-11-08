@@ -24,7 +24,7 @@ internal class GoalDetailsViewModel @ViewModelInject constructor(
     private val goalUpdateResult = MutableLiveData<Resource<Unit>>()
     private val goalLoadResult = MutableLiveData<Resource<IGoal>>()
 
-    private var initialGoal: IGoal? = null
+     var initialGoal: IGoal? = null
 
     private val progress = MutableLiveData(0)
 
@@ -38,18 +38,12 @@ internal class GoalDetailsViewModel @ViewModelInject constructor(
         }
     }
 
-    fun updateGoal() {
-        initialGoal?.let { goal ->
-            progress.value?.let { updatedProgress ->
-                val updatedGoal =
-                    (initialGoal as Goal).copy(progress = goal.progress + updatedProgress)
-                goalUpdateResult.postValue(Resource.loading(null))
-                viewModelScope.launch {
-                    withContext(Dispatchers.IO) {
-                        repository.updateGoal(updatedGoal)
-                        goalUpdateResult.postValue(Resource.success(null))
-                    }
-                }
+    fun updateGoal(goal: IGoal) {
+        goalUpdateResult.postValue(Resource.loading())
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                repository.updateGoal(goal)
+                goalUpdateResult.postValue(Resource.success(null))
             }
         }
     }

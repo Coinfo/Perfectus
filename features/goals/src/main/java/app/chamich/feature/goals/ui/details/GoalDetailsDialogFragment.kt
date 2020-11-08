@@ -31,6 +31,8 @@ import dagger.hilt.android.AndroidEntryPoint
 internal class GoalDetailsDialogFragment :
     CoreDialogFragment<GoalDetailsViewModel, GoalsDialogFragmentGoalDetailsBinding>() {
 
+    private lateinit var currentGoal: IGoal
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Fragment Override Functions
 
@@ -76,7 +78,10 @@ internal class GoalDetailsDialogFragment :
     //region Binding Functions
 
     fun onAddProgressClicked() {
-        viewModel.updateGoal()
+        val goal = (currentGoal as Goal).copy(
+            progress = currentGoal.progress + viewModel.getProgress().value!!
+        )
+        viewModel.updateGoal(goal)
     }
 
     fun onCloseClicked() {
@@ -86,8 +91,10 @@ internal class GoalDetailsDialogFragment :
     fun onEditGoalClicked() {
         setFragmentResultListener(REQUEST_KEY_EDIT_GOAL) { key, bundle ->
             if (REQUEST_KEY_EDIT_GOAL == key) {
-                val goal = bundle.getParcelable<Goal>(EXTRA_EDITED_GOAL)
+                val goal = bundle.getParcelable<Goal>(EXTRA_EDITED_GOAL) as IGoal
+                currentGoal = goal
                 binding.goal = goal
+                binding.executePendingBindings()
 
                 clearFragmentResult(REQUEST_KEY_EDIT_GOAL)
             }
@@ -95,7 +102,7 @@ internal class GoalDetailsDialogFragment :
 
         findNavController().navigate(
             R.id.destination_edit_goal,
-            bundleOf(EXTRA_GOAL_ID to getGoalIdFromExtras())
+            bundleOf(REQUEST_KEY_EDIT_GOAL to currentGoal)
         )
     }
 
@@ -129,6 +136,7 @@ internal class GoalDetailsDialogFragment :
 
     private fun handleLoadGoalSuccess(goal: IGoal?) {
         goal?.let {
+            currentGoal = it
             binding.goal = it
             binding.executePendingBindings()
         }
