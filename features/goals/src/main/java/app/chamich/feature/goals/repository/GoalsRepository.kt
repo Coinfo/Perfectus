@@ -71,6 +71,14 @@ class GoalsRepository(
         goalProgressDatabase.add(goalProgressEntity)
     }
 
+    override suspend fun deleteGoal(id: Long) {
+        logger.debug(TAG, "|------------------------------------------------------------|")
+        logger.debug(TAG, "|                 Delete Goal and Progress                   |")
+        logger.debug(TAG, "|----> Delete goal id: $id")
+        goalsDatabase.delete(id)
+        goalProgressDatabase.delete(id)
+    }
+
     private fun IGoal.toGoalEntry() = GoalEntity(
         id = id,
         title = title,

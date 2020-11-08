@@ -20,36 +20,42 @@ internal class GoalDetailsViewModel @ViewModelInject constructor(
     private val repository: IRepository
 ) : ViewModel() {
 
-    private val goalUpdateResult = MutableLiveData<Resource<Unit>>()
-    private val goalLoadResult = MutableLiveData<Resource<IGoal>>()
+    private val _deleteGoal = MutableLiveData<Resource<Unit>>()
+    var deleteGoal: LiveData<Resource<Unit>> = _deleteGoal
 
-     var initialGoal: IGoal? = null
+    private val _updateGoal = MutableLiveData<Resource<Unit>>()
+    var updateGoal: LiveData<Resource<Unit>> = _updateGoal
+
+    private val _loadGoal = MutableLiveData<Resource<IGoal>>()
+    val loadGoal: LiveData<Resource<IGoal>> = _loadGoal
+
+
+    var initialGoal: IGoal? = null
 
     private val progress = MutableLiveData(0)
 
-    fun loadGoal(id: Long) {
-        viewModelScope.launch {
-            goalLoadResult.postValue(Resource.loading(null))
-            withContext(Dispatchers.IO) {
-                initialGoal = repository.getGoal(id)
-                goalLoadResult.postValue(Resource.success(initialGoal))
-            }
+    fun loadGoal(id: Long) = viewModelScope.launch {
+        _loadGoal.postValue(Resource.loading())
+        withContext(Dispatchers.IO) {
+            initialGoal = repository.getGoal(id)
+            _loadGoal.postValue(Resource.success(initialGoal))
         }
     }
 
-    fun updateGoal(goal: IGoal) {
-        goalUpdateResult.postValue(Resource.loading())
-        viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                repository.updateGoal(goal)
-                goalUpdateResult.postValue(Resource.success(null))
-            }
+    fun updateGoal(goal: IGoal) = viewModelScope.launch {
+        _updateGoal.postValue(Resource.loading())
+        withContext(Dispatchers.IO) {
+            _updateGoal.postValue(Resource.success(repository.updateGoal(goal)))
         }
     }
 
-    fun getLoadGoalResult(): LiveData<Resource<IGoal>> = goalLoadResult
+    fun deleteGoal(id: Long) = viewModelScope.launch {
+        _deleteGoal.postValue(Resource.loading())
+        withContext(Dispatchers.IO) {
+            _deleteGoal.postValue(Resource.success(repository.deleteGoal(id)))
+        }
+    }
 
-    fun getUpdateGoalResult(): LiveData<Resource<Unit>> = goalUpdateResult
 
     fun getProgress(): LiveData<Int> = progress
 

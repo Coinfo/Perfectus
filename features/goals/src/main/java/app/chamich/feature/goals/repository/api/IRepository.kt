@@ -36,4 +36,11 @@ interface IRepository {
      * @param goal Goal to be updated
      */
     suspend fun updateGoal(goal: IGoal)
+
+    /**
+     * Deletes given goal by id
+     *
+     * @param id The Id of the goal to be deleted
+     */
+    suspend fun deleteGoal(id: Long)
 }

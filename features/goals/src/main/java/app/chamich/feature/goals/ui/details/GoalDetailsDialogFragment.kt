@@ -103,6 +103,10 @@ internal class GoalDetailsDialogFragment :
         )
     }
 
+    fun onDeleteGoalClicked() {
+        viewModel.deleteGoal(currentGoal.id)
+    }
+
     //endregion
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -110,7 +114,16 @@ internal class GoalDetailsDialogFragment :
     //region Private Functions
 
     private fun setupObservers() {
-        viewModel.getLoadGoalResult().observe(viewLifecycleOwner, { result ->
+        viewModel.deleteGoal.observe(viewLifecycleOwner, { result ->
+            when (result.status) {
+                Status.SUCCESS -> handleDeleteGoalSuccess()
+                Status.LOADING -> handleLoading()
+                Status.FAILURE -> handleFailure(result.exception)
+            }
+        })
+
+
+        viewModel.loadGoal.observe(viewLifecycleOwner, { result ->
             when (result.status) {
                 Status.SUCCESS -> handleLoadGoalSuccess(result.data)
                 Status.LOADING -> handleLoading()
@@ -118,7 +131,7 @@ internal class GoalDetailsDialogFragment :
             }
         })
 
-        viewModel.getUpdateGoalResult().observe(viewLifecycleOwner, { result ->
+        viewModel.updateGoal.observe(viewLifecycleOwner, { result ->
             when (result.status) {
                 Status.SUCCESS -> handleUpdateGoalSuccess()
                 Status.LOADING -> handleLoading()
@@ -137,6 +150,11 @@ internal class GoalDetailsDialogFragment :
             binding.goal = it
             binding.executePendingBindings()
         }
+    }
+
+    private fun handleDeleteGoalSuccess() {
+        setFragmentResult(REQUEST_KEY_GOAL_DETAILS, bundleOf())
+        findNavController().navigateUp()
     }
 
     private fun handleUpdateGoalSuccess() {
