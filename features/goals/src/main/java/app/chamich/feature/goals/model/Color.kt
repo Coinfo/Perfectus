@@ -23,5 +23,6 @@ internal enum class Color(
         fun asColorResource(id: Int) = values().asList().first { it.id == id }.colorRes
         fun asList() = values().asList().sortedBy { it.position }
         fun default() = BLUE
+        fun valueOf(id: Int) = values()[id]
     }
 }

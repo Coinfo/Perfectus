@@ -20,6 +20,7 @@ internal enum class Category(
     FRIEND_AND_NETWORKING(7, 7, R.string.goals_category_friends_and_networking);
 
     companion object {
+        fun valueOf(id: Int) = values()[id]
         fun asList() = values().asList().sortedBy { it.position }
         fun default() = NOT_SET
     }

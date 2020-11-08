@@ -8,13 +8,17 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.fragment.app.clearFragmentResult
 import androidx.fragment.app.setFragmentResult
-import androidx.lifecycle.Observer
+import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import app.chamich.feature.goals.R
 import app.chamich.feature.goals.databinding.GoalsDialogFragmentGoalDetailsBinding
+import app.chamich.feature.goals.model.Goal
 import app.chamich.feature.goals.model.api.IGoal
+import app.chamich.feature.goals.utils.EXTRA_EDITED_GOAL
 import app.chamich.feature.goals.utils.EXTRA_GOAL_ID
+import app.chamich.feature.goals.utils.REQUEST_KEY_EDIT_GOAL
 import app.chamich.feature.goals.utils.REQUEST_KEY_GOAL_DETAILS
 import app.chamich.library.core.CoreDialogFragment
 import app.chamich.library.core.model.Status
@@ -23,6 +27,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 internal class GoalDetailsDialogFragment :
     CoreDialogFragment<GoalDetailsViewModel, GoalsDialogFragmentGoalDetailsBinding>() {
+
+    private lateinit var currentGoal: IGoal
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Fragment Override Functions
@@ -69,11 +75,32 @@ internal class GoalDetailsDialogFragment :
     //region Binding Functions
 
     fun onAddProgressClicked() {
-        viewModel.updateGoal()
+        val goal = (currentGoal as Goal).copy(
+            progress = currentGoal.progress + viewModel.getProgress().value!!
+        )
+        viewModel.updateGoal(goal)
     }
 
     fun onCloseClicked() {
         findNavController().navigateUp()
+    }
+
+    fun onEditGoalClicked() {
+        setFragmentResultListener(REQUEST_KEY_EDIT_GOAL) { key, bundle ->
+            if (REQUEST_KEY_EDIT_GOAL == key) {
+                val goal = bundle.getParcelable<Goal>(EXTRA_EDITED_GOAL) as IGoal
+                currentGoal = goal
+                binding.goal = goal
+                binding.executePendingBindings()
+
+                clearFragmentResult(REQUEST_KEY_EDIT_GOAL)
+            }
+        }
+
+        findNavController().navigate(
+            R.id.destination_edit_goal,
+            bundleOf(REQUEST_KEY_EDIT_GOAL to currentGoal)
+        )
     }
 
     //endregion
@@ -83,7 +110,7 @@ internal class GoalDetailsDialogFragment :
     //region Private Functions
 
     private fun setupObservers() {
-        viewModel.getLoadGoalResult().observe(viewLifecycleOwner, Observer { result ->
+        viewModel.getLoadGoalResult().observe(viewLifecycleOwner, { result ->
             when (result.status) {
                 Status.SUCCESS -> handleLoadGoalSuccess(result.data)
                 Status.LOADING -> handleLoading()
@@ -91,7 +118,7 @@ internal class GoalDetailsDialogFragment :
             }
         })
 
-        viewModel.getUpdateGoalResult().observe(viewLifecycleOwner, Observer { result ->
+        viewModel.getUpdateGoalResult().observe(viewLifecycleOwner, { result ->
             when (result.status) {
                 Status.SUCCESS -> handleUpdateGoalSuccess()
                 Status.LOADING -> handleLoading()
@@ -99,13 +126,14 @@ internal class GoalDetailsDialogFragment :
             }
         })
 
-        viewModel.getProgress().observe(viewLifecycleOwner, Observer { result ->
+        viewModel.getProgress().observe(viewLifecycleOwner, { result ->
             binding.viewmodel = viewModel
         })
     }
 
     private fun handleLoadGoalSuccess(goal: IGoal?) {
         goal?.let {
+            currentGoal = it
             binding.goal = it
             binding.executePendingBindings()
         }

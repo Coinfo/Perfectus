@@ -2,43 +2,30 @@
  * Copyright (c) 2020 Chamich Apps. All rights reserved.
  */
 
-package app.chamich.feature.goals.ui.add
+package app.chamich.feature.goals.ui.modify
 
 import android.os.Bundle
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.clearFragmentResult
 import androidx.fragment.app.setFragmentResultListener
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import app.chamich.feature.goals.R
-import app.chamich.feature.goals.databinding.GoalsDialogFragmentAddGoalBinding
 import app.chamich.feature.goals.model.Category
 import app.chamich.feature.goals.model.Color
-import app.chamich.feature.goals.model.Goal
 import app.chamich.feature.goals.model.Measurement
 import app.chamich.feature.goals.ui.bottomsheet.categories.CategoriesBottomSheet
 import app.chamich.feature.goals.ui.bottomsheet.colors.ColorsBottomSheet
 import app.chamich.feature.goals.ui.bottomsheet.datepicker.DatePickerBottomSheet
 import app.chamich.feature.goals.ui.bottomsheet.measurements.MeasurementsBottomSheet
 import app.chamich.library.core.CoreDialogFragment
-import app.chamich.library.core.extensions.asInt
-import app.chamich.library.core.extensions.hasText
-import app.chamich.library.core.model.Status
-import app.chamich.library.snackbar.PerfectusSnackbar
-import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 
+internal abstract class ModifyGoalDialogFragment<VM : ModifyGoalViewModel, VDB : ViewDataBinding> :
+    CoreDialogFragment<VM, VDB>() {
 
-@AndroidEntryPoint
-internal class AddGoalDialogFragment :
-    CoreDialogFragment<AddGoalViewModel, GoalsDialogFragmentAddGoalBinding>() {
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //region Fragment Override Functions
-
-    override fun getLayoutId() = R.layout.goals_dialog_fragment_add_goal
+    abstract fun updateBindings()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,63 +47,13 @@ internal class AddGoalDialogFragment :
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.fragment = this
-        binding.viewmodel = viewModel
-
-        setupObservers()
-    }
-
-    override fun getViewModelClass() = AddGoalViewModel::class.java
-
-    //endregion
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //region Binding Functions
-
-    fun onAddClicked() {
-        // Validate the goal input data for being valid.
-        val totalEffort = binding.editTextEffort.asInt
-        val progress = binding.editTextProgress.asInt
-
-        if (!binding.editTextGoalTitle.hasText) {
-            view?.let {
-                PerfectusSnackbar.make(it, R.string.goals_error_text_missing_title).show()
-            }
-            return
-        }
-
-        if (progress > totalEffort) {
-            view?.let {
-                PerfectusSnackbar.make(it, R.string.goals_error_text_progress_more_then_effort)
-                    .show()
-            }
-            return
-        }
-
-        viewModel.addGoal(
-            Goal(
-                title = binding.editTextGoalTitle.text.toString(),
-                measuredIn = viewModel.measurement.id,
-                totalEffort = totalEffort,
-                progress = progress,
-                completeData = viewModel.date,
-                category = viewModel.category.id,
-                color = viewModel.color.id
-            )
-        )
-    }
-
     fun onMeasurementClicked() {
         // Sets the fragment result listener
         setFragmentResultListener(MeasurementsBottomSheet.KEY_RESULT_LISTENER) { key, bundle ->
             if (MeasurementsBottomSheet.KEY_RESULT_LISTENER == key) {
                 viewModel.measurement =
                     bundle.getSerializable(MeasurementsBottomSheet.KEY_RESULT_MEASUREMENT) as Measurement
-                binding.viewmodel = viewModel
+                updateBindings()
                 clearFragmentResult(MeasurementsBottomSheet.KEY_RESULT_LISTENER)
             }
         }
@@ -135,7 +72,7 @@ internal class AddGoalDialogFragment :
             if (ColorsBottomSheet.KEY_RESULT_LISTENER == key) {
                 viewModel.color =
                     bundle.getSerializable(ColorsBottomSheet.KEY_RESULT_COLOR) as Color
-                binding.viewmodel = viewModel
+                updateBindings()
                 clearFragmentResult(ColorsBottomSheet.KEY_RESULT_LISTENER)
             }
         }
@@ -154,7 +91,7 @@ internal class AddGoalDialogFragment :
             if (CategoriesBottomSheet.KEY_RESULT_LISTENER == key) {
                 viewModel.category =
                     bundle.getSerializable(CategoriesBottomSheet.KEY_RESULT_CATEGORY) as Category
-                binding.viewmodel = viewModel
+                updateBindings()
                 clearFragmentResult(CategoriesBottomSheet.KEY_RESULT_LISTENER)
             }
         }
@@ -173,7 +110,7 @@ internal class AddGoalDialogFragment :
             if (DatePickerBottomSheet.KEY_RESULT_LISTENER == key) {
                 viewModel.date = bundle.getLong(DatePickerBottomSheet.KEY_RESULT_DATE)
                 viewModel.dateString = SimpleDateFormat("MMM dd yyyy").format(viewModel.date)
-                binding.viewmodel = viewModel
+                updateBindings()
                 clearFragmentResult(DatePickerBottomSheet.KEY_RESULT_LISTENER)
             }
         }
@@ -182,31 +119,4 @@ internal class AddGoalDialogFragment :
             bundleOf(DatePickerBottomSheet.KEY_DATE to viewModel.date)
         )
     }
-
-    fun onCloseClicked() {
-        findNavController().popBackStack()
-    }
-
-    //endregion
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //region Private Functions
-
-    private fun setupObservers() {
-        viewModel.getResult().observe(viewLifecycleOwner, Observer { result ->
-            when (result.status) {
-                Status.SUCCESS -> {
-                    findNavController().popBackStack()
-                }
-                Status.LOADING -> { /* Do nothing */
-                }
-                Status.FAILURE -> { /* Do nothing */
-                }
-            }
-        })
-    }
-
-    //endregion
-    ////////////////////////////////////////////////////////////////////////////////////////////////
 }

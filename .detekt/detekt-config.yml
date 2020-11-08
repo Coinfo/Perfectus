@@ -608,17 +608,17 @@ style:
   UnnecessaryAnnotationUseSiteTarget:
     active: false
   UnnecessaryApply:
-    active: false
+    active: true
   UnnecessaryInheritance:
     active: true
   UnnecessaryLet:
-    active: false
+    active: true
   UnnecessaryParentheses:
-    active: false
+    active: true
   UntilInsteadOfRangeTo:
     active: false
   UnusedImports:
-    active: false
+    active: true
   UnusedPrivateClass:
     active: true
   UnusedPrivateMember:

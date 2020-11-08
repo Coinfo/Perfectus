@@ -12,15 +12,16 @@
     <data>
 
         <import type="androidx.core.content.ContextCompat" />
+
         <import type="java.text.SimpleDateFormat" />
 
         <variable
             name="fragment"
-            type="app.chamich.feature.goals.ui.modify.add.AddGoalDialogFragment" />
+            type="app.chamich.feature.goals.ui.modify.edit.EditGoalDialogFragment" />
 
         <variable
             name="viewmodel"
-            type="app.chamich.feature.goals.ui.modify.add.AddGoalViewModel" />
+            type="app.chamich.feature.goals.ui.modify.edit.EditGoalViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -49,15 +50,16 @@
                     android:id="@+id/edit_text_goal_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@{ContextCompat.getColor(context, viewmodel.color.colorRes)}"
                     android:ems="10"
+                    android:hint="@string/goals_add_goals_hint_goal_title"
                     android:inputType="textMultiLine"
                     android:lines="3"
                     android:maxLength="160"
                     android:maxLines="3"
                     android:padding="@dimen/design_padding_normal"
+                    android:text="@={viewmodel.title}"
                     android:textStyle="bold"
-                    android:background="@{ContextCompat.getColor(context, viewmodel.color.colorRes)}"
-                    android:hint="@string/goals_add_goals_hint_goal_title"
                     tools:text="What do you aspire to do?" />
 
                 <LinearLayout
@@ -132,7 +134,8 @@
                         android:hint="0"
                         android:inputType="number"
                         android:maxLength="8"
-                        android:maxLines="1" />
+                        android:maxLines="1"
+                        android:text="@={viewmodel.effort}" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/text_view_effort"
@@ -185,7 +188,8 @@
                         android:hint="0"
                         android:inputType="number"
                         android:maxLength="8"
-                        android:maxLines="1" />
+                        android:maxLines="1"
+                        android:text="@={viewmodel.progress}" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/text_view_eprogress"
@@ -340,14 +344,15 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_add"
+            android:id="@+id/button_edit"
             style="@style/Widget.Perfectus.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/goals_add_goals_button_add_goal"
-            android:onClick="@{() -> fragment.onAddClicked()}"
+            android:onClick="@{() -> fragment.onEditClicked()}"
+            android:text="@string/goals_add_goals_button_edit_goal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
