@@ -19,7 +19,6 @@ import app.chamich.feature.goals.model.api.IGoal
 import app.chamich.feature.goals.ui.modify.ModifyGoalDialogFragment
 import app.chamich.feature.goals.utils.EXTRA_EDITED_GOAL
 import app.chamich.feature.goals.utils.REQUEST_KEY_EDIT_GOAL
-import app.chamich.library.core.model.Status
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 
