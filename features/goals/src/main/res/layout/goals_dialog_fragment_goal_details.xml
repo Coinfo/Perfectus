@@ -150,13 +150,26 @@
                     android:id="@+id/button_edit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="24dp"
+                    android:layout_marginEnd="8dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:onClick="@{() -> fragment.onEditGoalClicked()}"
                     app:layout_constraintBottom_toBottomOf="@+id/text_view_goal_details_title"
+                    app:layout_constraintEnd_toStartOf="@+id/button_delete"
+                    app:layout_constraintTop_toTopOf="@+id/text_view_goal_details_title"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:srcCompat="@drawable/goals_edit" />
+
+                <ImageButton
+                    android:id="@+id/button_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:onClick="@{() -> fragment.onDeleteGoalClicked()}"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_view_goal_details_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/text_view_goal_details_title"
-                    app:srcCompat="@drawable/goals_profile_edit" />
+                    app:srcCompat="@drawable/goals_delete" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
