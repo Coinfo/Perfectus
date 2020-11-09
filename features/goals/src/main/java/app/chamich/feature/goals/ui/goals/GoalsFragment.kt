@@ -10,7 +10,6 @@ import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.clearFragmentResult
 import androidx.fragment.app.setFragmentResultListener
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import app.chamich.feature.goals.R
 import app.chamich.feature.goals.databinding.GoalsFragmentGoalsBinding
@@ -41,6 +40,13 @@ internal class GoalsFragment :
 
         setupRecyclerView()
         setupObservers()
+
+        // IMPROVEME: This is hacky solution and need to be fixed.
+        findNavController().addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.destination_goals) {
+                viewModel.loadGoals()
+            }
+        }
     }
 
     override fun getViewModelClass() = GoalsViewModel::class.java
@@ -54,11 +60,10 @@ internal class GoalsFragment :
     private fun setupRecyclerView() {
         adapter = GoalsAdapter { id -> navigateToGoalDetailsWithResult(id) }
         binding.recyclerviewGoals.adapter = adapter
-
     }
 
     private fun setupObservers() {
-        viewModel.getResult().observe(viewLifecycleOwner, Observer { result ->
+        viewModel.getResult().observe(viewLifecycleOwner, { result ->
             when (result.status) {
                 Status.SUCCESS -> {
                     result.data?.let {
