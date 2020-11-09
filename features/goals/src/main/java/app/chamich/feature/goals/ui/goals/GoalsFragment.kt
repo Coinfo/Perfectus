@@ -40,6 +40,13 @@ internal class GoalsFragment :
 
         setupRecyclerView()
         setupObservers()
+
+        // IMPROVEME: This is hacky solution and need to be fixed.
+        findNavController().addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.destination_goals) {
+                viewModel.loadGoals()
+            }
+        }
     }
 
     override fun getViewModelClass() = GoalsViewModel::class.java
