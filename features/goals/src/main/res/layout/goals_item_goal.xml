@@ -15,7 +15,7 @@
 
         <variable
             name="goal"
-            type="app.chamich.feature.goals.model.api.IGoal" />
+            type="app.chamich.feature.goals.ui.goals.GoalsAdapter.GoalUi" />
 
     </data>
 
