@@ -87,7 +87,8 @@ class GoalsRepository(
         progress = progress,
         completeDate = completeData,
         category = category,
-        color = color
+        color = color,
+        creationDate = creationDate,
     )
 
     private fun GoalEntity.toGoal() = Goal(
@@ -98,14 +99,15 @@ class GoalsRepository(
         progress = progress,
         completeData = completeDate,
         category = category,
-        color = color
+        color = color,
+        creationDate = creationDate,
     )
 
     private fun IGoal.toGoalProgressEntity(goalId: Long) = GoalProgressEntity(
         id = 0L,
         goalId = goalId,
         progress = progress,
-        date = System.currentTimeMillis()
+        date = System.currentTimeMillis(),
     )
 
     private companion object {

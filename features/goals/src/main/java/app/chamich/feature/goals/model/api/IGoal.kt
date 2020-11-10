@@ -13,4 +13,5 @@ interface IGoal {
     val completeData: Long
     val category: Int
     val color: Int
+    val creationDate: Long
 }

@@ -35,5 +35,8 @@ data class GoalEntity(
     val category: Int,
 
     @ColumnInfo(name = Constants.COLUMN_GOAL_COLOR)
-    val color: Int
+    val color: Int,
+
+    @ColumnInfo(name = Constants.COLUMN_GOAL_CREATION_DATE)
+    val creationDate: Long,
 )
