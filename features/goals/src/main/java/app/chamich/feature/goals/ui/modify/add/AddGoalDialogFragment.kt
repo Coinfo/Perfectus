@@ -77,7 +77,8 @@ internal class AddGoalDialogFragment :
                 progress = progress,
                 completeData = viewModel.date,
                 category = viewModel.category.id,
-                color = viewModel.color.id
+                color = viewModel.color.id,
+                creationDate = System.currentTimeMillis(),
             )
         )
     }

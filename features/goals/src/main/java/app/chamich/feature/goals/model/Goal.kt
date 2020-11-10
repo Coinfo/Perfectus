@@ -17,5 +17,6 @@ data class Goal(
     override val progress: Int,
     override val completeData: Long,
     override val category: Int,
-    override val color: Int
+    override val color: Int,
+    override val creationDate: Long,
 ) : IGoal, Parcelable
