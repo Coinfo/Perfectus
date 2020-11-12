@@ -12,7 +12,7 @@ import app.chamich.library.database.entity.GoalEntity
 import app.chamich.library.database.entity.GoalProgressEntity
 
 
-@Database(entities = [GoalEntity::class, GoalProgressEntity::class], version = 2)
+@Database(entities = [GoalEntity::class, GoalProgressEntity::class], version = 1)
 abstract class IDatabase : RoomDatabase() {
 
     abstract fun getGoalsDatabase(): IGoalsDatabase

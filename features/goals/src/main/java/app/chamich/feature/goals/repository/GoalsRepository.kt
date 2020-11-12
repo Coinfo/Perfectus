@@ -89,6 +89,7 @@ class GoalsRepository(
         category = category,
         color = color,
         creationDate = creationDate,
+        status = status,
     )
 
     private fun GoalEntity.toGoal() = Goal(
@@ -101,6 +102,7 @@ class GoalsRepository(
         category = category,
         color = color,
         creationDate = creationDate,
+        status = status
     )
 
     private fun IGoal.toGoalProgressEntity(goalId: Long) = GoalProgressEntity(

@@ -20,6 +20,7 @@ internal object Constants {
     const val COLUMN_GOAL_CATEGORY = "category"
     const val COLUMN_GOAL_COLOR = "color"
     const val COLUMN_GOAL_CREATION_DATE = "creation_date"
+    const val COLUMN_GOAL_STATUS = "status"
 
     // Goal progress columns
     const val COLUMN_GOAL_PROGRESS_ID = "id"
