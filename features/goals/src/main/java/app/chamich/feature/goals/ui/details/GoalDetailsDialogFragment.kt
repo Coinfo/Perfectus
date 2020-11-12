@@ -16,6 +16,9 @@ import app.chamich.feature.goals.R
 import app.chamich.feature.goals.databinding.GoalsDialogFragmentGoalDetailsBinding
 import app.chamich.feature.goals.model.Goal
 import app.chamich.feature.goals.model.api.IGoal
+import app.chamich.feature.goals.ui.bottomsheet.menu.ActionMenuBottomSheet
+import app.chamich.feature.goals.ui.bottomsheet.menu.ActionMenuBottomSheet.Companion.KET_ACTION
+import app.chamich.feature.goals.ui.bottomsheet.menu.ActionMenuBottomSheet.Companion.REQUEST_KEY_ACTION
 import app.chamich.feature.goals.utils.EXTRA_EDITED_GOAL
 import app.chamich.feature.goals.utils.EXTRA_GOAL_ID
 import app.chamich.feature.goals.utils.REQUEST_KEY_EDIT_GOAL
@@ -74,7 +77,7 @@ internal class GoalDetailsDialogFragment :
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Binding Functions
 
-    fun onAddProgressClicked() {
+    fun onSaveClicked() {
         val goal = (currentGoal as Goal).copy(
             progress = currentGoal.progress + viewModel.getProgress().value!!
         )
@@ -85,13 +88,44 @@ internal class GoalDetailsDialogFragment :
         findNavController().navigateUp()
     }
 
-    fun onEditGoalClicked() {
+    fun onMenuClicked() {
+        setFragmentResultListener(REQUEST_KEY_ACTION) { key, bundle ->
+            if (REQUEST_KEY_ACTION == key) {
+                val action = bundle.getSerializable(KET_ACTION) as ActionMenuBottomSheet.Action
+                when (action) {
+                    ActionMenuBottomSheet.Action.EDIT -> onEditGoalClicked()
+                    ActionMenuBottomSheet.Action.DELETE -> onDeleteGoalClicked()
+                    ActionMenuBottomSheet.Action.ARCHIVE -> onArchiveClicked()
+                    ActionMenuBottomSheet.Action.COMPLETE -> onCompleteClicked()
+                }
+                clearFragmentResult(REQUEST_KEY_ACTION)
+            }
+        }
+
+        findNavController().navigate(R.id.destination_action_menu)
+    }
+
+    //endregion
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //region Private Functions
+
+    private fun onDeleteGoalClicked() {
+        viewModel.deleteGoal(currentGoal.id)
+
+        findNavController().navigateUp()
+    }
+
+    private fun onEditGoalClicked() {
         setFragmentResultListener(REQUEST_KEY_EDIT_GOAL) { key, bundle ->
             if (REQUEST_KEY_EDIT_GOAL == key) {
                 val goal = bundle.getParcelable<Goal>(EXTRA_EDITED_GOAL) as IGoal
                 currentGoal = goal
                 binding.goal = goal
                 binding.executePendingBindings()
+
+                findNavController().navigateUp()
 
                 clearFragmentResult(REQUEST_KEY_EDIT_GOAL)
             }
@@ -103,15 +137,13 @@ internal class GoalDetailsDialogFragment :
         )
     }
 
-    fun onDeleteGoalClicked() {
-        viewModel.deleteGoal(currentGoal.id)
+    private fun onArchiveClicked() {
+        findNavController().navigateUp()
     }
 
-    //endregion
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //region Private Functions
+    private fun onCompleteClicked() {
+        findNavController().navigateUp()
+    }
 
     private fun setupObservers() {
         viewModel.deleteGoal.observe(viewLifecycleOwner, { result ->

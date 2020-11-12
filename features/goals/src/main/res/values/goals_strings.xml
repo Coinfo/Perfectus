@@ -48,9 +48,14 @@
     <string name="goals_add_progress">Add Progress</string>
     <string name="goals_item_goal_details_subtitle">%d + %d / %d %s completed</string>
     <string name="goals_progress">%d %s</string>
-    <string name="goals_button_text_add_progress">Add Progress</string>
+    <string name="goals_button_text_save_progress">Save</string>
     <string name="goals_goal_details_label">Did you make progress?</string>
 
+    <!-- Action Menu -->
+    <string name="goals_action_menu_button_text_edit">Edit</string>
+    <string name="goals_action_menu_button_text_delete">Delete</string>
+    <string name="goals_action_menu_button_text_archive">Archive</string>
+    <string name="goals_action_menu_button_text_complete">Complete</string>
 
     <!-- Errors -->
     <string name="goals_error_text_progress_more_then_effort">

@@ -70,7 +70,11 @@
         android:id="@+id/destination_goal_details"
         android:name="app.chamich.feature.goals.ui.details.GoalDetailsDialogFragment"
         android:label="GoalDialogFragment"
-        tools:layout="@layout/goals_dialog_fragment_goal_details" />
+        tools:layout="@layout/goals_dialog_fragment_goal_details">
+        <action
+            android:id="@+id/goals_action_destination_goal_details_to_goals_actionmenubottomsheet"
+            app:destination="@id/destination_action_menu" />
+    </dialog>
 
     <dialog
         android:id="@+id/destination_edit_goal"
@@ -89,5 +93,10 @@
             android:id="@+id/goals_action_goals_editgoaldialogfragment_to_destination_categories"
             app:destination="@id/destination_categories" />
     </dialog>
+
+    <dialog
+        android:id="@+id/destination_action_menu"
+        android:name="app.chamich.feature.goals.ui.bottomsheet.menu.ActionMenuBottomSheet"
+        android:label="ActionMenuBottomSheet" />
 
 </navigation>
