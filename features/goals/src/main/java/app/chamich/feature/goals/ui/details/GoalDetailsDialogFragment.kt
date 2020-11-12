@@ -74,7 +74,7 @@ internal class GoalDetailsDialogFragment :
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Binding Functions
 
-    fun onAddProgressClicked() {
+    fun onSaveClicked() {
         val goal = (currentGoal as Goal).copy(
             progress = currentGoal.progress + viewModel.getProgress().value!!
         )
@@ -83,6 +83,10 @@ internal class GoalDetailsDialogFragment :
 
     fun onCloseClicked() {
         findNavController().navigateUp()
+    }
+
+    fun onMenuClicked() {
+        //
     }
 
     fun onEditGoalClicked() {

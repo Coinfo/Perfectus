@@ -181,20 +181,34 @@
             style="@style/Widget.Perfectus.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/goals_add_goals_button_close"
+            android:layout_marginEnd="24dp"
             android:onClick="@{() -> fragment.onCloseClicked()}"
+            android:text="@string/goals_add_goals_button_close"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toStartOf="@+id/button_add_progress" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_add_progress"
             style="@style/Widget.Perfectus.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> fragment.onAddProgressClicked()}"
-            android:text="@string/goals_button_text_add_progress"
+            android:layout_marginEnd="16dp"
+            android:onClick="@{() -> fragment.onSaveClicked()}"
+            android:text="@string/goals_button_text_save_progress"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageButton
+            android:id="@+id/button_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:onClick="@{() -> fragment.onMenuClicked()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scroll_view_goal_details"
+            app:srcCompat="@drawable/goals_dehaze" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
