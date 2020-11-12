@@ -98,6 +98,7 @@ internal class GoalDetailsDialogFragment :
                     ActionMenuBottomSheet.Action.ARCHIVE -> onArchiveClicked()
                     ActionMenuBottomSheet.Action.COMPLETE -> onCompleteClicked()
                 }
+                clearFragmentResult(REQUEST_KEY_ACTION)
             }
         }
 
@@ -112,6 +113,8 @@ internal class GoalDetailsDialogFragment :
 
     private fun onDeleteGoalClicked() {
         viewModel.deleteGoal(currentGoal.id)
+
+        findNavController().navigateUp()
     }
 
     private fun onEditGoalClicked() {
@@ -121,6 +124,8 @@ internal class GoalDetailsDialogFragment :
                 currentGoal = goal
                 binding.goal = goal
                 binding.executePendingBindings()
+
+                findNavController().navigateUp()
 
                 clearFragmentResult(REQUEST_KEY_EDIT_GOAL)
             }
@@ -133,11 +138,11 @@ internal class GoalDetailsDialogFragment :
     }
 
     private fun onArchiveClicked() {
-        //
+        findNavController().navigateUp()
     }
 
     private fun onCompleteClicked() {
-        //
+        findNavController().navigateUp()
     }
 
     private fun setupObservers() {

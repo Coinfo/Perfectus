@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
-import androidx.navigation.fragment.findNavController
+//import androidx.navigation.fragment.findNavController
 import app.chamich.feature.goals.R
 import app.chamich.feature.goals.databinding.GoalsBottomSheetDialogActionMenuBinding
 import app.chamich.feature.goals.ui.bottomsheet.GoalsBottomSheet
@@ -61,7 +61,6 @@ internal class ActionMenuBottomSheet :
 
     private fun setFragmentResultAndNavigateUp(action: Action) {
         setFragmentResult(REQUEST_KEY_ACTION, bundleOf(KET_ACTION to action))
-        findNavController().navigateUp()
     }
 
     //endregion
