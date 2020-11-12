@@ -39,4 +39,7 @@ data class GoalEntity(
 
     @ColumnInfo(name = Constants.COLUMN_GOAL_CREATION_DATE)
     val creationDate: Long,
+
+    @ColumnInfo(name = Constants.COLUMN_GOAL_STATUS)
+    val status: Int,
 )

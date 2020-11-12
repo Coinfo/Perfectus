@@ -4,6 +4,8 @@
 
 package app.chamich.feature.goals.model.api
 
+// IMPROVEME: Instead of using Int for measuredIn, totalEffort, category, color, and status
+// use enumeration values.
 interface IGoal {
     val id: Long
     val title: String
@@ -14,4 +16,5 @@ interface IGoal {
     val category: Int
     val color: Int
     val creationDate: Long
+    val status: Int
 }

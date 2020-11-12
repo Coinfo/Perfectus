@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import app.chamich.feature.goals.R
 import app.chamich.feature.goals.databinding.GoalsDialogFragmentAddGoalBinding
 import app.chamich.feature.goals.model.Goal
+import app.chamich.feature.goals.model.GoalStatus
 import app.chamich.feature.goals.ui.modify.ModifyGoalDialogFragment
 import app.chamich.library.core.extensions.asInt
 import app.chamich.library.core.extensions.hasText
@@ -79,6 +80,7 @@ internal class AddGoalDialogFragment :
                 category = viewModel.category.id,
                 color = viewModel.color.id,
                 creationDate = System.currentTimeMillis(),
+                status = GoalStatus.IN_PROGRESS.id
             )
         )
     }
