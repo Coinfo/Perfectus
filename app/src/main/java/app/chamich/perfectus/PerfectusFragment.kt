@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
@@ -47,7 +48,6 @@ class PerfectusFragment : Fragment() {
 
         initializeViewPagerAndTabLayout()
         initializeBottomActionBar()
-        handleMenuItemClicks()
         handleFabClicks()
     }
 
@@ -71,13 +71,10 @@ class PerfectusFragment : Fragment() {
         }
     }
 
-    private fun handleMenuItemClicks() {
-        appbar.setOnMenuItemClickListener { menuItem ->
-            return@setOnMenuItemClickListener true
-        }
-    }
-
     private fun initializeBottomActionBar() {
+        val activity = requireActivity() as AppCompatActivity
+        activity.setSupportActionBar(appbar)
+
         appbar.setNavigationOnClickListener {
             profile.showProfileScreen(childFragmentManager)
         }

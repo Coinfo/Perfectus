@@ -66,6 +66,8 @@
         To add the Goal please specify the title
     </string>
 
+    <string name="goals_menu_item_archive">Archive</string>
+
 
     <!-- Measurement -->
     <string name="goals_measured_in_steps">Steps</string>
