@@ -95,7 +95,7 @@ internal class GoalsFragment :
     }
 
     private fun handleArchiveClicked() {
-        // Do something here
+        findNavController().navigate(R.id.destination_goals_archive)
     }
 
     private fun navigateToGoalDetailsWithResult(id: Long) {
