@@ -13,7 +13,13 @@ import dagger.hilt.android.AndroidEntryPoint
 internal class GoalsArchiveFragment :
     CoreDialogFragment<GoalsArchiveViewModel, GoalsDialogFragmentGoalsArchiveBinding>() {
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //region Fragment Override Functions
+
     override fun getLayoutId() = R.layout.goals_dialog_fragment_goals_archive
 
     override fun getViewModelClass() = GoalsArchiveViewModel::class.java
+
+    //endregion
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 }
