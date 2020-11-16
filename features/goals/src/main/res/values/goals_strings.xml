@@ -54,6 +54,7 @@
     <!-- Goals Archive -->
     <string name="goals_archive_button_text_completed">Completed</string>
     <string name="goals_archive_button_text_archived">Archived</string>
+    <string name="goals_archive_title_archive">Archive</string>
 
     <!-- Action Menu -->
     <string name="goals_action_menu_button_text_edit">Edit</string>
