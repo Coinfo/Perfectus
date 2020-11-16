@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import app.chamich.feature.goals.R
 import app.chamich.feature.goals.databinding.GoalsDialogFragmentGoalDetailsBinding
 import app.chamich.feature.goals.model.Goal
+import app.chamich.feature.goals.model.GoalStatus
 import app.chamich.feature.goals.model.api.IGoal
 import app.chamich.feature.goals.ui.bottomsheet.menu.ActionMenuBottomSheet
 import app.chamich.feature.goals.ui.bottomsheet.menu.ActionMenuBottomSheet.Companion.KET_ACTION
@@ -138,10 +139,17 @@ internal class GoalDetailsDialogFragment :
     }
 
     private fun onArchiveClicked() {
+        val goal = (currentGoal as Goal).copy(status = GoalStatus.ARCHIVED.id)
+        viewModel.updateGoal(goal)
         findNavController().navigateUp()
     }
 
     private fun onCompleteClicked() {
+        val goal = (currentGoal as Goal).copy(
+            status = GoalStatus.COMPLETED.id,
+            completeData = System.currentTimeMillis(),
+        )
+        viewModel.updateGoal(goal)
         findNavController().navigateUp()
     }
 
