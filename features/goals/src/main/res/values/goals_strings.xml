@@ -51,6 +51,11 @@
     <string name="goals_button_text_save_progress">Save</string>
     <string name="goals_goal_details_label">Did you make progress?</string>
 
+    <!-- Goals Archive -->
+    <string name="goals_archive_button_text_completed">Completed</string>
+    <string name="goals_archive_button_text_archived">Archived</string>
+    <string name="goals_archive_title_archive">Archive</string>
+
     <!-- Action Menu -->
     <string name="goals_action_menu_button_text_edit">Edit</string>
     <string name="goals_action_menu_button_text_delete">Delete</string>
@@ -65,6 +70,8 @@
     <string name="goals_error_text_missing_title">
         To add the Goal please specify the title
     </string>
+
+    <string name="goals_menu_item_archive">Archive</string>
 
 
     <!-- Measurement -->

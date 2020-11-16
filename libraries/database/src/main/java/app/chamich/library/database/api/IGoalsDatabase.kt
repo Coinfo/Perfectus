@@ -27,4 +27,7 @@ interface IGoalsDatabase {
 
     @Query("SELECT * FROM goals")
     suspend fun getGoals(): List<GoalEntity>
+
+    @Query("SELECT * FROM goals WHERE status == :status")
+    suspend fun getArchivedGoals(status: Int): List<GoalEntity>
 }

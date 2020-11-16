@@ -7,7 +7,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base theme for Day Mode. -->
-    <style name="Theme.Perfectus" parent="Theme.MaterialComponents.Light" tools:ignore="ResourceName">
+    <style name="Theme.Perfectus" parent="Theme.MaterialComponents.Light.NoActionBar" tools:ignore="ResourceName">
         <item name="colorPrimary">@color/design_brand</item>
         <item name="colorPrimaryDark">@color/design_brand_dark</item>
         <item name="colorAccent">@color/design_accent</item>

@@ -6,6 +6,9 @@ package app.chamich.feature.goals.ui.goals
 
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.clearFragmentResult
@@ -31,6 +34,11 @@ internal class GoalsFragment :
 
     override fun getLayoutId() = R.layout.goals_fragment_goals
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -49,6 +57,18 @@ internal class GoalsFragment :
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.goals_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_archive -> handleArchiveClicked()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun getViewModelClass() = GoalsViewModel::class.java
 
     //endregion
@@ -63,7 +83,7 @@ internal class GoalsFragment :
     }
 
     private fun setupObservers() {
-        viewModel.getResult().observe(viewLifecycleOwner, { result ->
+        viewModel.loadedGoals.observe(viewLifecycleOwner, { result ->
             when (result.status) {
                 Status.SUCCESS -> {
                     result.data?.let {
@@ -72,6 +92,10 @@ internal class GoalsFragment :
                 }
             }
         })
+    }
+
+    private fun handleArchiveClicked() {
+        findNavController().navigate(R.id.destination_archive_home)
     }
 
     private fun navigateToGoalDetailsWithResult(id: Long) {

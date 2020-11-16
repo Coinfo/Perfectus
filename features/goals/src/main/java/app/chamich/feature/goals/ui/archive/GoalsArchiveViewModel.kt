@@ -2,7 +2,7 @@
  * Copyright (c) 2020 Chamich Apps. All rights reserved.
  */
 
-package app.chamich.feature.goals.ui.goals
+package app.chamich.feature.goals.ui.archive
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
@@ -17,20 +17,21 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-internal class GoalsViewModel @ViewModelInject constructor(
+internal class GoalsArchiveViewModel @ViewModelInject constructor(
     private val repository: IRepository
 ) : ViewModel() {
 
-    private val _loadedGoals = MutableLiveData<Resource<List<IGoal>>>()
-    var loadedGoals: LiveData<Resource<List<IGoal>>> = _loadedGoals
+    private val _archivedGoals = MutableLiveData<Resource<List<IGoal>>>()
+    var archivedGoals: LiveData<Resource<List<IGoal>>> = _archivedGoals
 
-    fun loadGoals() {
+    var status = GoalStatus.ARCHIVED
+
+    fun loadArchivedGoals() {
         viewModelScope.launch {
-            _loadedGoals.postValue(Resource.loading(null))
+            _archivedGoals.postValue(Resource.loading(null))
             withContext(Dispatchers.IO) {
-                _loadedGoals.postValue(Resource.success(repository.getGoals(GoalStatus.ACTIVE)))
+                _archivedGoals.postValue(Resource.success(repository.getGoals(status)))
             }
         }
     }
 }
-

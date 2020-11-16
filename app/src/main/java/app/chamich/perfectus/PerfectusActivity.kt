@@ -49,8 +49,6 @@ class PerfectusActivity : AppCompatActivity(),
         if (savedInstanceState == null && authenticator.isSignedIn()) {
             navigateToPerfectus()
         }
-
-        supportActionBar?.hide()
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////

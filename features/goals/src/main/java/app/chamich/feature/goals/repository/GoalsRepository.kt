@@ -5,6 +5,7 @@
 package app.chamich.feature.goals.repository
 
 import app.chamich.feature.goals.model.Goal
+import app.chamich.feature.goals.model.GoalStatus
 import app.chamich.feature.goals.model.api.IGoal
 import app.chamich.feature.goals.repository.api.IRepository
 import app.chamich.library.database.api.IGoalsDatabase
@@ -14,7 +15,7 @@ import app.chamich.library.database.entity.GoalProgressEntity
 import app.chamich.library.logger.ILogger
 
 
-class GoalsRepository(
+internal class GoalsRepository(
     private val goalsDatabase: IGoalsDatabase,
     private val goalProgressDatabase: IGoalsProgressDatabase,
     private val logger: ILogger,
@@ -40,13 +41,14 @@ class GoalsRepository(
         return goalId
     }
 
-    override suspend fun getGoals(): List<IGoal> {
+    override suspend fun getGoals(status: GoalStatus): List<IGoal> {
         logger.debug(TAG, "|------------------------------------------------------------|")
-        logger.debug(TAG, "|                         Get Goals                          |")
-
+        logger.debug(TAG, "|                    Get Archived Goals                      |")
+        logger.debug(TAG, "|----> Status: $status")
         val goals = mutableListOf<IGoal>()
-        goalsDatabase.getGoals().map { goalEntity -> goals.add(goalEntity.toGoal()) }
-        logger.debug(TAG, "|----> Number of Goals: ${goals.size}")
+        goalsDatabase.getArchivedGoals(status.id)
+            .map { goalEntity -> goals.add(goalEntity.toGoal()) }
+        logger.debug(TAG, "|----> Number of Archived Goals: ${goals.size}")
         return goals
     }
 

@@ -4,9 +4,10 @@
 
 package app.chamich.feature.goals.repository.api
 
+import app.chamich.feature.goals.model.GoalStatus
 import app.chamich.feature.goals.model.api.IGoal
 
-interface IRepository {
+internal interface IRepository {
 
     /**
      * Adds goal to the database
@@ -20,7 +21,7 @@ interface IRepository {
      *
      * @return List of goals
      */
-    suspend fun getGoals(): List<IGoal>
+    suspend fun getGoals(status: GoalStatus): List<IGoal>
 
     /**
      * Gets the goal by given id

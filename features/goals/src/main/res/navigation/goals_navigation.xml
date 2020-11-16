@@ -24,6 +24,9 @@
         <action
             android:id="@+id/goals_action_destination_goals_to_goals_editgoaldialogfragment"
             app:destination="@id/destination_edit_goal" />
+        <action
+            android:id="@+id/goals_action_destination_goals_to_goals_goalsarchivefragment"
+            app:destination="@id/destination_archive_home" />
     </fragment>
 
     <dialog
@@ -98,5 +101,10 @@
         android:id="@+id/destination_action_menu"
         android:name="app.chamich.feature.goals.ui.bottomsheet.menu.ActionMenuBottomSheet"
         android:label="ActionMenuBottomSheet" />
+
+    <dialog
+        android:id="@+id/destination_archive_home"
+        android:name="app.chamich.feature.goals.ui.archive.GoalsArchiveFragment"
+        android:label="GoalsArchiveFragment" />
 
 </navigation>
