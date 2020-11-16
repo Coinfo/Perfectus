@@ -7,6 +7,7 @@ package app.chamich.feature.goals.ui.archive
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import app.chamich.feature.goals.R
 import app.chamich.feature.goals.databinding.GoalsDialogFragmentArchiveBinding
 import app.chamich.feature.goals.model.GoalStatus
@@ -47,6 +48,7 @@ internal class GoalsArchiveFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initializeBindings()
         initializeToggleButton()
         setupObservers()
     }
@@ -57,7 +59,21 @@ internal class GoalsArchiveFragment :
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
+    //region Binding Functions
+
+    fun onCloseClicked() {
+        findNavController().navigateUp()
+    }
+
+    //endregion
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Fragment Override Functions
+
+    private fun initializeBindings() {
+        binding.fragment = this
+    }
 
     private fun initializeToggleButton() {
         binding.togglebuttonTheme.addOnButtonCheckedListener { group, checkedId, isChecked ->
