@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import app.chamich.feature.goals.model.GoalStatus
 import app.chamich.feature.goals.model.api.IGoal
 import app.chamich.feature.goals.repository.api.IRepository
 import app.chamich.library.core.model.Resource
@@ -27,7 +28,7 @@ internal class GoalsViewModel @ViewModelInject constructor(
         viewModelScope.launch {
             _loadedGoals.postValue(Resource.loading(null))
             withContext(Dispatchers.IO) {
-                _loadedGoals.postValue(Resource.success(repository.getGoals()))
+                _loadedGoals.postValue(Resource.success(repository.getGoals(GoalStatus.ACTIVE)))
             }
         }
     }

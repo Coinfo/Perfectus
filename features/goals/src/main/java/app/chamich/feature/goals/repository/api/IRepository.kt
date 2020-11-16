@@ -21,12 +21,7 @@ internal interface IRepository {
      *
      * @return List of goals
      */
-    suspend fun getGoals(): List<IGoal>
-
-    /**
-     * Gets all goals for the specified status
-     */
-    suspend fun getArchivedGoals(status: GoalStatus): List<IGoal>
+    suspend fun getGoals(status: GoalStatus): List<IGoal>
 
     /**
      * Gets the goal by given id

@@ -41,17 +41,7 @@ internal class GoalsRepository(
         return goalId
     }
 
-    override suspend fun getGoals(): List<IGoal> {
-        logger.debug(TAG, "|------------------------------------------------------------|")
-        logger.debug(TAG, "|                         Get Goals                          |")
-
-        val goals = mutableListOf<IGoal>()
-        goalsDatabase.getGoals().map { goalEntity -> goals.add(goalEntity.toGoal()) }
-        logger.debug(TAG, "|----> Number of Goals: ${goals.size}")
-        return goals
-    }
-
-    override suspend fun getArchivedGoals(status: GoalStatus): List<IGoal> {
+    override suspend fun getGoals(status: GoalStatus): List<IGoal> {
         logger.debug(TAG, "|------------------------------------------------------------|")
         logger.debug(TAG, "|                    Get Archived Goals                      |")
         logger.debug(TAG, "|----> Status: $status")

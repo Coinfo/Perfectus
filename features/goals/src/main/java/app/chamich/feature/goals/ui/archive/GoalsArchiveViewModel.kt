@@ -30,7 +30,7 @@ internal class GoalsArchiveViewModel @ViewModelInject constructor(
         viewModelScope.launch {
             _archivedGoals.postValue(Resource.loading(null))
             withContext(Dispatchers.IO) {
-                _archivedGoals.postValue(Resource.success(repository.getArchivedGoals(status)))
+                _archivedGoals.postValue(Resource.success(repository.getGoals(status)))
             }
         }
     }
