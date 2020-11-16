@@ -20,6 +20,8 @@ import dagger.hilt.android.AndroidEntryPoint
 internal class GoalsArchiveFragment :
     CoreDialogFragment<GoalsArchiveViewModel, GoalsDialogFragmentArchiveBinding>() {
 
+    private lateinit var adapter: GoalsArchiveAdapter
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Fragment Override Functions
 
@@ -51,6 +53,7 @@ internal class GoalsArchiveFragment :
         initializeBindings()
         initializeToggleButton()
         setupObservers()
+        setupRecyclerView()
     }
 
     override fun getViewModelClass() = GoalsArchiveViewModel::class.java
@@ -91,6 +94,11 @@ internal class GoalsArchiveFragment :
         )
     }
 
+    private fun setupRecyclerView() {
+        adapter = GoalsArchiveAdapter { /* */ }
+        binding.recyclerViewArchivedGoals.adapter = adapter
+    }
+
     private fun setupObservers() {
         viewModel.archivedGoals.observe(viewLifecycleOwner, { result ->
             when (result.status) {
@@ -107,7 +115,9 @@ internal class GoalsArchiveFragment :
     }
 
     private fun handleSuccess(data: List<IGoal>?) {
-        //
+        data?.let {
+            adapter.addArchivedGoals(it)
+        }
     }
 
     private fun handleFailure(data: List<IGoal>?) {
