@@ -179,7 +179,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
-            android:id="@+id/bottom_sheet"
             style="@style/Perfectus.BottomSheetCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -187,6 +186,7 @@
             android:orientation="vertical"
             app:behavior_hideable="true"
             app:behavior_peekHeight="0dp"
+            android:id="@+id/bottom_sheet"
             app:layout_behavior="@string/bottom_sheet_behavior">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -201,8 +201,8 @@
                     android:layout_marginStart="32dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="32dp"
-                    android:onClick="@{() -> fragment.onEditGoalClicked()}"
                     android:text="@string/goals_action_menu_button_text_edit"
+                    android:onClick="@{() -> fragment.onEditGoalClicked()}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -214,8 +214,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
                     android:layout_marginEnd="32dp"
-                    android:onClick="@{() -> fragment.onDeleteGoalClicked()}"
                     android:text="@string/goals_action_menu_button_text_delete"
+                    android:onClick="@{() -> fragment.onDeleteGoalClicked()}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/button_edit" />
@@ -227,8 +227,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
                     android:layout_marginEnd="32dp"
-                    android:onClick="@{() -> fragment.onArchiveClicked()}"
                     android:text="@string/goals_action_menu_button_text_archive"
+                    android:onClick="@{() -> fragment.onArchiveClicked()}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/button_delete" />
@@ -241,9 +241,9 @@
                     android:layout_marginStart="32dp"
                     android:layout_marginEnd="32dp"
                     android:layout_marginBottom="8dp"
-                    android:onClick="@{() -> fragment.onCompleteClicked()}"
                     android:text="@string/goals_action_menu_button_text_complete"
                     android:visibility="@{goal.totalEffort == 0 ? View.GONE : ((goal.progress + viewmodel.progress) * 100 / goal.totalEffort) >= 100 ? View.VISIBLE : View.GONE}"
+                    android:onClick="@{() -> fragment.onCompleteClicked()}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
