@@ -24,7 +24,9 @@ internal class GoalsArchiveViewModel @ViewModelInject constructor(
     private val _archivedGoals = MutableLiveData<Resource<List<IGoal>>>()
     var archivedGoals: LiveData<Resource<List<IGoal>>> = _archivedGoals
 
-    fun loadArchivedGoals(status: GoalStatus) {
+    var status = GoalStatus.ARCHIVED
+
+    fun loadArchivedGoals() {
         viewModelScope.launch {
             _archivedGoals.postValue(Resource.loading(null))
             withContext(Dispatchers.IO) {

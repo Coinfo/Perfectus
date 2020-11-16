@@ -42,7 +42,7 @@
             app:singleSelection="true">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_theme_light"
+                android:id="@+id/button_archived"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
                 android:text="@string/goals_archive_button_text_archived" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_theme_dark"
+                android:id="@+id/button_completed"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
