@@ -20,17 +20,16 @@ internal class GoalsViewModel @ViewModelInject constructor(
     private val repository: IRepository
 ) : ViewModel() {
 
-    private val result = MutableLiveData<Resource<List<IGoal>>>()
+    private val _loadedGoals = MutableLiveData<Resource<List<IGoal>>>()
+    var loadedGoals: LiveData<Resource<List<IGoal>>> = _loadedGoals
 
     fun loadGoals() {
         viewModelScope.launch {
-            result.postValue(Resource.loading(null))
+            _loadedGoals.postValue(Resource.loading(null))
             withContext(Dispatchers.IO) {
-                result.postValue(Resource.success(repository.getGoals()))
+                _loadedGoals.postValue(Resource.success(repository.getGoals()))
             }
         }
     }
-
-    fun getResult(): LiveData<Resource<List<IGoal>>> = result
 }
 

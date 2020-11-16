@@ -83,7 +83,7 @@ internal class GoalsFragment :
     }
 
     private fun setupObservers() {
-        viewModel.getResult().observe(viewLifecycleOwner, { result ->
+        viewModel.loadedGoals.observe(viewLifecycleOwner, { result ->
             when (result.status) {
                 Status.SUCCESS -> {
                     result.data?.let {
@@ -95,7 +95,7 @@ internal class GoalsFragment :
     }
 
     private fun handleArchiveClicked() {
-        findNavController().navigate(R.id.destination_goals_archive)
+        findNavController().navigate(R.id.destination_archive_home)
     }
 
     private fun navigateToGoalDetailsWithResult(id: Long) {

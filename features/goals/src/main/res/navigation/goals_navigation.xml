@@ -26,7 +26,7 @@
             app:destination="@id/destination_edit_goal" />
         <action
             android:id="@+id/goals_action_destination_goals_to_goals_goalsarchivefragment"
-            app:destination="@id/destination_goals_archive" />
+            app:destination="@id/destination_archive_home" />
     </fragment>
 
     <dialog
@@ -103,7 +103,7 @@
         android:label="ActionMenuBottomSheet" />
 
     <dialog
-        android:id="@+id/destination_goals_archive"
+        android:id="@+id/destination_archive_home"
         android:name="app.chamich.feature.goals.ui.archive.GoalsArchiveFragment"
         android:label="GoalsArchiveFragment" />
 
