@@ -14,6 +14,8 @@
 
         <import type="androidx.core.content.ContextCompat" />
 
+        <import type="android.view.View" />
+
         <variable
             name="goal"
             type="app.chamich.feature.goals.model.api.IGoal" />
@@ -28,162 +30,229 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/constraint_layout_goal_details"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#0d0d15">
 
-        <ScrollView
-            android:id="@+id/scroll_view_goal_details"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/button_close"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/text_view_goal_details_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/goals_goal_details_label"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/button_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:onClick="@{() -> fragment.onMenuClicked()}"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_goal_details_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/text_view_goal_details_title"
+                app:srcCompat="@drawable/goals_action_menu" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view_goal_details"
+                style="@style/Widget.Perfectus.Card"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_goal_details_title">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ProgressBar
+                        android:id="@+id/progress_bar_progress"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:max="@{goal.totalEffort}"
+                        android:progress="@{(goal.progress + viewmodel.progress)}"
+                        android:progressBackgroundTint="@color/design_background_goal_progress"
+                        android:progressTint="@{ContextCompat.getColor(context, Color.asColorResource(goal.color))}"
+                        android:scaleY="25"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/text_view_title"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/design_margin_large"
+                        android:layout_marginEnd="@dimen/design_margin_normal"
+                        android:text="@{goal.title}"
+                        app:layout_constraintBottom_toTopOf="@+id/text_view_subtitle"
+                        app:layout_constraintEnd_toStartOf="@+id/text_view_percentage"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/progress_bar_progress" />
+
+                    <TextView
+                        android:id="@+id/text_view_subtitle"
+                        style="@style/TextAppearance.MaterialComponents.Caption"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/design_margin_large"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="@dimen/design_margin_normal"
+                        android:text="@{@string/goals_item_goal_details_subtitle(goal.progress, viewmodel.progress, goal.totalEffort, context.getString(Measurement.asStringResource(goal.measuredIn)))}"
+                        app:layout_constraintBottom_toTopOf="@+id/progress_bar_progress"
+                        app:layout_constraintEnd_toStartOf="@+id/text_view_percentage"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_view_title" />
+
+                    <TextView
+                        android:id="@+id/text_view_percentage"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/design_margin_large"
+                        android:text="@{goal.totalEffort == 0 ? @string/goals_item_goal_percent(0) : @string/goals_item_goal_percent((goal.progress + viewmodel.progress) * 100 / goal.totalEffort)}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/progress_bar_progress"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <include
+                android:id="@+id/include_goal_progress"
+                layout="@layout/goals_view_goal_progress_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_view_goal_details"
+                bind:goal="@{goal}"
+                bind:viewmodel="@{viewmodel}" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_close"
+                style="@style/Widget.Perfectus.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:onClick="@{() -> fragment.onCloseClicked()}"
+                android:text="@string/goals_add_goals_button_close"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_add_progress"
+                style="@style/Widget.Perfectus.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:onClick="@{() -> fragment.onSaveClicked()}"
+                android:text="@string/goals_button_text_save_progress"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            style="@style/Perfectus.BottomSheetCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:orientation="vertical"
+            app:behavior_hideable="true"
+            app:behavior_peekHeight="0dp"
+            android:id="@+id/bottom_sheet"
+            app:layout_behavior="@string/bottom_sheet_behavior">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/aa"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
-                <ImageButton
-                    android:id="@+id/button_menu"
-                    android:layout_width="wrap_content"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_edit"
+                    style="@style/Widget.Perfectus.TextButton"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:onClick="@{() -> fragment.onMenuClicked()}"
-                    app:layout_constraintBottom_toBottomOf="@+id/text_view_goal_details_title"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:text="@string/goals_action_menu_button_text_edit"
+                    android:onClick="@{() -> fragment.onEditGoalClicked()}"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/text_view_goal_details_title"
-                    app:srcCompat="@drawable/goals_action_menu" />
-
-                <TextView
-                    android:id="@+id/text_view_goal_details_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/goals_goal_details_label"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/card_view_goal_details"
-                    style="@style/Widget.Perfectus.Card"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_delete"
+                    style="@style/Widget.Perfectus.TextButton"
                     android:layout_width="0dp"
-                    android:layout_height="80dp"
-                    android:layout_margin="4dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_view_goal_details_title">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <ProgressBar
-                            android:id="@+id/progress_bar_progress"
-                            style="?android:attr/progressBarStyleHorizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:max="@{goal.totalEffort}"
-                            android:progress="@{(goal.progress + viewmodel.progress)}"
-                            android:progressBackgroundTint="@color/design_background_goal_progress"
-                            android:progressTint="@{ContextCompat.getColor(context, Color.asColorResource(goal.color))}"
-                            android:scaleY="25"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/text_view_title"
-                            style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/design_margin_large"
-                            android:layout_marginEnd="@dimen/design_margin_normal"
-                            android:text="@{goal.title}"
-                            app:layout_constraintBottom_toTopOf="@+id/text_view_subtitle"
-                            app:layout_constraintEnd_toStartOf="@+id/text_view_percentage"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/progress_bar_progress" />
-
-                        <TextView
-                            android:id="@+id/text_view_subtitle"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/design_margin_large"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginEnd="@dimen/design_margin_normal"
-                            android:text="@{@string/goals_item_goal_details_subtitle(goal.progress, viewmodel.progress, goal.totalEffort, context.getString(Measurement.asStringResource(goal.measuredIn)))}"
-                            app:layout_constraintBottom_toTopOf="@+id/progress_bar_progress"
-                            app:layout_constraintEnd_toStartOf="@+id/text_view_percentage"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/text_view_title" />
-
-                        <TextView
-                            android:id="@+id/text_view_percentage"
-                            style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/design_margin_large"
-                            android:text="@{goal.totalEffort == 0 ? @string/goals_item_goal_percent(0) : @string/goals_item_goal_percent((goal.progress + viewmodel.progress) * 100 / goal.totalEffort)}"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="@+id/progress_bar_progress"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <include
-                    android:id="@+id/include_goal_progress"
-                    layout="@layout/goals_view_goal_progress_card"
-                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:text="@string/goals_action_menu_button_text_delete"
+                    android:onClick="@{() -> fragment.onDeleteGoalClicked()}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/card_view_goal_details"
-                    bind:goal="@{goal}"
-                    bind:viewmodel="@{viewmodel}" />
+                    app:layout_constraintTop_toBottomOf="@+id/button_edit" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_archive"
+                    style="@style/Widget.Perfectus.TextButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:text="@string/goals_action_menu_button_text_archive"
+                    android:onClick="@{() -> fragment.onArchiveClicked()}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/button_delete" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_complete"
+                    style="@style/Widget.Perfectus.TextButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/goals_action_menu_button_text_complete"
+                    android:visibility="@{goal.totalEffort == 0 ? View.GONE : ((goal.progress + viewmodel.progress) * 100 / goal.totalEffort) >= 100 ? View.VISIBLE : View.GONE}"
+                    android:onClick="@{() -> fragment.onCompleteClicked()}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/button_archive" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </ScrollView>
+        </LinearLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_close"
-            style="@style/Widget.Perfectus.TextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:onClick="@{() -> fragment.onCloseClicked()}"
-            android:text="@string/goals_add_goals_button_close"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_add_progress"
-            style="@style/Widget.Perfectus.TextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:onClick="@{() -> fragment.onSaveClicked()}"
-            android:text="@string/goals_button_text_save_progress"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

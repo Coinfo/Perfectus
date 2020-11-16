@@ -5,6 +5,7 @@
 package app.chamich.feature.goals.ui.details
 
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
@@ -17,21 +18,21 @@ import app.chamich.feature.goals.databinding.GoalsDialogFragmentGoalDetailsBindi
 import app.chamich.feature.goals.model.Goal
 import app.chamich.feature.goals.model.GoalStatus
 import app.chamich.feature.goals.model.api.IGoal
-import app.chamich.feature.goals.ui.bottomsheet.menu.ActionMenuBottomSheet
-import app.chamich.feature.goals.ui.bottomsheet.menu.ActionMenuBottomSheet.Companion.KET_ACTION
-import app.chamich.feature.goals.ui.bottomsheet.menu.ActionMenuBottomSheet.Companion.REQUEST_KEY_ACTION
 import app.chamich.feature.goals.utils.EXTRA_EDITED_GOAL
 import app.chamich.feature.goals.utils.EXTRA_GOAL_ID
 import app.chamich.feature.goals.utils.REQUEST_KEY_EDIT_GOAL
 import app.chamich.feature.goals.utils.REQUEST_KEY_GOAL_DETAILS
 import app.chamich.library.core.CoreDialogFragment
 import app.chamich.library.core.model.Status
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 internal class GoalDetailsDialogFragment :
     CoreDialogFragment<GoalDetailsViewModel, GoalsDialogFragmentGoalDetailsBinding>() {
 
+    private lateinit var behavior: BottomSheetBehavior<View>
     private lateinit var currentGoal: IGoal
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -44,6 +45,22 @@ internal class GoalDetailsDialogFragment :
 
         setStyle(STYLE_NORMAL, R.style.Perfectus_FullScreenDialog)
     }
+
+    override fun onResume() {
+        super.onResume()
+
+        // This code is needed in order to collapse action menu when back button is pressed.
+        dialog?.setOnKeyListener { _, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_BACK
+                && event.action == KeyEvent.ACTION_DOWN
+                && behavior.state == BottomSheetBehavior.STATE_EXPANDED
+            ) {
+                behavior.state = BottomSheetBehavior.STATE_COLLAPSED
+                true
+            } else false
+        }
+    }
+
 
     override fun onStart() {
         super.onStart()
@@ -64,6 +81,7 @@ internal class GoalDetailsDialogFragment :
 
         binding.fragment = this
         binding.viewmodel = viewModel
+        behavior = BottomSheetBehavior.from(binding.bottomSheet)
 
         setupObservers()
 
@@ -90,35 +108,17 @@ internal class GoalDetailsDialogFragment :
     }
 
     fun onMenuClicked() {
-        setFragmentResultListener(REQUEST_KEY_ACTION) { key, bundle ->
-            if (REQUEST_KEY_ACTION == key) {
-                val action = bundle.getSerializable(KET_ACTION) as ActionMenuBottomSheet.Action
-                when (action) {
-                    ActionMenuBottomSheet.Action.EDIT -> onEditGoalClicked()
-                    ActionMenuBottomSheet.Action.DELETE -> onDeleteGoalClicked()
-                    ActionMenuBottomSheet.Action.ARCHIVE -> onArchiveClicked()
-                    ActionMenuBottomSheet.Action.COMPLETE -> onCompleteClicked()
-                }
-                clearFragmentResult(REQUEST_KEY_ACTION)
-            }
-        }
-
-        findNavController().navigate(R.id.destination_action_menu)
+        behavior.state = BottomSheetBehavior.STATE_EXPANDED
     }
 
-    //endregion
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //region Private Functions
-
-    private fun onDeleteGoalClicked() {
+    fun onDeleteGoalClicked() {
         viewModel.deleteGoal(currentGoal.id)
 
         findNavController().navigateUp()
     }
 
-    private fun onEditGoalClicked() {
+    fun onEditGoalClicked() {
+        behavior.state = BottomSheetBehavior.STATE_COLLAPSED
         setFragmentResultListener(REQUEST_KEY_EDIT_GOAL) { key, bundle ->
             if (REQUEST_KEY_EDIT_GOAL == key) {
                 val goal = bundle.getParcelable<Goal>(EXTRA_EDITED_GOAL) as IGoal
@@ -138,13 +138,13 @@ internal class GoalDetailsDialogFragment :
         )
     }
 
-    private fun onArchiveClicked() {
+    fun onArchiveClicked() {
         val goal = (currentGoal as Goal).copy(status = GoalStatus.ARCHIVED.id)
         viewModel.updateGoal(goal)
         findNavController().navigateUp()
     }
 
-    private fun onCompleteClicked() {
+    fun onCompleteClicked() {
         val goal = (currentGoal as Goal).copy(
             status = GoalStatus.COMPLETED.id,
             completeData = System.currentTimeMillis(),
@@ -152,6 +152,12 @@ internal class GoalDetailsDialogFragment :
         viewModel.updateGoal(goal)
         findNavController().navigateUp()
     }
+
+    //endregion
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //region Private Functions
 
     private fun setupObservers() {
         viewModel.deleteGoal.observe(viewLifecycleOwner, { result ->
