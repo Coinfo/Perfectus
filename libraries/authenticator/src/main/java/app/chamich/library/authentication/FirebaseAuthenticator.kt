@@ -8,6 +8,7 @@ package app.chamich.library.authentication
 import android.content.Context
 import android.content.Intent
 import app.chamich.library.authentication.exceptions.AuthenticatorException
+import app.chamich.library.authenticator.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
@@ -15,7 +16,6 @@ import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.coroutines.tasks.await
-import kotlin.Throws
 
 class FirebaseAuthenticator(
     private val authenticator: FirebaseAuth = FirebaseAuth.getInstance(),
@@ -63,14 +63,6 @@ class FirebaseAuthenticator(
         }
     }
 
-    override fun createGoogleSignInIntent(context: Context): Intent =
-        GoogleSignIn.getClient(
-            context, GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                //   .requestIdToken(WEB_CLIENT_ID)
-                .requestEmail()
-                .build()
-        ).signInIntent
-
     @Throws(AuthenticatorException.GoogleSignInException::class)
     override suspend fun finalizeGoogleSignIn(data: Intent?): IUser {
         val task = GoogleSignIn.getSignedInAccountFromIntent(data)
@@ -99,6 +91,15 @@ class FirebaseAuthenticator(
         }
     }
 
+    override suspend fun handleGoogleSignIn(data: Intent?): IUser {
+        val googleSignInResult = GoogleSignIn.getSignedInAccountFromIntent(data).await()
+        val credential = GoogleAuthProvider.getCredential(googleSignInResult.idToken, null)
+        val authenticationResult = authenticator.signInWithCredential(credential).await()
+        val user = authenticationResult.user
+
+        return FirebaseUser(user!!.uid, user.email!!, user.phoneNumber, user.displayName)
+    }
+
     override fun signOut() {
         authenticator.signOut()
     }
@@ -112,8 +113,12 @@ class FirebaseAuthenticator(
         return null
     }
 
-    companion object {
-        private const val WEB_CLIENT_ID =
-            "354909374087-hobh3odq8dbnoo3gu800se52oka8fp9g.apps.googleusercontent.com"
-    }
+    override fun getGoogleSignInIntent(context: Context) =
+        GoogleSignIn.getClient(
+            context, GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(context.getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build()
+        ).signInIntent
+
 }

@@ -7,7 +7,6 @@ package app.chamich.library.authentication
 import android.content.Context
 import android.content.Intent
 import app.chamich.library.authentication.exceptions.AuthenticatorException
-import kotlin.Throws
 
 /**
  * An interface which provides authentication functionality
@@ -43,7 +42,7 @@ interface IAuthenticator {
     @Throws(AuthenticatorException.GoogleSignInException::class)
     suspend fun finalizeGoogleSignIn(data: Intent?): IUser
 
-    fun createGoogleSignInIntent(context: Context): Intent
+    suspend fun handleGoogleSignIn(data: Intent?): IUser
 
     /**
      * Signs out the user
@@ -63,4 +62,6 @@ interface IAuthenticator {
      * @return current signed in user; otherwise null
      */
     fun getCurrentUser(): IUser?
+
+    fun getGoogleSignInIntent(context: Context): Intent
 }

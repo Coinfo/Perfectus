@@ -16,7 +16,9 @@ import app.chamich.library.authentication.IAuthenticator
 import app.chamich.library.authentication.IUser
 import app.chamich.library.authentication.exceptions.AuthenticatorException
 import app.chamich.library.logger.ILogger
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 internal class SignInViewModel @ViewModelInject constructor(
     private val authenticator: IAuthenticator,
@@ -41,21 +43,19 @@ internal class SignInViewModel @ViewModelInject constructor(
         }
     }
 
-    fun getSignedInUser(): LiveData<Resource<IUser>> = user
+    fun getGoogleSignInIntent(context: Context) = authenticator.getGoogleSignInIntent(context)
 
-    fun createGoogleSignInIntent(context: Context) = authenticator.createGoogleSignInIntent(context)
-
-    fun finalizeGoogleSignIn(intent: Intent?) {
+    fun handleGoogleSignIn(intent: Intent?) {
         viewModelScope.launch {
             user.postValue(Resource.loading(null))
-            try {
-                user.postValue(Resource.success(authenticator.finalizeGoogleSignIn(intent)))
-            } catch (exception: AuthenticatorException.GoogleSignInException) {
-                logger.error(message = "Exception while Sign In", throwable = exception)
-                user.postValue(Resource.error(exception))
+            withContext(Dispatchers.IO) {
+                user.postValue(Resource.success(authenticator.handleGoogleSignIn(intent)))
             }
         }
     }
+
+    fun getSignedInUser(): LiveData<Resource<IUser>> = user
+
 
     fun resetSignedInUser() {
         user = MutableLiveData()
