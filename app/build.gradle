@@ -27,7 +27,7 @@ ext.minSdkVersion = 21
 
 private Integer generateVersionCode() {
     //return 1000 + (ext.versionMajor * 100) + (ext.versionMinor * 10) + ext.versionPatch
-    return 13
+    return 14
 }
 
 private String generateVersionName() {

@@ -9,6 +9,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import app.chamich.feature.authentication.R
@@ -18,7 +20,6 @@ import app.chamich.feature.authentication.extenstion.textAsString
 import app.chamich.feature.authentication.model.Destinations
 import app.chamich.feature.authentication.model.Status
 import app.chamich.feature.authentication.ui.BaseFragment
-import app.chamich.library.authentication.GoogleSignInActivity
 import app.chamich.library.authentication.IUser
 import app.chamich.library.logger.ILogger
 import com.google.android.material.snackbar.Snackbar
@@ -37,6 +38,7 @@ internal class SignInFragment :
     lateinit var logger: ILogger
 
     private var listener: SignInListener? = null
+    private lateinit var activityResult: ActivityResultLauncher<Intent>
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Fragment Override Functions
@@ -53,22 +55,14 @@ internal class SignInFragment :
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        if (context !is SignInListener) {
-            logger.warn(
-                message = "In order to listen for Sign In Completion event," +
-                        " your activity should implement SignInFragment.SignInListener"
-            )
-        }
+        activityResult =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                viewModel.handleGoogleSignIn(it.data)
+            }
 
-        listener = context as? SignInListener
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == REQUEST_CODE_GOOGLE_SIGN_IN) {
-            viewModel.finalizeGoogleSignIn(data)
-        }
+        listener = context as? SignInListener ?: throw IllegalStateException(
+            "Your activity should implement SignInListener"
+        )
     }
 
     override fun onDestroyView() {
@@ -109,9 +103,7 @@ internal class SignInFragment :
     private fun setupBindings() {
         binding.fragment = this
         binding.buttonGoogleSignIn.setOnClickListener {
-//            startActivityForResult(
-//                viewModel.createGoogleSignInIntent(requireContext()), REQUEST_CODE_GOOGLE_SIGN_IN)
-            startActivity(Intent(requireContext(), GoogleSignInActivity::class.java))
+            activityResult.launch(viewModel.getGoogleSignInIntent(requireContext()))
         }
     }
 
@@ -166,7 +158,6 @@ internal class SignInFragment :
 
     companion object {
         private const val SNACKBAR_MAX_LINES = 5
-        private const val REQUEST_CODE_GOOGLE_SIGN_IN = 1000
     }
 
     //endregion
