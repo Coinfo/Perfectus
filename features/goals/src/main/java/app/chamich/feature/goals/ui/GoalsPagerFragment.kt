@@ -8,13 +8,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import app.chamich.feature.goals.R
 import app.chamich.library.core.CorePagerFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 
 // This fragment handles all navigation through the Goals functionality
+@AndroidEntryPoint
 class GoalsPagerFragment : CorePagerFragment() {
+
+    private var viewModel: GoalsPagerViewModel? = null
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Fragment Override Functions
@@ -23,6 +28,12 @@ class GoalsPagerFragment : CorePagerFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.goals_container, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel = ViewModelProvider(this).get(GoalsPagerViewModel::class.java)
+    }
 
     //endregion
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -37,9 +48,7 @@ class GoalsPagerFragment : CorePagerFragment() {
         ).navigate(R.id.destination_add_goal)
     }
 
-    override fun getTitle(): String {
-        return "Hi, Viktor"
-    }
+    override fun getTitle() = viewModel?.getDisplayedName() ?: ""
 
     override fun getSubtitle(): String {
         return "It's time to set the goal"

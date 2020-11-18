@@ -29,7 +29,7 @@ class FirebaseAuthenticator(
             val user = result.user ?: throw AuthenticatorException.SignInException(
                 IllegalStateException("Signed In User is null")
             )
-            return FirebaseUser(user.uid, email, user.phoneNumber, user.displayName)
+            return FirebaseUser(user.uid, email, user.phoneNumber, user.displayName, user.photoUrl)
         } catch (exception: FirebaseException) {
             throw AuthenticatorException.SignInException(exception)
         } catch (exception: IllegalArgumentException) {
@@ -44,7 +44,7 @@ class FirebaseAuthenticator(
             val user = result.user ?: throw AuthenticatorException.SignUpException(
                 IllegalStateException("Signed Up User is null")
             )
-            return FirebaseUser(user.uid, email, user.phoneNumber, user.displayName)
+            return FirebaseUser(user.uid, email, user.phoneNumber, user.displayName, user.photoUrl)
         } catch (exception: FirebaseException) {
             throw AuthenticatorException.SignUpException(exception)
         } catch (exception: IllegalArgumentException) {
@@ -64,40 +64,25 @@ class FirebaseAuthenticator(
     }
 
     @Throws(AuthenticatorException.GoogleSignInException::class)
-    override suspend fun finalizeGoogleSignIn(data: Intent?): IUser {
-        val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+    override suspend fun handleGoogleSignIn(data: Intent?): IUser {
         try {
-            val account = task.getResult(ApiException::class.java)
-            if (account != null) {
-                val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-                try {
-                    val result = authenticator.signInWithCredential(credential).await()
-                    val user = result.user ?: throw AuthenticatorException.GoogleSignInException(
-                        IllegalStateException("Google Signed Up User is null")
-                    )
-                    return FirebaseUser(user.uid, user.email!!, user.phoneNumber, user.displayName)
-                } catch (exception: IllegalArgumentException) {
-                    throw AuthenticatorException.GoogleSignInException(exception)
-                }
-            } else {
-                throw AuthenticatorException.GoogleSignInException(
-                    IllegalStateException("Google Account is null")
-                )
-            }
+            val googleSignInResult = GoogleSignIn.getSignedInAccountFromIntent(data).await()
+            val credential = GoogleAuthProvider.getCredential(googleSignInResult.idToken, null)
+            val authenticationResult = authenticator.signInWithCredential(credential).await()
+            val user = authenticationResult.user ?: throw AuthenticatorException.SignUpException(
+                IllegalStateException("Signed Up User is null")
+            )
+
+            return FirebaseUser(
+                user.uid,
+                user.email,
+                user.phoneNumber,
+                user.displayName,
+                user.photoUrl
+            )
         } catch (exception: ApiException) {
             throw AuthenticatorException.GoogleSignInException(exception)
-        } catch (exception: IllegalArgumentException) {
-            throw AuthenticatorException.GoogleSignInException(exception)
         }
-    }
-
-    override suspend fun handleGoogleSignIn(data: Intent?): IUser {
-        val googleSignInResult = GoogleSignIn.getSignedInAccountFromIntent(data).await()
-        val credential = GoogleAuthProvider.getCredential(googleSignInResult.idToken, null)
-        val authenticationResult = authenticator.signInWithCredential(credential).await()
-        val user = authenticationResult.user
-
-        return FirebaseUser(user!!.uid, user.email!!, user.phoneNumber, user.displayName)
     }
 
     override fun signOut() {
@@ -108,7 +93,7 @@ class FirebaseAuthenticator(
 
     override fun getCurrentUser(): IUser? {
         authenticator.currentUser?.let {
-            return FirebaseUser(it.uid, it.email!!, it.phoneNumber, it.displayName)
+            return FirebaseUser(it.uid, it.email!!, it.phoneNumber, it.displayName, it.photoUrl)
         }
         return null
     }

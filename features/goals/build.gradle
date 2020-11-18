@@ -49,6 +49,7 @@ dependencies {
     implementation project(path: ':libraries:design')
     implementation project(path: ':libraries:database')
     implementation project(path: ':libraries:logger')
+    implementation project(path: ':libraries:authenticator')
 
     implementation "androidx.fragment:fragment-ktx:1.3.0-beta01"
 

@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import app.chamich.feature.profile.R
 import app.chamich.feature.profile.databinding.ProfileBottomSheetProfileMenuBinding
 import app.chamich.library.core.CoreBottomSheetDialogFragment
+import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -73,8 +74,15 @@ internal class ProfileMenuBottomSheet :
 
     private fun renderUserProfileData() {
         val user = viewModel.getCurrentUser()
-        binding.textViewUsername.text = user.name
+        binding.textViewUsername.text = user.displayName
         binding.textViewEmail.text = user.email
+
+        Glide
+            .with(this)
+            .load(user.photoUrl)
+            .centerCrop()
+            .placeholder(R.drawable.profile_avatar_placeholder)
+            .into(binding.imageViewProfileAvatar)
     }
 
     private fun initializeToggleButton() {
