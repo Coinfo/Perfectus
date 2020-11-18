@@ -11,4 +11,10 @@
         android:title="@string/goals_menu_item_archive"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/action_share"
+        android:icon="@drawable/goals_share"
+        android:title="@string/goals_menu_item_share"
+        app:showAsAction="always" />
+
 </menu>
