@@ -73,7 +73,7 @@ internal class ProfileMenuBottomSheet :
 
     private fun renderUserProfileData() {
         val user = viewModel.getCurrentUser()
-        binding.textViewUsername.text = user.name
+        binding.textViewUsername.text = user.displayName
         binding.textViewEmail.text = user.email
     }
 

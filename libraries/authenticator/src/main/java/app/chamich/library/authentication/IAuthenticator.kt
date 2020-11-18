@@ -40,8 +40,6 @@ interface IAuthenticator {
     suspend fun resetPassword(email: String)
 
     @Throws(AuthenticatorException.GoogleSignInException::class)
-    suspend fun finalizeGoogleSignIn(data: Intent?): IUser
-
     suspend fun handleGoogleSignIn(data: Intent?): IUser
 
     /**
