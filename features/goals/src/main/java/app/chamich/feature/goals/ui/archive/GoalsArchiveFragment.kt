@@ -16,8 +16,9 @@ import app.chamich.feature.goals.databinding.GoalsDialogFragmentArchiveBinding
 import app.chamich.feature.goals.model.Goal
 import app.chamich.feature.goals.model.GoalStatus
 import app.chamich.feature.goals.model.api.IGoal
-import app.chamich.feature.goals.utils.EXTRA_EDITED_GOAL
+import app.chamich.feature.goals.utils.EXTRA_GOAL
 import app.chamich.feature.goals.utils.REQUEST_KEY_EDIT_GOAL
+import app.chamich.feature.goals.utils.REQUEST_KEY_GOAL_ACTIONS
 import app.chamich.library.core.CoreDialogFragment
 import app.chamich.library.core.model.Status
 import dagger.hilt.android.AndroidEntryPoint
@@ -84,19 +85,28 @@ internal class GoalsArchiveFragment :
     override fun onGoalClicked(goal: IGoal) {
         setFragmentResultListener(REQUEST_KEY_EDIT_GOAL) { key, bundle ->
             if (REQUEST_KEY_EDIT_GOAL == key) {
-                val updatedGoal = bundle.getParcelable<Goal>(EXTRA_EDITED_GOAL) as IGoal
+                val updatedGoal = bundle.getParcelable<Goal>(EXTRA_GOAL) as IGoal
                 viewModel.updateGoal(updatedGoal)
                 clearFragmentResult(REQUEST_KEY_EDIT_GOAL)
             }
         }
 
         findNavController().navigate(
-            R.id.destination_edit_goal, bundleOf(REQUEST_KEY_EDIT_GOAL to goal)
+            R.id.destination_edit_goal, bundleOf(EXTRA_GOAL to goal)
         )
     }
 
     override fun onActionsClicked(goal: IGoal) {
-        //
+        setFragmentResultListener(REQUEST_KEY_GOAL_ACTIONS) { key, _ ->
+            if (REQUEST_KEY_GOAL_ACTIONS == key) {
+                viewModel.loadArchivedGoals()
+                clearFragmentResult(REQUEST_KEY_EDIT_GOAL)
+            }
+        }
+
+        findNavController().navigate(
+            R.id.destination_action_menu, bundleOf(EXTRA_GOAL to goal)
+        )
     }
 
     //endregion

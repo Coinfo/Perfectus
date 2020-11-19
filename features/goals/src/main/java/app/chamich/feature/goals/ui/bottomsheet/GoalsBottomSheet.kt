@@ -13,8 +13,8 @@ import app.chamich.feature.goals.R
 import app.chamich.library.core.CoreBottomSheetDialogFragment
 import com.google.android.material.chip.Chip
 
-internal abstract class GoalsBottomSheet<VDB : ViewDataBinding> :
-    CoreBottomSheetDialogFragment<ViewModel, VDB>() {
+internal abstract class GoalsBottomSheet<VM : ViewModel, VDB : ViewDataBinding> :
+    CoreBottomSheetDialogFragment<VM, VDB>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +23,4 @@ internal abstract class GoalsBottomSheet<VDB : ViewDataBinding> :
 
     protected fun inflateAsChip(@LayoutRes layoutRes: Int, parent: ViewGroup) =
         layoutInflater.inflate(layoutRes, parent, false) as Chip
-
-    override fun getViewModelClass() = ViewModel::class.java
 }

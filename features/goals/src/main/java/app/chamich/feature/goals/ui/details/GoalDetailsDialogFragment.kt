@@ -18,7 +18,7 @@ import app.chamich.feature.goals.databinding.GoalsDialogFragmentGoalDetailsBindi
 import app.chamich.feature.goals.model.Goal
 import app.chamich.feature.goals.model.GoalStatus
 import app.chamich.feature.goals.model.api.IGoal
-import app.chamich.feature.goals.utils.EXTRA_EDITED_GOAL
+import app.chamich.feature.goals.utils.EXTRA_GOAL
 import app.chamich.feature.goals.utils.EXTRA_GOAL_ID
 import app.chamich.feature.goals.utils.REQUEST_KEY_EDIT_GOAL
 import app.chamich.feature.goals.utils.REQUEST_KEY_GOAL_DETAILS
@@ -121,7 +121,7 @@ internal class GoalDetailsDialogFragment :
         behavior.state = BottomSheetBehavior.STATE_COLLAPSED
         setFragmentResultListener(REQUEST_KEY_EDIT_GOAL) { key, bundle ->
             if (REQUEST_KEY_EDIT_GOAL == key) {
-                val goal = bundle.getParcelable<Goal>(EXTRA_EDITED_GOAL) as IGoal
+                val goal = bundle.getParcelable<Goal>(EXTRA_GOAL) as IGoal
                 currentGoal = goal
                 binding.goal = goal
                 binding.executePendingBindings()
@@ -134,7 +134,7 @@ internal class GoalDetailsDialogFragment :
 
         findNavController().navigate(
             R.id.destination_edit_goal,
-            bundleOf(REQUEST_KEY_EDIT_GOAL to currentGoal)
+            bundleOf(EXTRA_GOAL to currentGoal)
         )
     }
 
