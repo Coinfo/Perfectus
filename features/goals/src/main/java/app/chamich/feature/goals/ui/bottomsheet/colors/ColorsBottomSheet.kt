@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.setFragmentResult
+import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import app.chamich.feature.goals.R
 import app.chamich.feature.goals.databinding.GoalsBottomSheetDialogColorsBinding
@@ -19,7 +20,7 @@ import app.chamich.feature.goals.model.Color
 import app.chamich.feature.goals.ui.bottomsheet.GoalsBottomSheet
 
 internal class ColorsBottomSheet :
-    GoalsBottomSheet<GoalsBottomSheetDialogColorsBinding>() {
+    GoalsBottomSheet<ViewModel, GoalsBottomSheetDialogColorsBinding>() {
 
     private lateinit var selectedColor: Color
 
@@ -34,6 +35,8 @@ internal class ColorsBottomSheet :
         setupBindings()
         setupChips(getColorId())
     }
+
+    override fun getViewModelClass() = ViewModel::class.java
 
     //endregion
     ////////////////////////////////////////////////////////////////////////////////////////////////

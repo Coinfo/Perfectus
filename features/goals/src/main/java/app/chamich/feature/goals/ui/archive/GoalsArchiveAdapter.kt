@@ -14,7 +14,7 @@ import app.chamich.feature.goals.model.api.IGoal
 import app.chamich.feature.goals.ui.archive.GoalsArchiveAdapter.ArchivedGoalsViewHolder
 
 internal class GoalsArchiveAdapter(
-    private val listener: (Long) -> Unit
+    private val listener: GoalsArchiveListener
 ) : RecyclerView.Adapter<ArchivedGoalsViewHolder>() {
 
     private val goals: MutableList<IGoal> = mutableListOf()
@@ -35,7 +35,8 @@ internal class GoalsArchiveAdapter(
     override fun onBindViewHolder(holder: ArchivedGoalsViewHolder, position: Int) {
         val goal = goals[position]
         holder.binding.goal = goal
-        holder.binding.root.setOnClickListener { listener(goal.id) }
+        holder.binding.root.setOnClickListener { listener.onGoalClicked(goal) }
+        holder.binding.buttonGoalActions.setOnClickListener { listener.onActionsClicked(goal) }
     }
 
     override fun getItemCount() = goals.size
@@ -58,4 +59,9 @@ internal class GoalsArchiveAdapter(
     inner class ArchivedGoalsViewHolder(
         val binding: GoalsItemArchivedGoalBinding
     ) : RecyclerView.ViewHolder(binding.root)
+
+    interface GoalsArchiveListener {
+        fun onGoalClicked(goal: IGoal)
+        fun onActionsClicked(goal: IGoal)
+    }
 }

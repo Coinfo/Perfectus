@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
+import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import app.chamich.feature.goals.R
 import app.chamich.feature.goals.databinding.GoalsBottomSheetDialogDatePickerBinding
@@ -15,7 +16,7 @@ import app.chamich.feature.goals.ui.bottomsheet.GoalsBottomSheet
 import java.util.*
 
 internal class DatePickerBottomSheet :
-    GoalsBottomSheet<GoalsBottomSheetDialogDatePickerBinding>() {
+    GoalsBottomSheet<ViewModel, GoalsBottomSheetDialogDatePickerBinding>() {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Fragment Override Functions
@@ -28,6 +29,8 @@ internal class DatePickerBottomSheet :
         setupBindings()
         setupNumberPickers(getDate())
     }
+
+    override fun getViewModelClass() = ViewModel::class.java
 
     //endregion
     ////////////////////////////////////////////////////////////////////////////////////////////////

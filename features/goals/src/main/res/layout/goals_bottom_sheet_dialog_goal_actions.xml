@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020 Chamich Apps. All rights reserved.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="fragment"
+            type="app.chamich.feature.goals.ui.bottomsheet.menu.GoalActionsMenuBottomSheet" />
+
+        <variable
+            name="isArchive"
+            type="Boolean" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Perfectus.BottomSheetCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/text_view_action_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/goals_action_menu_label_actions"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/linear_layout_actions"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="24dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_action_title">
+
+                <Button
+                    android:id="@+id/button_archive"
+                    style="@style/Widget.Perfectus.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> fragment.onArchiveClicked()}"
+                    android:text="@string/goals_action_menu_button_text_archive"
+                    android:visibility="@{isArchive ? View.GONE : View.VISIBLE}" />
+
+                <Button
+                    android:id="@+id/button_complete"
+                    style="@style/Widget.Perfectus.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> fragment.onCompleteClicked()}"
+                    android:text="@string/goals_action_menu_button_text_complete"
+                    android:visibility="@{isArchive ? View.GONE : View.VISIBLE}" />
+
+                <Button
+                    android:id="@+id/button_unarchive"
+                    style="@style/Widget.Perfectus.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> fragment.onUnarchiveClicked()}"
+                    android:text="@string/goals_action_menu_button_text_unarchive"
+                    android:visibility="@{isArchive ? View.VISIBLE : View.GONE}" />
+
+                <Button
+                    android:id="@+id/button_delete"
+                    style="@style/Widget.Perfectus.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> fragment.onDeleteClicked()}"
+                    android:text="@string/goals_action_menu_button_text_delete" />
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint_layout_action_confirmation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:visibility="invisible"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_action_title">
+
+                <TextView
+                    android:id="@+id/text_view_action_message"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/button_no"
+                    style="@style/Widget.Perfectus.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> fragment.onNoClicked()}"
+                    android:text="@string/goals_action_menu_button_no_text"
+                    app:layout_constraintEnd_toStartOf="@+id/button_yes"
+                    app:layout_constraintTop_toBottomOf="@+id/text_view_action_message" />
+
+                <Button
+                    android:id="@+id/button_yes"
+                    style="@style/Widget.Perfectus.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> fragment.onYesClicked()}"
+                    android:text="@string/goals_action_menu_button_yes_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_view_action_message" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

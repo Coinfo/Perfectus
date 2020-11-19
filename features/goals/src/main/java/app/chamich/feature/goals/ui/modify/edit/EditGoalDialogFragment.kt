@@ -17,7 +17,7 @@ import app.chamich.feature.goals.model.Goal
 import app.chamich.feature.goals.model.Measurement
 import app.chamich.feature.goals.model.api.IGoal
 import app.chamich.feature.goals.ui.modify.ModifyGoalDialogFragment
-import app.chamich.feature.goals.utils.EXTRA_EDITED_GOAL
+import app.chamich.feature.goals.utils.EXTRA_GOAL
 import app.chamich.feature.goals.utils.REQUEST_KEY_EDIT_GOAL
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
@@ -59,7 +59,7 @@ internal class EditGoalDialogFragment :
             category = viewModel.category.id,
             completeData = viewModel.date,
         )
-        setFragmentResult(REQUEST_KEY_EDIT_GOAL, bundleOf(EXTRA_EDITED_GOAL to goal))
+        setFragmentResult(REQUEST_KEY_EDIT_GOAL, bundleOf(EXTRA_GOAL to goal))
         findNavController().navigateUp()
     }
 
@@ -70,7 +70,7 @@ internal class EditGoalDialogFragment :
     //endregion
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private fun getGoalFromExtras() = arguments?.getParcelable<Goal>(REQUEST_KEY_EDIT_GOAL)
+    private fun getGoalFromExtras() = arguments?.getParcelable<Goal>(EXTRA_GOAL)
         ?: throw IllegalStateException("An error occurred while trying get Goal ID from extras")
 
     private fun handleGoalLoadedSuccess(goal: IGoal?) {

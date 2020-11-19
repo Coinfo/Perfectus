@@ -16,7 +16,8 @@ import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import app.chamich.feature.goals.R
 import app.chamich.feature.goals.databinding.GoalsFragmentGoalsBinding
-import app.chamich.feature.goals.utils.EXTRA_GOAL_ID
+import app.chamich.feature.goals.model.api.IGoal
+import app.chamich.feature.goals.utils.EXTRA_GOAL
 import app.chamich.feature.goals.utils.REQUEST_KEY_GOAL_DETAILS
 import app.chamich.library.core.CoreFragment
 import app.chamich.library.core.model.Status
@@ -78,7 +79,7 @@ internal class GoalsFragment :
     //region Private Functions
 
     private fun setupRecyclerView() {
-        adapter = GoalsAdapter { id -> navigateToGoalDetailsWithResult(id) }
+        adapter = GoalsAdapter { goal -> navigateToGoalDetailsWithResult(goal) }
         binding.recyclerviewGoals.adapter = adapter
     }
 
@@ -98,15 +99,18 @@ internal class GoalsFragment :
         findNavController().navigate(R.id.destination_archive_home)
     }
 
-    private fun navigateToGoalDetailsWithResult(id: Long) {
-        setFragmentResultListener(REQUEST_KEY_GOAL_DETAILS) { key, bundle ->
+    private fun navigateToGoalDetailsWithResult(goal: IGoal) {
+        setFragmentResultListener(REQUEST_KEY_GOAL_DETAILS) { key, _ ->
             if (REQUEST_KEY_GOAL_DETAILS == key) {
                 viewModel.loadGoals()
                 clearFragmentResult(REQUEST_KEY_GOAL_DETAILS)
             }
         }
 
-        findNavController().navigate(R.id.destination_goal_details, bundleOf(EXTRA_GOAL_ID to id))
+        findNavController().navigate(
+            R.id.destination_goal_details,
+            bundleOf(EXTRA_GOAL to goal)
+        )
     }
 
     //endregion

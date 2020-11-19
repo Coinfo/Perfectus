@@ -22,15 +22,29 @@ internal class GoalsArchiveViewModel @ViewModelInject constructor(
 ) : ViewModel() {
 
     private val _archivedGoals = MutableLiveData<Resource<List<IGoal>>>()
-    var archivedGoals: LiveData<Resource<List<IGoal>>> = _archivedGoals
+    val archivedGoals: LiveData<Resource<List<IGoal>>>
+        get() = _archivedGoals
+
+    private val _updatedGoal = MutableLiveData<Resource<Unit>>()
+    val updatedGoal: LiveData<Resource<Unit>>
+        get() = _updatedGoal
 
     var status = GoalStatus.ARCHIVED
 
     fun loadArchivedGoals() {
         viewModelScope.launch {
-            _archivedGoals.postValue(Resource.loading(null))
+            _archivedGoals.postValue(Resource.loading())
             withContext(Dispatchers.IO) {
                 _archivedGoals.postValue(Resource.success(repository.getGoals(status)))
+            }
+        }
+    }
+
+    fun updateGoal(goal: IGoal) {
+        viewModelScope.launch {
+            _updatedGoal.postValue(Resource.loading())
+            withContext(Dispatchers.IO) {
+                _updatedGoal.postValue(Resource.success(repository.updateGoal(goal)))
             }
         }
     }

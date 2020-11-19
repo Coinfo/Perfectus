@@ -7,18 +7,26 @@ package app.chamich.feature.goals.ui.archive
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.fragment.app.clearFragmentResult
+import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import app.chamich.feature.goals.R
 import app.chamich.feature.goals.databinding.GoalsDialogFragmentArchiveBinding
+import app.chamich.feature.goals.model.Goal
 import app.chamich.feature.goals.model.GoalStatus
 import app.chamich.feature.goals.model.api.IGoal
+import app.chamich.feature.goals.utils.EXTRA_GOAL
+import app.chamich.feature.goals.utils.REQUEST_KEY_EDIT_GOAL
+import app.chamich.feature.goals.utils.REQUEST_KEY_GOAL_ACTIONS
 import app.chamich.library.core.CoreDialogFragment
 import app.chamich.library.core.model.Status
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 internal class GoalsArchiveFragment :
-    CoreDialogFragment<GoalsArchiveViewModel, GoalsDialogFragmentArchiveBinding>() {
+    CoreDialogFragment<GoalsArchiveViewModel, GoalsDialogFragmentArchiveBinding>(),
+    GoalsArchiveAdapter.GoalsArchiveListener {
 
     private lateinit var adapter: GoalsArchiveAdapter
 
@@ -72,6 +80,39 @@ internal class GoalsArchiveFragment :
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
+    //region GoalsArchiveAdapter.GoalsArchiveListener overridden methods
+
+    override fun onGoalClicked(goal: IGoal) {
+        setFragmentResultListener(REQUEST_KEY_EDIT_GOAL) { key, bundle ->
+            if (REQUEST_KEY_EDIT_GOAL == key) {
+                val updatedGoal = bundle.getParcelable<Goal>(EXTRA_GOAL) as IGoal
+                viewModel.updateGoal(updatedGoal)
+                clearFragmentResult(REQUEST_KEY_EDIT_GOAL)
+            }
+        }
+
+        findNavController().navigate(
+            R.id.destination_edit_goal, bundleOf(EXTRA_GOAL to goal)
+        )
+    }
+
+    override fun onActionsClicked(goal: IGoal) {
+        setFragmentResultListener(REQUEST_KEY_GOAL_ACTIONS) { key, _ ->
+            if (REQUEST_KEY_GOAL_ACTIONS == key) {
+                viewModel.loadArchivedGoals()
+                clearFragmentResult(REQUEST_KEY_EDIT_GOAL)
+            }
+        }
+
+        findNavController().navigate(
+            R.id.destination_action_menu, bundleOf(EXTRA_GOAL to goal)
+        )
+    }
+
+    //endregion
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Fragment Override Functions
 
     private fun initializeBindings() {
@@ -95,16 +136,24 @@ internal class GoalsArchiveFragment :
     }
 
     private fun setupRecyclerView() {
-        adapter = GoalsArchiveAdapter { /* */ }
+        adapter = GoalsArchiveAdapter(this)
         binding.recyclerViewArchivedGoals.adapter = adapter
     }
 
     private fun setupObservers() {
         viewModel.archivedGoals.observe(viewLifecycleOwner, { result ->
             when (result.status) {
-                Status.SUCCESS -> handleSuccess(result.data)
+                Status.SUCCESS -> handleLoadArchivedGoalsSuccess(result.data)
                 Status.LOADING -> handleProgress()
                 Status.FAILURE -> handleFailure(result.data)
+            }
+        })
+
+        viewModel.updatedGoal.observe(viewLifecycleOwner, { result ->
+            when (result.status) {
+                Status.SUCCESS -> handleUpdatedGoalSuccess()
+                Status.LOADING -> handleProgress()
+                Status.FAILURE -> handleFailure(null)
             }
         })
     }
@@ -114,10 +163,14 @@ internal class GoalsArchiveFragment :
         viewModel.loadArchivedGoals()
     }
 
-    private fun handleSuccess(data: List<IGoal>?) {
+    private fun handleLoadArchivedGoalsSuccess(data: List<IGoal>?) {
         data?.let {
             adapter.addArchivedGoals(it)
         }
+    }
+
+    private fun handleUpdatedGoalSuccess() {
+        viewModel.loadArchivedGoals()
     }
 
     private fun handleFailure(data: List<IGoal>?) {
@@ -130,5 +183,4 @@ internal class GoalsArchiveFragment :
 
     //endregion
     ////////////////////////////////////////////////////////////////////////////////////////////////
-
 }
