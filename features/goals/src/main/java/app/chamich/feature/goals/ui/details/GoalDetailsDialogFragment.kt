@@ -126,8 +126,6 @@ internal class GoalDetailsDialogFragment :
                 binding.goal = goal
                 binding.executePendingBindings()
 
-                findNavController().navigateUp()
-
                 clearFragmentResult(REQUEST_KEY_EDIT_GOAL)
             }
         }
