@@ -36,6 +36,7 @@ internal class GoalsArchiveAdapter(
         val goal = goals[position]
         holder.binding.goal = goal
         holder.binding.root.setOnClickListener { listener.onGoalClicked(goal) }
+        holder.binding.buttonGoalActions.setOnClickListener { listener.onActionsClicked(goal) }
     }
 
     override fun getItemCount() = goals.size
@@ -61,6 +62,6 @@ internal class GoalsArchiveAdapter(
 
     interface GoalsArchiveListener {
         fun onGoalClicked(goal: IGoal)
-        fun onActionsClicked()
+        fun onActionsClicked(goal: IGoal)
     }
 }

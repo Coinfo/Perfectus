@@ -95,8 +95,8 @@ internal class GoalsArchiveFragment :
         )
     }
 
-    override fun onActionsClicked() {
-        TODO("Not yet implemented")
+    override fun onActionsClicked(goal: IGoal) {
+        //
     }
 
     //endregion
