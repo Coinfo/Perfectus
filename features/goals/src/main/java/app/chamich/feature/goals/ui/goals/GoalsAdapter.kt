@@ -16,7 +16,7 @@ import app.chamich.feature.goals.model.api.IGoal
 
 
 internal class GoalsAdapter(
-    private val listener: (Long) -> Unit
+    private val listener: (IGoal) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val items: MutableList<GoalUi> = mutableListOf()
@@ -52,7 +52,7 @@ internal class GoalsAdapter(
             is GoalsViewHolder -> {
                 val goal = items[position]
                 holder.binding.goal = goal
-                holder.binding.root.setOnClickListener { listener(goal.id) }
+                holder.binding.root.setOnClickListener { listener(goal.goal) }
             }
             is HeaderViewHolder -> {
                 val header = items[position]

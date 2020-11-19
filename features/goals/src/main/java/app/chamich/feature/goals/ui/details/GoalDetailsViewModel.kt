@@ -26,21 +26,10 @@ internal class GoalDetailsViewModel @ViewModelInject constructor(
     private val _updateGoal = MutableLiveData<Resource<Unit>>()
     var updateGoal: LiveData<Resource<Unit>> = _updateGoal
 
-    private val _loadGoal = MutableLiveData<Resource<IGoal>>()
-    val loadGoal: LiveData<Resource<IGoal>> = _loadGoal
-
 
     var initialGoal: IGoal? = null
 
     private val progress = MutableLiveData(0)
-
-    fun loadGoal(id: Long) = viewModelScope.launch {
-        _loadGoal.postValue(Resource.loading())
-        withContext(Dispatchers.IO) {
-            initialGoal = repository.getGoal(id)
-            _loadGoal.postValue(Resource.success(initialGoal))
-        }
-    }
 
     fun updateGoal(goal: IGoal) = viewModelScope.launch {
         _updateGoal.postValue(Resource.loading())
