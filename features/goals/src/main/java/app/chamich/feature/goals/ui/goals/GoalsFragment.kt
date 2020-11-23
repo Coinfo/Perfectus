@@ -18,6 +18,8 @@ import app.chamich.feature.goals.R
 import app.chamich.feature.goals.databinding.GoalsFragmentGoalsBinding
 import app.chamich.feature.goals.model.api.IGoal
 import app.chamich.feature.goals.utils.EXTRA_GOAL
+import app.chamich.feature.goals.utils.REQUEST_KEY_EDIT_GOAL
+import app.chamich.feature.goals.utils.REQUEST_KEY_GOAL_ACTIONS
 import app.chamich.feature.goals.utils.REQUEST_KEY_GOAL_DETAILS
 import app.chamich.library.core.CoreFragment
 import app.chamich.library.core.model.Status
@@ -26,7 +28,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 internal class GoalsFragment :
-    CoreFragment<GoalsViewModel, GoalsFragmentGoalsBinding>() {
+    CoreFragment<GoalsViewModel, GoalsFragmentGoalsBinding>(), GoalsAdapter.GoalsListener {
 
     private lateinit var adapter: GoalsAdapter
 
@@ -76,10 +78,32 @@ internal class GoalsFragment :
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
+    //region GoalsAdapter.GoalsListener overridden methods
+
+    override fun onGoalClicked(goal: IGoal) {
+        navigateToGoalDetailsWithResult(goal)
+    }
+
+    override fun onActionsClicked(goal: IGoal) {
+        setFragmentResultListener(REQUEST_KEY_GOAL_ACTIONS) { key, _ ->
+            if (REQUEST_KEY_GOAL_ACTIONS == key) {
+                clearFragmentResult(REQUEST_KEY_EDIT_GOAL)
+            }
+        }
+
+        findNavController().navigate(
+            R.id.destination_action_menu, bundleOf(EXTRA_GOAL to goal)
+        )
+    }
+
+    //endregion
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Private Functions
 
     private fun setupRecyclerView() {
-        adapter = GoalsAdapter { goal -> navigateToGoalDetailsWithResult(goal) }
+        adapter = GoalsAdapter(this)
         binding.recyclerviewGoals.adapter = adapter
     }
 

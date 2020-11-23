@@ -17,6 +17,10 @@
             name="isArchive"
             type="Boolean" />
 
+        <variable
+            name="canComplete"
+            type="Boolean" />
+
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -65,7 +69,7 @@
                     android:layout_height="wrap_content"
                     android:onClick="@{() -> fragment.onCompleteClicked()}"
                     android:text="@string/goals_action_menu_button_text_complete"
-                    android:visibility="@{isArchive ? View.GONE : View.VISIBLE}" />
+                    android:visibility="@{canComplete ? View.VISIBLE : View.GONE}" />
 
                 <Button
                     android:id="@+id/button_unarchive"

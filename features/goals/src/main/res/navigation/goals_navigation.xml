@@ -74,6 +74,9 @@
         android:name="app.chamich.feature.goals.ui.details.GoalDetailsDialogFragment"
         android:label="GoalDialogFragment"
         tools:layout="@layout/goals_dialog_fragment_goal_details">
+        <action
+            android:id="@+id/goals_action_destination_goal_details_to_destination_action_menu"
+            app:destination="@id/destination_action_menu" />
     </dialog>
 
     <dialog
