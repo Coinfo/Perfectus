@@ -96,7 +96,7 @@ class PerfectusFragment : Fragment() {
         override fun setPrimaryItem(container: ViewGroup, position: Int, fragment: Any) {
             if (currentPagerFragment != fragment) {
                 currentPagerFragment = fragment as CorePagerFragment
-                text_view_title.text = currentPagerFragment?.getTitle()
+                currentPagerFragment?.setTitleView(text_view_title)
                 text_view_subtitle.text = currentPagerFragment?.getSubtitle()
             }
             super.setPrimaryItem(container, position, fragment)
