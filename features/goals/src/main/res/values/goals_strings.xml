@@ -68,7 +68,7 @@
     <string name="goals_action_menu_message_text_delete">Are you sure you want to delete goal \"%s\"</string>
     <string name="goals_action_menu_message_text_archive">Are you sure you want to archive goal \"%s\"</string>
     <string name="goals_action_menu_message_text_unarchive">Are you sure you want to unarchive goal \"%s\"</string>
-    <string name="goals_action_menu_message_text_complete">Are you sure you want to delete complete \"%s\"</string>
+    <string name="goals_action_menu_message_text_complete">Are you sure you want to complete \"%s\"</string>
 
     <!-- Errors -->
     <string name="goals_error_text_progress_more_then_effort">

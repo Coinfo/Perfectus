@@ -124,6 +124,9 @@ internal class GoalActionsMenuBottomSheet :
     private fun setupBindings() {
         binding.fragment = this
         binding.isArchive = goal.status != GoalStatus.ACTIVE.id
+        binding.canComplete = goal.status == GoalStatus.ACTIVE.id
+                && goal.totalEffort != 0
+                && goal.progress * PERCENT_100 / goal.totalEffort > PERCENT_100
     }
 
     private fun setupObservers() {
@@ -167,4 +170,8 @@ internal class GoalActionsMenuBottomSheet :
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     private enum class Action { NONE, DELETE, COMPLETE, ARCHIVE, UNARCHIVE }
+
+    companion object {
+        private const val PERCENT_100 = 100
+    }
 }
