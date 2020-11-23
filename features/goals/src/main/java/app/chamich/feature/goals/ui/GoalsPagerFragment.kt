@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import app.chamich.feature.goals.R
@@ -21,6 +22,8 @@ class GoalsPagerFragment : CorePagerFragment() {
 
     private var viewModel: GoalsPagerViewModel? = null
 
+    private var titleView: TextView? = null
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //region Fragment Override Functions
 
@@ -33,6 +36,7 @@ class GoalsPagerFragment : CorePagerFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(GoalsPagerViewModel::class.java)
+        titleView?.text = viewModel?.getDisplayedName() ?: ""
     }
 
     //endregion
@@ -48,7 +52,10 @@ class GoalsPagerFragment : CorePagerFragment() {
         ).navigate(R.id.destination_add_goal)
     }
 
-    override fun getTitle() = viewModel?.getDisplayedName() ?: ""
+    override fun setTitleView(view: TextView) {
+        titleView = view
+        titleView?.text = viewModel?.getDisplayedName() ?: ""
+    }
 
     override fun getSubtitle(): String {
         return "It's time to set the goal"
