@@ -2,7 +2,7 @@
 
 > “Le mieux est l'ennemi du bien.
 
-[![CircleCI](https://circleci.com/gh/ChamichApps/Perfectus/tree/develop.svg?style=shield)](https://circleci.com/gh/ChamichApps/Perfectus/tree/develop)
+[![CircleCI](https://circleci.com/gh/ChamichApps/Perfectus/tree/release.svg?style=shield)](https://circleci.com/gh/ChamichApps/Perfectus/tree/release)
 [![Kotlin Version](https://img.shields.io/badge/kotlin-1.4.10-blue.svg)](http://kotlinlang.org/)
 [![Gradle](https://img.shields.io/badge/gradle-6.6.1-blue.svg)](https://lv.binarybabel.org/catalog/gradle/latest)
 [![API](https://img.shields.io/badge/API-21%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=21)
