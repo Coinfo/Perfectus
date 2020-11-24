@@ -97,6 +97,7 @@ dependencies {
     implementation project(path: ':libraries:logger')
     implementation project(path: ':libraries:preferences')
     implementation project(path: ':libraries:authenticator')
+    implementation project(path: ':libraries:cloud')
     implementation project(path: ':features:authentication')
     implementation project(path: ':features:goals')
     implementation project(path: ':features:tasks')
