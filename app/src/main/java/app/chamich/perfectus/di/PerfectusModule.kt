@@ -7,6 +7,8 @@ package app.chamich.perfectus.di
 import android.content.Context
 import app.chamich.library.authentication.FirebaseAuthenticator
 import app.chamich.library.authentication.IAuthenticator
+import app.chamich.library.cloud.FirestoreCloud
+import app.chamich.library.cloud.api.Cloud
 import app.chamich.library.logger.ILogger
 import app.chamich.library.logger.Logger
 import app.chamich.library.preferences.IPreferences
@@ -42,4 +44,8 @@ object PerfectusModule {
     fun providesAuthenticator(
         @ApplicationContext context: Context
     ): IAuthenticator = FirebaseAuthenticator(context = context)
+
+    @Provides
+    @Singleton
+    fun providesCloud(): Cloud = FirestoreCloud()
 }

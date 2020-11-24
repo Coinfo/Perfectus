@@ -75,7 +75,7 @@ class FirebaseAuthenticator(
 
             return FirebaseUser(
                 user.uid,
-                user.email,
+                user.email!!,
                 user.phoneNumber,
                 user.displayName,
                 user.photoUrl

@@ -20,6 +20,7 @@
             <option value="$PROJECT_DIR$/features/tasks" />
             <option value="$PROJECT_DIR$/libraries" />
             <option value="$PROJECT_DIR$/libraries/authenticator" />
+            <option value="$PROJECT_DIR$/libraries/cloud" />
             <option value="$PROJECT_DIR$/libraries/core" />
             <option value="$PROJECT_DIR$/libraries/database" />
             <option value="$PROJECT_DIR$/libraries/design" />

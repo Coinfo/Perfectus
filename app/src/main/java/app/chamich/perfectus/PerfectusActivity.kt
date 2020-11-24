@@ -8,6 +8,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import app.chamich.feature.authentication.ui.signin.SignInListener
@@ -30,10 +31,12 @@ class PerfectusActivity : AppCompatActivity(),
     @Inject
     lateinit var authenticator: IAuthenticator
 
-    private val navController: NavController by lazy { findNavController(R.id.nav_host_fragment) }
-
     @Inject
     lateinit var preferences: IPreferences
+
+    private lateinit var viewModel: PerfectusViewModel
+
+    private val navController: NavController by lazy { findNavController(R.id.nav_host_fragment) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +52,8 @@ class PerfectusActivity : AppCompatActivity(),
         if (savedInstanceState == null && authenticator.isSignedIn()) {
             navigateToPerfectus()
         }
+
+        viewModel = ViewModelProvider(this).get(PerfectusViewModel::class.java)
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -68,6 +73,7 @@ class PerfectusActivity : AppCompatActivity(),
     //region SignInListener
 
     override fun onSignInCompleted(user: IUser) {
+        viewModel.createCloudProfile(user)
         navigateToPerfectus()
     }
 

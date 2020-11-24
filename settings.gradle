@@ -4,6 +4,7 @@
 
 include ':app'
 include ':libraries:core'
+include ':libraries:cloud'
 include ':libraries:authenticator'
 include ':libraries:design'
 include ':libraries:preferences'
