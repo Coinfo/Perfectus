@@ -10,5 +10,5 @@
 
     <string name="app_pager_goals">Goals</string>
     <string name="app_tab_tasks">Tasks</string>
-    <string name="app_tab_sharing">Sharing</string>
+    <string name="app_pager_friends">Friends</string>
 </resources>
