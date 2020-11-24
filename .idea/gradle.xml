@@ -14,9 +14,9 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/features" />
             <option value="$PROJECT_DIR$/features/authentication" />
+            <option value="$PROJECT_DIR$/features/friends" />
             <option value="$PROJECT_DIR$/features/goals" />
             <option value="$PROJECT_DIR$/features/profile" />
-            <option value="$PROJECT_DIR$/features/sharing" />
             <option value="$PROJECT_DIR$/features/tasks" />
             <option value="$PROJECT_DIR$/libraries" />
             <option value="$PROJECT_DIR$/libraries/authenticator" />
