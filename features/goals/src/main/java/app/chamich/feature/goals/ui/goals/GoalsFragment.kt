@@ -37,11 +37,6 @@ internal class GoalsFragment :
 
     override fun getLayoutId() = R.layout.goals_fragment_goals
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -58,6 +53,20 @@ internal class GoalsFragment :
                 viewModel.loadGoals()
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        // Show options menu when fragment became visible
+        setHasOptionsMenu(true)
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        // Hide options menu when fragment become invisible
+        setHasOptionsMenu(false)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

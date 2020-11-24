@@ -61,7 +61,6 @@ class PerfectusFragment : Fragment() {
     private fun initializeViewPagerAndTabLayout() {
         view_pager_perfectus.adapter = PerfectusAdapter(requireActivity().supportFragmentManager)
         tab_layout_perfectus.setupWithViewPager(view_pager_perfectus)
-
     }
 
     private fun handleFabClicks() {
