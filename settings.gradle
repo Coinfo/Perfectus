@@ -12,7 +12,7 @@ include ':libraries:database'
 include ':features:authentication'
 include ':features:goals'
 include ':features:tasks'
-include ':features:sharing'
+include ':features:friends'
 include ':features:profile'
 
 rootProject.name = "Perfectus"

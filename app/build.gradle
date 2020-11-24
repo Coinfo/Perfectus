@@ -100,7 +100,7 @@ dependencies {
     implementation project(path: ':features:authentication')
     implementation project(path: ':features:goals')
     implementation project(path: ':features:tasks')
-    implementation project(path: ':features:sharing')
+    implementation project(path: ':features:friends')
     implementation project(path: ':features:profile')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

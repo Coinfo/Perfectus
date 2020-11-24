@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment.findNavController
+import app.chamich.feature.friends.ui.FriendsPagerFragment
 import app.chamich.feature.goals.ui.GoalsPagerFragment
 import app.chamich.feature.profile.api.Profile
 import app.chamich.library.authentication.IAuthenticator
@@ -60,7 +61,6 @@ class PerfectusFragment : Fragment() {
     private fun initializeViewPagerAndTabLayout() {
         view_pager_perfectus.adapter = PerfectusAdapter(requireActivity().supportFragmentManager)
         tab_layout_perfectus.setupWithViewPager(view_pager_perfectus)
-
     }
 
     private fun handleFabClicks() {
@@ -88,7 +88,8 @@ class PerfectusFragment : Fragment() {
     ) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
         private val fragments = listOf(
-            Pair(GoalsPagerFragment(), R.string.app_pager_goals)
+            Pair(GoalsPagerFragment(), R.string.app_pager_goals),
+            Pair(FriendsPagerFragment(), R.string.app_pager_friends)
         )
 
         private var currentPagerFragment: CorePagerFragment? = null
