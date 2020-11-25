@@ -14,8 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 internal class FriendsFragment :
     CoreFragment<FriendsViewModel, FriendsFragmentFriendsBinding>() {
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //region Fragment Overridden Functions
+    //---- region Fragment Overridden Functions
 
     override fun getLayoutId() = R.layout.friends_fragment_friends
 
@@ -35,6 +34,5 @@ internal class FriendsFragment :
 
     override fun getViewModelClass() = FriendsViewModel::class.java
 
-    //endregion
-    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //---- endregion
 }

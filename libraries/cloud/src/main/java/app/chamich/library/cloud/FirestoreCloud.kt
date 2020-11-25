@@ -23,7 +23,29 @@ class FirestoreCloud(
     override suspend fun createCloudProfile(profile: Profile) {
         // This method will be called only once, after user signed in successful.
         try {
-            database.collection(COLLECTION_ID_PROFILES).document(profile.id).set(profile).await()
+            database
+                .collection(COLLECTION_ID_PROFILES)
+                .document(profile.id)
+                .set(profile)
+                .await()
+        } catch (exception: FirebaseFirestoreException) {
+            throw CloudException(exception.message, exception)
+        }
+    }
+
+    override suspend fun searchProfile(email: String): Profile {
+        try {
+            val snapshot = database
+                .collection(COLLECTION_ID_PROFILES)
+                .whereEqualTo(FIELD_EMAIL, email)
+                .get()
+                .await()
+            val documents = snapshot.documents
+            if (documents.isNotEmpty()) {
+                return documents[0].toObject(CloudProfile::class.java) ?: EmptyProfile()
+            }
+            return EmptyProfile()
+
         } catch (exception: FirebaseFirestoreException) {
             throw CloudException(exception.message, exception)
         }
@@ -38,6 +60,7 @@ class FirestoreCloud(
     private companion object {
 
         const val COLLECTION_ID_PROFILES = "profiles"
+        const val FIELD_EMAIL = "email"
 
     }
 

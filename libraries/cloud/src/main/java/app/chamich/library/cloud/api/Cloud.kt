@@ -18,4 +18,12 @@ interface Cloud {
      */
     @Throws(CloudException::class)
     suspend fun createCloudProfile(profile: Profile)
+
+    /**
+     * Searches profile by given email in the cloud.
+     *
+     * @param email Email address
+     */
+    @Throws(CloudException::class)
+    suspend fun searchProfile(email: String): Profile
 }

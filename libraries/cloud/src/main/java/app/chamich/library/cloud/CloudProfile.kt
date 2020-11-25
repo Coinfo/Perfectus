@@ -11,4 +11,16 @@ data class CloudProfile(
     override val email: String,
     override val name: String?,
     override val photo: String?,
+) : Profile {
+
+    // Constructor needed by Firestore toObject() method;
+    // otherwise throws does not define a no-argument constructor.
+    constructor() : this("", "", "", "")
+}
+
+data class EmptyProfile(
+    override val id: String = "",
+    override val email: String = "",
+    override val name: String = "",
+    override val photo: String = ""
 ) : Profile

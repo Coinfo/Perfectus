@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020 Chamich Apps. All rights reserved.
+  -->
+
+<resources>
+
+    <!-- Add Friends -->
+    <string name="friends_add_friends_hint_text_friend_email">Friend\'s Email</string>
+    <string name="friends_add_friends_button_text_search">Search</string>
+    <string name="friends_add_friends_title_text_add_friends">Add Friends</string>
+    <string name="friends_add_friends_button_text_add">Add</string>
+    <string name="friends_add_friends_shackbar_text_invalid_email">Email address is bad formatted</string>
+    <string name="friends_add_friends_content_description_friend_avatar_placeholder">Friend\'s avatar placeholder</string>
+
+</resources>

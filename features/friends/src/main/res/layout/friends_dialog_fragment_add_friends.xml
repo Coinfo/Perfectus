@@ -2,16 +2,148 @@
   ~ Copyright (c) 2020 Chamich Apps. All rights reserved.
   -->
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="fragment"
+            type="app.chamich.feature.friends.ui.add.AddFriendsFragment" />
+
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#0d0d15"
         android:orientation="vertical">
 
-    </LinearLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_friend_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:hint="@string/friends_add_friends_hint_text_friend_email"
+            android:inputType="textEmailAddress"
+            android:lines="1"
+            android:maxLength="160"
+            android:maxLines="1"
+            android:padding="@dimen/design_padding_normal"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/button_search"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_add_friends" />
+
+        <Button
+            android:id="@+id/button_search"
+            style="@style/Widget.Perfectus.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:onClick="@{() -> fragment.onSearchClicked()}"
+            android:text="@string/friends_add_friends_button_text_search"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_text_friend_email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/edit_text_friend_email" />
+
+        <TextView
+            android:id="@+id/title_add_friends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/friends_add_friends_title_text_add_friends"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_friend_email">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_view_profile_avatar"
+                    android:layout_width="@dimen/friends_avatar_card_width"
+                    android:layout_height="@dimen/friends_avatar_card_height"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    app:cardCornerRadius="@dimen/friends_avatar_card_corner_radius"
+                    app:cardElevation="@dimen/friends_avatar_card_elevation"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/image_view_profile_avatar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/friends_add_friends_content_description_friend_avatar_placeholder"
+                        app:srcCompat="@drawable/friends_avatar_placeholder" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/text_view_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    app:layout_constraintBottom_toTopOf="@+id/text_view_email"
+                    app:layout_constraintEnd_toStartOf="@+id/button_add"
+                    app:layout_constraintStart_toEndOf="@+id/card_view_profile_avatar"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    tools:text="Chamich Apps" />
+
+                <TextView
+                    android:id="@+id/text_view_email"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/button_add"
+                    app:layout_constraintStart_toEndOf="@+id/card_view_profile_avatar"
+                    app:layout_constraintTop_toBottomOf="@+id/text_view_name"
+                    tools:text="chamich.apps@gmail.com" />
+
+                <Button
+                    android:id="@+id/button_add"
+                    style="@style/Widget.Perfectus.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:onClick="@{() -> fragment.onAddClicked()}"
+                    android:text="@string/friends_add_friends_button_text_add"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
