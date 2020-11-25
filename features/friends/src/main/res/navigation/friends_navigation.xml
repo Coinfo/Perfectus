@@ -10,6 +10,15 @@
     <fragment
         android:id="@+id/friends_friendsfragment"
         android:name="app.chamich.feature.friends.ui.friends.FriendsFragment"
-        android:label="FriendsFragment" />
+        android:label="FriendsFragment">
+        <action
+            android:id="@+id/friends_action_friends_friendsfragment_to_friends_addfriendsfragment"
+            app:destination="@id/destination_add_friends" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/destination_add_friends"
+        android:name="app.chamich.feature.friends.ui.add.AddFriendsFragment"
+        android:label="AddFriendsFragment" />
 
 </navigation>

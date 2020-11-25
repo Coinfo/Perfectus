@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
 import app.chamich.feature.friends.R
 import app.chamich.library.core.CorePagerFragment
 
@@ -24,7 +25,10 @@ class FriendsPagerFragment : CorePagerFragment() {
     }
 
     override fun handleAddClicked() {
-        // Do Nothing
+        // Navigates to the Add Goals fragment
+        requireActivity().findNavController(
+            R.id.nav_host_fragment_friends
+        ).navigate(R.id.destination_add_friends)
     }
 
     override fun setTitleView(view: TextView) {
