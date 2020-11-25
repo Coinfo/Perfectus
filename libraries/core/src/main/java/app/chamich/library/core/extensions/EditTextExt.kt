@@ -29,5 +29,8 @@ val EditText.asInt
 val EditText.asString
     get() = this.text.toString()
 
+val EditText.asTrimmedString
+    get() = this.asString.trim()
+
 val EditText.hasText
     get() = !this.text.isNullOrBlank()

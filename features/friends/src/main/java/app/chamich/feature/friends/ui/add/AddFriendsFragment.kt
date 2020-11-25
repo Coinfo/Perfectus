@@ -12,7 +12,7 @@ import app.chamich.feature.friends.R
 import app.chamich.feature.friends.databinding.FriendsDialogFragmentAddFriendsBinding
 import app.chamich.library.cloud.api.Profile
 import app.chamich.library.core.CoreDialogFragment
-import app.chamich.library.core.extensions.asString
+import app.chamich.library.core.extensions.asTrimmedString
 import app.chamich.library.core.model.Status
 import app.chamich.library.snackbar.PerfectusSnackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -61,7 +61,7 @@ internal class AddFriendsFragment :
     //---- region Binding Functions
 
     fun onSearchClicked() {
-        val email = binding.editTextFriendEmail.asString
+        val email = binding.editTextFriendEmail.asTrimmedString
 
         // Validate user input for being correct email address
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
