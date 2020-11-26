@@ -4,6 +4,11 @@
 
 <resources>
 
+    <!-- Goals Fragment -->
+    <string name="goals_goals_fragment_label_no_goals">Start by adding a goal</string>
+    <string name="goals_goals_fragment_content_description_no_goals">Placeholder image for no goals</string>
+
+
     <string name="goals_label_fragment_goals">Goals</string>
     <string name="goals_label_fragment_add_goal">Add Goal</string>
 

@@ -74,8 +74,9 @@
             app:fabAlignmentMode="center"
             app:fabCradleMargin="10dp"
             app:fabCradleRoundedCornerRadius="10dp"
+            app:backgroundTint="?attr/design_bottom_app_bar_tint_color"
             app:hideOnScroll="true"
-            app:navigationIcon="@drawable/ic_dehaze"
+            app:navigationIcon="@drawable/ic_profile"
             app:menu="@menu/perfectus_app_bar_menu" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton

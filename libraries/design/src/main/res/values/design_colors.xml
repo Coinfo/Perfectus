@@ -14,10 +14,11 @@
     <color name="design_accent">#333333</color>
     <color name="design_text_primary">#F5F5F5</color>
     <color name="design_text_input_outline">#F5F5F5</color>
-    <color name="design_fab_background">#45b84f</color>
+    <color name="design_fab_background">#2A43A9</color>
     <color name="design_card_background">#F5F5F5</color>
     <color name="design_background">#FFFFFF</color>
     <color name="design_bottom_sheet_card_view_background">#111322</color>
+    <color name="design_color_bottom_app_bar_tint">#FAFAFA</color>
 
     <color name="design_background_goal_progress">#1b1c30</color>
 
