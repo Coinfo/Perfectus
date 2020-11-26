@@ -19,6 +19,7 @@
         <item name="design_card_corners_radius">16dp</item>
         <item name="design_card_elevation">8dp</item>
         <item name="design_background_color">@color/design_background</item>
+        <item name="design_background_secondary">@color/design_color_background_secondary</item>
     </style>
 
     <!-- Full Screen Dialog -->

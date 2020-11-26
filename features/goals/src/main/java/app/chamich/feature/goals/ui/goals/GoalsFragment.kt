@@ -11,6 +11,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.clearFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
@@ -32,8 +33,7 @@ internal class GoalsFragment :
 
     private lateinit var adapter: GoalsAdapter
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //region Fragment Override Functions
+    //---- region Fragment Override Functions
 
     override fun getLayoutId() = R.layout.goals_fragment_goals
 
@@ -83,11 +83,11 @@ internal class GoalsFragment :
 
     override fun getViewModelClass() = GoalsViewModel::class.java
 
-    //endregion
-    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //---- endregion
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    //region GoalsAdapter.GoalsListener overridden methods
+
+    //---- region GoalsAdapter.GoalsListener overridden methods
 
     override fun onGoalClicked(goal: IGoal) {
         navigateToGoalDetailsWithResult(goal)
@@ -105,11 +105,11 @@ internal class GoalsFragment :
         )
     }
 
-    //endregion
-    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //---- endregion
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    //region Private Functions
+
+    //---- region Private Functions
 
     private fun setupRecyclerView() {
         adapter = GoalsAdapter(this)
@@ -117,15 +117,29 @@ internal class GoalsFragment :
     }
 
     private fun setupObservers() {
+        // Setup goals loading observer.
         viewModel.loadedGoals.observe(viewLifecycleOwner, { result ->
             when (result.status) {
-                Status.SUCCESS -> {
-                    result.data?.let {
-                        adapter.addGoals(it)
-                    }
-                }
+                Status.SUCCESS -> handleSuccess(result.data)
+                Status.LOADING -> handleLoading()
+                Status.FAILURE -> handleFailure(result.exception)
             }
         })
+    }
+
+    private fun handleSuccess(goals: List<IGoal>?) {
+        goals?.let { loadedGoals ->
+            binding.linearLayoutNoGoalsPlaceholder.isVisible = loadedGoals.isEmpty()
+            adapter.addGoals(loadedGoals)
+        }
+    }
+
+    private fun handleLoading() {
+        //
+    }
+
+    private fun handleFailure(exception: Exception?) {
+        // No Exception can be thrown while loading goals from the database.
     }
 
     private fun handleArchiveClicked() {
@@ -146,6 +160,5 @@ internal class GoalsFragment :
         )
     }
 
-    //endregion
-    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //---- endregion
 }
