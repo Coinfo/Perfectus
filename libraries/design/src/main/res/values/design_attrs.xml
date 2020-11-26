@@ -16,6 +16,6 @@
     <attr name="design_button_height" format="dimension" />
     <attr name="design_background_color" format="color" />
     <attr name="design_background_bottom_sheet_card_view_color" format="color" />
-    <attr name="design_bottom_app_bar_tint_color" format="color" />
+    <attr name="design_background_secondary" format="color" />
 
 </resources>

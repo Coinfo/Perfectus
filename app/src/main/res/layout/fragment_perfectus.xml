@@ -22,7 +22,7 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/design_background_color"
+            android:background="?attr/design_background_secondary"
             android:theme="@style/ThemeOverlay.AppCompat">
 
             <LinearLayout
@@ -52,10 +52,12 @@
                 android:id="@+id/tab_layout_perfectus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?attr/design_background_color"
-                app:tabIndicatorColor="@android:color/black"
+                android:background="?attr/design_background_secondary"
+                app:tabIndicator="@drawable/shape_tab_indicator"
+                app:tabIndicatorColor="@color/design_color_tab_selected_text"
                 app:tabMode="fixed"
-                app:tabTextColor="@android:color/white" />
+                app:tabSelectedTextColor="@color/design_color_tab_selected_text"
+                app:tabTextColor="@color/design_color_tab_text" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -74,7 +76,7 @@
             app:fabAlignmentMode="center"
             app:fabCradleMargin="10dp"
             app:fabCradleRoundedCornerRadius="10dp"
-            app:backgroundTint="?attr/design_bottom_app_bar_tint_color"
+            app:backgroundTint="?attr/design_background_secondary"
             app:hideOnScroll="true"
             app:navigationIcon="@drawable/ic_profile"
             app:menu="@menu/perfectus_app_bar_menu" />
@@ -84,7 +86,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:overScrollMode="ifContentScrolls"
-            android:src="@android:drawable/ic_input_add"
+            android:src="@drawable/ic_add"
+            android:tint="@android:color/white"
             app:backgroundTint="?attr/design_fab_background_color"
             app:layout_anchor="@id/appbar" />
 
