@@ -51,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/design_margin"
                 android:text="@string/goals_goals_fragment_label_no_goals"
+                android:textAppearance="@style/Perfectus.TextAppearanceSubtitle"
                 android:textAlignment="center" />
 
         </LinearLayout>

@@ -82,5 +82,15 @@
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 
+    <!-- Text View -->
+
+    <style name="Perfectus.TextAppearanceHeader" parent="@style/TextAppearance.MaterialComponents.Headline5" tools:ignore="ResourceName">
+        <item name="android:textColor">@color/design_text_primary</item>
+    </style>
+
+    <style name="Perfectus.TextAppearanceSubtitle" parent="@style/TextAppearance.MaterialComponents.Subtitle2" tools:ignore="ResourceName">
+        <item name="android:textColor">@color/design_text_primary</item>
+    </style>
+
 
 </resources>
