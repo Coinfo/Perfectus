@@ -50,7 +50,7 @@ The project consists of feature and library modules
 
 [![Linkedin](https://img.shields.io/badge/-linkedin-grey?logo=linkedin)](https://www.linkedin.com/in/victorapoyan/)
 [![Twitter](https://img.shields.io/badge/-twitter-grey?logo=twitter)](https://twitter.com/ApoyanViktor)
-[![Stackoverflow](https://img.shields.io/badge/-stackoverflow-grey?logo=medium)](https://stackoverflow.com/users/612606/viktor-apoyan)
+[![Stackoverflow](https://img.shields.io/badge/-stackoverflow-grey?logo=Stackoverflow)](https://stackoverflow.com/users/612606/viktor-apoyan)
 [![Medium](https://img.shields.io/badge/-medium-grey?logo=medium)](https://medium.com/@vapoyan)
 
 ## License
