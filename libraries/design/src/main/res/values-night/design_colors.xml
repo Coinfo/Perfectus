@@ -24,7 +24,7 @@
 
     <!-- Colors used in the Perfectus.FullScreenDialog -->
     <color name="design_full_screen_dialog_brand_color">#4b4cff</color>
-    <color name="design_full_screen_dialog_snackbar_error_background_color">#fa2835</color>
+    <color name="design_full_screen_dialog_snackbar_error_background_color">#D44343</color>
 
 
 </resources>
