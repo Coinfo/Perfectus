@@ -8,12 +8,12 @@
     android:viewportWidth="26"
     android:viewportHeight="26">
     <path
-        android:fillColor="#9AD0F9"
+        android:fillColor="#184E77"
         android:pathData="M24,2.66V19C24,22.32 21.31,25 18,25H8C4.69,25 2,22.32 2,19V2.66C2.82,1.65 4.07,1 5.47,1H20.53C21.93,1 23.18,1.65 24,2.66Z"
         android:strokeWidth="2"
         android:strokeColor="#0A92F8" />
     <path
-        android:fillColor="#9AD0F9"
+        android:fillColor="#184E77"
         android:pathData="M25,5.47V7C25,7.73 24.6,8.38 24,8.72C23.7,8.9 23.36,9 22.99,9H3C2.64,9 2.29,8.9 2,8.72C1.4,8.38 1,7.74 1,7V5.47C1,4.4 1.37,3.42 2,2.66C2.82,1.65 4.07,1 5.47,1H20.53C21.93,1 23.18,1.65 24,2.66C24.63,3.42 25,4.4 25,5.47Z"
         android:strokeWidth="2"
         android:strokeColor="#0A92F8" />

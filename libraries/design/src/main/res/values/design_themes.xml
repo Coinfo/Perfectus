@@ -19,6 +19,7 @@
         <item name="design_card_corners_radius">16dp</item>
         <item name="design_card_elevation">8dp</item>
         <item name="design_background_color">@color/design_background</item>
+        <item name="design_background_secondary">@color/design_color_background_secondary</item>
     </style>
 
     <!-- Full Screen Dialog -->
@@ -38,9 +39,15 @@
     <!-- Bottom Sheet Dialog -->
 
     <style name="Perfectus.BottomSheetMenu" parent="Theme.MaterialComponents.Light.BottomSheetDialog" tools:ignore="ResourceName">
+        <item name="colorPrimary">@color/design_color_bottom_sheet_menu_brand</item>
+        <item name="colorPrimaryDark">@color/design_color_bottom_sheet_menu_brand_dark</item>
+        <item name="colorAccent">@color/design_color_bottom_sheet_menu_accent</item>
         <item name="bottomSheetStyle">@style/Perfectus.BottomSheetMenuStyle</item>
         <item name="design_background_bottom_sheet_card_view_color">
             @color/design_bottom_sheet_card_view_background
+        </item>
+        <item name="design_bottom_sheet_menu_separator_color">
+            @color/design_color_bottom_sheet_menu_separator
         </item>
     </style>
 

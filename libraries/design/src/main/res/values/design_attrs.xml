@@ -16,5 +16,10 @@
     <attr name="design_button_height" format="dimension" />
     <attr name="design_background_color" format="color" />
     <attr name="design_background_bottom_sheet_card_view_color" format="color" />
+    <attr name="design_background_secondary" format="color" />
+
+    <!-- Perfectus.BottomSheetMenu -->
+    <attr name="design_bottom_sheet_menu_separator_color" format="color" />
+    <!-- -->
 
 </resources>

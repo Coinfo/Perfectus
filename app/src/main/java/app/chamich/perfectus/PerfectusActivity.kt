@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import app.chamich.feature.authentication.ui.signin.SignInListener
-import app.chamich.feature.authentication.ui.signup.SignUpListener
 import app.chamich.feature.profile.ui.menu.SignOutListener
 import app.chamich.library.authentication.IAuthenticator
 import app.chamich.library.authentication.IUser
@@ -24,7 +23,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class PerfectusActivity : AppCompatActivity(),
-    SignInListener, SignUpListener, SignOutListener {
+    SignInListener, SignOutListener {
 
     private lateinit var binding: ActivityPerfectusBinding
 
@@ -56,8 +55,7 @@ class PerfectusActivity : AppCompatActivity(),
         viewModel = ViewModelProvider(this).get(PerfectusViewModel::class.java)
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //region Private Function
+    //---- region Private Function
 
 
     private fun navigateToPerfectus() {
@@ -66,27 +64,18 @@ class PerfectusActivity : AppCompatActivity(),
     }
 
 
-    //endregion
-    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //---- endregion
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    //region SignInListener
+
+    //---- region SignInListener
 
     override fun onSignInCompleted(user: IUser) {
         viewModel.createCloudProfile(user)
         navigateToPerfectus()
     }
 
-    //endregion
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //region SignUpListener
-
-    override fun onSignUpCompleted(user: IUser) {
-        navigateToPerfectus()
-    }
-
-    //endregion
+    //---- endregion
 
     override fun onSignOut() {
         authenticator.signOut()

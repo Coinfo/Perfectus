@@ -7,10 +7,11 @@
 <resources>
 
     <dimen name="design_margin_tiny">4dp</dimen>
-    <dimen name="design_margin_small">8dp</dimen>
-    <dimen name="design_margin_normal">16dp</dimen>
-    <dimen name="design_margin_large">24dp</dimen>
-    <dimen name="design_margin_extra_large">32dp</dimen>
+    <dimen name="design_margin_half">8dp</dimen>
+    <dimen name="design_margin">16dp</dimen>
+    <dimen name="design_margin_double">24dp</dimen>
+    <dimen name="design_margin_triple">32dp</dimen>
+    <dimen name="design_margin_quadruple">64dp</dimen>
 
     <dimen name="design_padding_normal">16dp</dimen>
     <dimen name="design_padding_large">24dp</dimen>

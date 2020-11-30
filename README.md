@@ -1,3 +1,8 @@
+<a href="https://medium.com/@vapoyan" target="_blank">
+  <img src="https://github.com/ChamichApps/Perfectus/blob/develop/.screenshots/Perfectus%20Icon.png" width="70" align="left">
+</a>
+
+
 # Perfectus
 
 > “Le mieux est l'ennemi du bien.
@@ -37,7 +42,7 @@ The project consists of feature and library modules
 
 ## Author
 
-<a href="https://twitter.com/MValceleanu" target="_blank">
+<a href="https://medium.com/@vapoyan" target="_blank">
   <img src="https://media-exp1.licdn.com/dms/image/C4D03AQG1bcSjvx4v9g/profile-displayphoto-shrink_200_200/0?e=1608768000&v=beta&t=fIidjjlBbmqmaWB6YXKr4Rxa-r9FqZX5UhUvYkgEiYw" width="70" align="left">
 </a>
 
@@ -45,6 +50,7 @@ The project consists of feature and library modules
 
 [![Linkedin](https://img.shields.io/badge/-linkedin-grey?logo=linkedin)](https://www.linkedin.com/in/victorapoyan/)
 [![Twitter](https://img.shields.io/badge/-twitter-grey?logo=twitter)](https://twitter.com/ApoyanViktor)
+[![Stackoverflow](https://img.shields.io/badge/-stackoverflow-grey?logo=Stackoverflow)](https://stackoverflow.com/users/612606/viktor-apoyan)
 [![Medium](https://img.shields.io/badge/-medium-grey?logo=medium)](https://medium.com/@vapoyan)
 
 ## License
