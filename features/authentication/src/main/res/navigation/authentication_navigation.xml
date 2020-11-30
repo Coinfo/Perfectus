@@ -14,25 +14,6 @@
         android:id="@+id/destination_fragment_sign_in"
         android:name="app.chamich.feature.authentication.ui.signin.SignInFragment"
         android:label="@string/authentication_label_sign_in"
-        tools:layout="@layout/authentication_fragment_sign_in">
-        <action
-            android:id="@+id/action_from_sign_in_to_sign_up"
-            app:destination="@id/destination_fragment_sign_up" />
-        <action
-            android:id="@+id/action_from_fragment_sign_in_to_forgot_password"
-            app:destination="@id/destination_forgot_password" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/destination_fragment_sign_up"
-        android:name="app.chamich.feature.authentication.ui.signup.SignUpFragment"
-        android:label="@string/authentication_label_sign_up"
-        tools:layout="@layout/authentication_fragment_sign_up" />
-
-    <fragment
-        android:id="@+id/destination_forgot_password"
-        android:name="app.chamich.feature.authentication.ui.password.forgot.ForgotPasswordFragment"
-        android:label="@string/authentication_label_forgot_password"
-        tools:layout="@layout/authentication_fragment_forgot_password" />
+        tools:layout="@layout/authentication_fragment_sign_in" />
 
 </navigation>

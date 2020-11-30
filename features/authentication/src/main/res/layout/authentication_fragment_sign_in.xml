@@ -25,159 +25,84 @@
         android:layout_height="match_parent"
         tools:context=".ui.signin.SignInFragment">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_view_sign_in"
-            style="@style/Widget.Perfectus.Card"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/design_margin_double"
-            android:layout_marginLeft="@dimen/design_margin_double"
-            android:layout_marginTop="@dimen/design_margin_double"
-            android:layout_marginEnd="@dimen/design_margin_double"
-            android:layout_marginRight="@dimen/design_margin_double"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/label_sign_in_subtitle">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:id="@+id/linear_layout_sign_in_input"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/design_margin_double"
-                    android:layout_marginTop="@dimen/design_margin_double"
-                    android:layout_marginRight="@dimen/design_margin_double"
-                    android:layout_marginBottom="@dimen/design_margin_double"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_input_layout_sign_in_email"
-                        style="@style/Widget.Perfectus.TextInput.Email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/design_margin_half"
-                        android:hint="@string/authentication_edit_text_hint_email">
-
-                        <EditText
-                            android:id="@+id/edit_text_sign_in_email"
-                            style="@style/Widget.Perfectus.EditText.Email"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ems="10" />
-
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_input_layout_sign_in_password"
-                        style="@style/Widget.Perfectus.TextInput.Password"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/design_margin_half"
-                        android:hint="@string/authentication_edit_text_hint_password">
-
-                        <EditText
-                            android:id="@+id/edit_text_sign_in_password"
-                            style="@style/Widget.Perfectus.EditText.Password"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ems="10" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/button_sign_in"
-                        style="@style/Widget.Perfectus.Button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/design_margin_half"
-                        android:onClick="@{(view) -> fragment.onClickSignIn(view)}"
-                        android:text="@string/authentication_button_text_sign_in" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/button_forgot_password"
-                        style="@style/Widget.Perfectus.TextButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:onClick="@{() -> fragment.onClickForgotPassword()}"
-                        android:text="@string/authentication_button_text_forgot_password" />
-
-                </LinearLayout>
-
-                <ProgressBar
-                    android:id="@+id/progress_sign_in"
-                    style="?android:attr/progressBarStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="invisible"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_sign_up"
-            style="@style/Widget.Perfectus.Button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:onClick="@{() -> fragment.onClickSignUp()}"
-            android:text="@string/authentication_button_text_sign_up"
-            app:layout_constraintEnd_toEndOf="@+id/card_view_sign_in"
-            app:layout_constraintStart_toStartOf="@+id/card_view_sign_in"
-            app:layout_constraintTop_toBottomOf="@+id/button_google_sign_in" />
-
-        <TextView
-            android:id="@+id/label_sign_in_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/design_margin_double"
-            android:layout_marginLeft="@dimen/design_margin_double"
-            android:layout_marginTop="@dimen/design_margin_triple"
-            android:layout_marginEnd="@dimen/design_margin_double"
-            android:layout_marginRight="@dimen/design_margin_double"
-            android:text="@string/authentication_app_name"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/label_sign_in_subtitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/design_margin_double"
-            android:layout_marginLeft="@dimen/design_margin_double"
-            android:layout_marginEnd="@dimen/design_margin_double"
-            android:layout_marginRight="@dimen/design_margin_double"
-            android:text="@string/authentication_label_sign_in_subtitle"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/label_sign_in_title" />
-
         <com.google.android.gms.common.SignInButton
             android:id="@+id/button_google_sign_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/design_margin"
+            android:layout_marginTop="32dp"
             app:buttonSize="icon_only"
             app:colorScheme="auto"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card_view_sign_in" />
+            app:layout_constraintTop_toBottomOf="@+id/label_intro" />
+
+        <ImageView
+            android:id="@+id/authentication_imageview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/authentication_guideline"
+            app:srcCompat="@drawable/authentication_logo_perfectus" />
+
+        <TextView
+            android:id="@+id/label_welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/design_margin_triple"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/design_margin_triple"
+            android:text="@string/authentication_label_welcome"
+            android:textAppearance="@style/Perfectus.TextAppearanceHeader"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/authentication_imageview" />
+
+        <TextView
+            android:id="@+id/label_intro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/design_margin_triple"
+            android:layout_marginTop="@dimen/design_margin_half"
+            android:layout_marginEnd="@dimen/design_margin_triple"
+            android:text="@string/authentication_label_intro"
+            android:textAppearance="@style/Perfectus.TextAppearanceSubtitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/label_welcome" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/authentication_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <TextView
+            android:id="@+id/label_terms_and_conditions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/design_margin_triple"
+            android:layout_marginEnd="@dimen/design_margin_triple"
+            android:layout_marginBottom="@dimen/design_margin"
+            android:gravity="center"
+            android:text="@string/authentication_label_privacy_policy"
+            android:textAlignment="center"
+            android:textAppearance="@style/Perfectus.TextAppearanceSubtitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar_google"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/label_terms_and_conditions"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/label_intro" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
