@@ -44,7 +44,7 @@
             android:id="@+id/card_view_profile_menu"
             style="@style/Profile.CardViewProfileMenu"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             app:cardBackgroundColor="?attr/design_background_bottom_sheet_card_view_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -56,6 +56,7 @@
 
                 <TextView
                     android:id="@+id/text_view_username"
+                    style="@style/Profile.TextAppearanceProfileName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/design_margin"
@@ -64,13 +65,14 @@
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:singleLine="true"
-                    app:layout_constraintEnd_toStartOf="@+id/button_sign_out"
-                    tools:text="Viktor Apoyan"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Viktor Apoyan" />
 
                 <TextView
                     android:id="@+id/text_view_email"
+                    style="@style/Profile.TextAppearanceProfileEmail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/design_margin"
@@ -79,29 +81,17 @@
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:singleLine="true"
-                    app:layout_constraintEnd_toStartOf="@+id/button_sign_out"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_view_username"
                     tools:text="chamich.apps@gmail.com" />
-
-                <Button
-                    android:id="@+id/button_sign_out"
-                    style="@style/Profile.Widget.TextButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:onClick="@{() -> fragment.onSignOutClicked()}"
-                    android:text="@string/profile_menu_button_text_sign_out"
-                    app:layout_constraintBottom_toBottomOf="@+id/text_view_email"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/text_view_username" />
 
                 <View
                     android:id="@+id/separator"
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_marginStart="@dimen/design_margin"
-                    android:layout_marginTop="@dimen/design_margin_half"
+                    android:layout_marginTop="@dimen/design_margin_double"
                     android:layout_marginEnd="@dimen/design_margin"
                     android:background="?attr/design_bottom_sheet_menu_separator_color"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -110,9 +100,10 @@
 
                 <TextView
                     android:id="@+id/label_theme"
+                    style="@style/Profile.TextAppearanceProfileLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/design_margin"
                     android:layout_marginTop="32dp"
                     android:text="@string/profile_menu_label_text_theme"
                     app:layout_constraintStart_toStartOf="parent"
@@ -153,6 +144,17 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
+
+        <Button
+            android:id="@+id/button_sign_out"
+            style="@style/Profile.Widget.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:onClick="@{() -> fragment.onSignOutClicked()}"
+            android:text="@string/profile_menu_button_text_sign_out"
+            app:layout_constraintBottom_toTopOf="@+id/card_view_profile_menu"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

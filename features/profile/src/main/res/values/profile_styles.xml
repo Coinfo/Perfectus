@@ -27,6 +27,19 @@
         <!-- Define your own style here -->
     </style>
 
+    <style name="Profile.TextAppearanceProfileName" parent="@style/TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/design_text_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Profile.TextAppearanceProfileEmail" parent="@style/TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/design_text_primary</item>
+    </style>
+
+    <style name="Profile.TextAppearanceProfileLabel" parent="@style/TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textColor">@color/design_text_primary</item>
+    </style>
+
 </resources>
 
 
