@@ -9,6 +9,14 @@
     <color name="design_color_black">#000000</color>
     <color name="design_color_white">#FFFFFF</color>
 
+
+    <!-- Perfectus.BottomSheetMenu -->
+    <color name="design_color_bottom_sheet_menu_brand">#0A92F8</color>
+    <color name="design_color_bottom_sheet_menu_brand_dark">#2A43A9</color>
+    <color name="design_color_bottom_sheet_menu_accent">#160A92F8</color>
+    <color name="design_color_bottom_sheet_menu_separator">#48212121</color>
+    <!-- -->
+
     <color name="design_brand">#45b84f</color>
     <color name="design_brand_dark">#00a80e</color>
     <color name="design_accent">#333333</color>
@@ -17,7 +25,7 @@
     <color name="design_fab_background">#0A92F8</color>
     <color name="design_card_background">#F5F5F5</color>
     <color name="design_background">#FFFFFF</color>
-    <color name="design_bottom_sheet_card_view_background">#111322</color>
+    <color name="design_bottom_sheet_card_view_background">#FCFCFC</color>
     <color name="design_color_background_secondary">#FAFAFA</color>
     <color name="design_color_tab_selected_text">#0A92F8</color>
     <color name="design_color_tab_text">#212121</color>
@@ -27,6 +35,6 @@
 
     <!-- Colors used in the Perfectus.FullScreenDialog -->
     <color name="design_full_screen_dialog_brand_color">#4b4cff</color>
-    <color name="design_full_screen_dialog_snackbar_error_background_color">#fa2835</color>
+    <color name="design_full_screen_dialog_snackbar_error_background_color">#D44343</color>
 
 </resources>
