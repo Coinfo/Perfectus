@@ -8,22 +8,10 @@
 
     <string name="authentication_app_name">Perfectus</string>
 
-    <!-- Buttons -->
-    <string name="authentication_button_text_sign_in">Sign In</string>
-    <string name="authentication_button_text_sign_up">Sign Up</string>
-    <string name="authentication_button_text_restore_password">Restore</string>
-    <string name="authentication_button_text_forgot_password">Forgot Password?</string>
-
-    <!-- Hints -->
-    <string name="authentication_edit_text_hint_email">Email</string>
-    <string name="authentication_edit_text_hint_password">Password</string>
-
     <!-- Labels -->
-    <string name="authentication_label_sign_in_subtitle">Sign In and track your goals!</string>
-    <string name="authentication_label_sign_up_subtitle">Sign Up for better you!</string>
-    <string name="authentication_label_forgot_password_subtitle">Forgot Password?</string>
     <string name="authentication_label_sign_in">Sign In</string>
-    <string name="authentication_label_sign_up">Sign Up</string>
-    <string name="authentication_label_forgot_password">Forgot Password</string>
+    <string name="authentication_label_welcome">Welcome to Perfectus</string>
+    <string name="authentication_label_privacy_policy">By using Perfectus you agree with Perfectus\'s Terms of Use and Privacy Policy</string>
+    <string name="authentication_label_intro">Sign In and start your journey to perfectness</string>
 
 </resources>

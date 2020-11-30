@@ -36,9 +36,10 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':libraries:authenticator')
-    implementation project(path: ':libraries:logger')
-    implementation project(path: ':libraries:design')
+    implementation project(':libraries:core')
+    implementation project(':libraries:authenticator')
+    implementation project(':libraries:logger')
+    implementation project(':libraries:design')
 
     // Navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
