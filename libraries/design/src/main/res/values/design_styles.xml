@@ -86,6 +86,7 @@
 
     <style name="Perfectus.TextAppearanceHeader" parent="@style/TextAppearance.MaterialComponents.Headline5" tools:ignore="ResourceName">
         <item name="android:textColor">@color/design_text_primary</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="Perfectus.TextAppearanceSubtitle" parent="@style/TextAppearance.MaterialComponents.Subtitle2" tools:ignore="ResourceName">

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020 Chamich Apps. All rights reserved.
+  -->
+
+<resources>
+
+    <style name="Goals.TextAppearanceSubtitle" parent="@style/TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textColor">@color/design_text_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Goals.TextAppearanceCaption" parent="@style/TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/design_text_primary</item>
+    </style>
+
+</resources>

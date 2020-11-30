@@ -22,7 +22,7 @@
     <color name="design_color_tab_selected_text">#0A92F8</color>
     <color name="design_color_tab_text">#212121</color>
 
-    <color name="design_background_goal_progress">#1b1c30</color>
+    <color name="design_background_goal_progress">#161C1C1C</color>
 
 
     <!-- Colors used in the Perfectus.FullScreenDialog -->
