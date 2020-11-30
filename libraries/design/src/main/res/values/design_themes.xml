@@ -39,6 +39,9 @@
     <!-- Bottom Sheet Dialog -->
 
     <style name="Perfectus.BottomSheetMenu" parent="Theme.MaterialComponents.Light.BottomSheetDialog" tools:ignore="ResourceName">
+        <item name="colorPrimary">@color/design_color_bottom_sheet_menu_brand</item>
+        <item name="colorPrimaryDark">@color/design_color_bottom_sheet_menu_brand_dark</item>
+        <item name="colorAccent">@color/design_color_bottom_sheet_menu_accent</item>
         <item name="bottomSheetStyle">@style/Perfectus.BottomSheetMenuStyle</item>
         <item name="design_background_bottom_sheet_card_view_color">
             @color/design_bottom_sheet_card_view_background

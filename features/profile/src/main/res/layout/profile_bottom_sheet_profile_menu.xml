@@ -45,6 +45,7 @@
             style="@style/Profile.CardViewProfileMenu"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            app:cardBackgroundColor="?attr/design_background_bottom_sheet_card_view_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">

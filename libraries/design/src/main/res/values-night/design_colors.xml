@@ -6,6 +6,12 @@
 
 <resources>
 
+    <!-- Perfectus.BottomSheetMenu -->
+    <color name="design_color_bottom_sheet_menu_brand">#0A92F8</color>
+    <color name="design_color_bottom_sheet_menu_brand_dark">#2A43A9</color>
+    <color name="design_color_bottom_sheet_menu_accent">#160A92F8</color>
+    <!-- -->
+
     <color name="design_brand">#1DB854</color>
     <color name="design_brand_dark">#21272C</color>
     <color name="design_accent">#F5F5F5</color>
@@ -14,7 +20,7 @@
     <color name="design_fab_background">#0A92F8</color>
     <color name="design_card_background">#16172b</color>
     <color name="design_background">#1c1c1c</color>
-    <color name="design_bottom_sheet_card_view_background">#111322</color>
+    <color name="design_bottom_sheet_card_view_background">#212121</color>
     <color name="design_color_background_secondary">#212121</color>
     <color name="design_color_tab_selected_text">#0A92F8</color>
     <color name="design_color_tab_text">#FFFFFF</color>
