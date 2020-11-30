@@ -20,7 +20,7 @@
     <color name="design_color_tab_text">#FFFFFF</color>
 
 
-    <color name="design_background_goal_progress">#1b1c30</color>
+    <color name="design_background_goal_progress">#16FFFFFF</color>
 
     <!-- Colors used in the Perfectus.FullScreenDialog -->
     <color name="design_full_screen_dialog_brand_color">#4b4cff</color>
