@@ -14,6 +14,7 @@
     <color name="design_color_bottom_sheet_menu_brand">#0A92F8</color>
     <color name="design_color_bottom_sheet_menu_brand_dark">#2A43A9</color>
     <color name="design_color_bottom_sheet_menu_accent">#160A92F8</color>
+    <color name="design_color_bottom_sheet_menu_separator">#48212121</color>
     <!-- -->
 
     <color name="design_brand">#45b84f</color>

@@ -46,6 +46,9 @@
         <item name="design_background_bottom_sheet_card_view_color">
             @color/design_bottom_sheet_card_view_background
         </item>
+        <item name="design_bottom_sheet_menu_separator_color">
+            @color/design_color_bottom_sheet_menu_separator
+        </item>
     </style>
 
 </resources>
