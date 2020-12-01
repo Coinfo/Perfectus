@@ -30,7 +30,6 @@ The project consists of feature and library modules
 - features
   | - goals
   | - profile
-  | - friends
 - libraries
   | - authenticator
   | - core
