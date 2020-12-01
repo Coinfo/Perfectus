@@ -13,6 +13,18 @@
     <color name="design_color_bottom_sheet_menu_separator">#48FFFFFF</color>
     <!-- -->
 
+    <!-- Perfectus.FullScreenDialog -->
+    <color name="design_color_full_screen_dialog_brand">#0A92F8</color>
+    <color name="design_color_full_screen_dialog_brand_dark">#2A43A9</color>
+    <color name="design_color_full_screen_dialog_accent">#160A92F8</color>
+    <color name="design_color_full_screen_dialog_details_label">#FFFFFF</color>
+    <color name="design_color_full_screen_dialog_details_value">#0A92F8</color>
+    <color name="design_color_full_screen_dialog_details_background">#160A92F8</color>
+    <color name="design_color_full_screen_dialog_details_separator">#0DFFFFFF</color>
+    <color name="design_color_full_screen_dialog_background">#1C1C1C</color>
+    <!-- -->
+
+
     <color name="design_brand">#1DB854</color>
     <color name="design_brand_dark">#21272C</color>
     <color name="design_accent">#F5F5F5</color>

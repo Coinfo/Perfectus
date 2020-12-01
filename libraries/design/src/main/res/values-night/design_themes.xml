@@ -25,14 +25,29 @@
     <!-- Full Screen Dialog -->
 
     <style name="Perfectus.FullScreenDialog" parent="Theme.MaterialComponents.Dialog" tools:ignore="ResourceName">
-        <item name="colorPrimaryDark">@color/design_brand_dark</item>
-        <item name="colorAccent">@color/design_accent</item>
-        <item name="colorPrimary">@color/design_full_screen_dialog_brand_color</item>
+        <item name="colorPrimary">@color/design_color_full_screen_dialog_brand</item>
+        <item name="colorPrimaryDark">@color/design_color_full_screen_dialog_brand_dark</item>
+        <item name="colorAccent">@color/design_color_full_screen_dialog_accent</item>
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowBackground">@android:color/white</item>
         <item name="actionMenuTextColor">@color/design_accent</item>
         <item name="design_card_background_snackbar_color">
             @color/design_full_screen_dialog_snackbar_error_background_color
+        </item>
+        <item name="design_full_screen_dialog_details_label_color">
+            @color/design_color_full_screen_dialog_details_label
+        </item>
+        <item name="design_full_screen_dialog_details_value_color">
+            @color/design_color_full_screen_dialog_details_value
+        </item>
+        <item name="design_full_screen_dialog_details_background_color">
+            @color/design_color_full_screen_dialog_details_background
+        </item>
+        <item name="design_full_screen_dialog_details_separator">
+            @color/design_color_full_screen_dialog_details_separator
+        </item>
+        <item name="design_full_screen_dialog_background">
+            @color/design_color_full_screen_dialog_background
         </item>
     </style>
 
