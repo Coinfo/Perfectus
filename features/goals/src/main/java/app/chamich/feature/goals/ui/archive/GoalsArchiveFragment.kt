@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.clearFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
@@ -120,7 +121,7 @@ internal class GoalsArchiveFragment :
     }
 
     private fun initializeToggleButton() {
-        binding.togglebuttonTheme.addOnButtonCheckedListener { group, checkedId, isChecked ->
+        binding.togglebuttonArchiveStatus.addOnButtonCheckedListener { group, checkedId, isChecked ->
             if (isChecked) {
                 when (checkedId) {
                     R.id.button_archived -> loadArchivedGoals(GoalStatus.ARCHIVED)
@@ -129,7 +130,7 @@ internal class GoalsArchiveFragment :
                 }
             }
         }
-        binding.togglebuttonTheme.check(
+        binding.togglebuttonArchiveStatus.check(
             if (viewModel.status == GoalStatus.ARCHIVED) R.id.button_archived
             else R.id.button_completed
         )
@@ -165,6 +166,7 @@ internal class GoalsArchiveFragment :
 
     private fun handleLoadArchivedGoalsSuccess(data: List<IGoal>?) {
         data?.let {
+            setupPlaceholder(it)
             adapter.addArchivedGoals(it)
         }
     }
@@ -179,6 +181,17 @@ internal class GoalsArchiveFragment :
 
     private fun handleProgress() {
         // Do nothing
+    }
+
+    private fun setupPlaceholder(goals: List<IGoal>) {
+        binding.textViewNoGoals.setText(
+            if (viewModel.status == GoalStatus.ARCHIVED) {
+                R.string.goals_archive_label_no_archived_goals
+            } else {
+                R.string.goals_archive_label_no_completed_goals
+            }
+        )
+        binding.linearLayoutNoGoalsPlaceholder.isVisible = goals.isEmpty()
     }
 
     //endregion

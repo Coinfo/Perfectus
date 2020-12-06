@@ -3,7 +3,8 @@
   -->
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -33,7 +34,7 @@
 
 
         <com.google.android.material.button.MaterialButtonToggleGroup
-            android:id="@+id/togglebutton_theme"
+            android:id="@+id/togglebutton_archive_status"
             style="?attr/materialButtonToggleGroupStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -75,7 +76,38 @@
             app:layout_constraintBottom_toTopOf="@+id/button_close"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/togglebutton_theme" />
+            app:layout_constraintTop_toBottomOf="@+id/togglebutton_archive_status" />
+
+        <LinearLayout
+            android:id="@+id/linear_layout_no_goals_placeholder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/recycler_view_archived_goals"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/recycler_view_archived_goals"
+            tools:ignore="UseCompoundDrawables"
+            tools:visibility="visible">
+
+            <ImageView
+                android:id="@+id/image_view_no_goals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/goals_goals_fragment_content_description_no_goals"
+                app:srcCompat="@drawable/goals_empty_placeholder" />
+
+            <TextView
+                android:id="@+id/text_view_no_goals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/design_margin"
+                android:text="@string/goals_goals_fragment_label_no_goals"
+                android:textAlignment="center"
+                android:textAppearance="@style/Perfectus.TextAppearanceSubtitle" />
+
+        </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_close"
