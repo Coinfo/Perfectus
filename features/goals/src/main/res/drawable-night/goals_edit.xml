@@ -1,0 +1,24 @@
+<!--
+  ~ Copyright (c) 2020 Chamich Apps. All rights reserved.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#212121"
+        android:pathData="M0,0h24v24h-24z" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19.3363,9.9648V19.6481C19.3363,20.3981 18.7287,21.0057 17.9787,21.0057H4.3576C3.6075,21.0057 3,20.3981 3,19.6481V6.0195C3,5.2694 3.6075,4.6619 4.3576,4.6619H14.0259"
+        android:strokeWidth="1"
+        android:strokeColor="#ffffff"
+        android:strokeLineCap="round" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M20.4278,6.3175L13.5393,13.214C13.1645,13.5893 12.7052,13.8708 12.1991,14.0303L9.1157,14.9967C9.0501,15.0155 8.9845,14.9498 9.0033,14.8842L9.9686,11.7972C10.1279,11.2905 10.4091,10.8307 10.7839,10.4554L17.5881,3.634C18.2816,2.9397 19.3969,2.7708 20.1841,3.3525C21.1869,4.0844 21.2619,5.4918 20.4278,6.3175Z"
+        android:strokeWidth="1"
+        android:strokeColor="#ffffff" />
+</vector>

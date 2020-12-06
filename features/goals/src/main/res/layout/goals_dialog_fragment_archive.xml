@@ -3,7 +3,8 @@
   -->
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -16,29 +17,30 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#0d0d15">
+        android:background="?attr/design_full_screen_dialog_background">
 
 
         <TextView
             android:id="@+id/goals_textview"
-            android:text="@string/goals_archive_title_archive"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_marginStart="@dimen/design_margin"
+            android:layout_marginTop="@dimen/design_margin"
+            android:text="@string/goals_archive_title_archive"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
         <com.google.android.material.button.MaterialButtonToggleGroup
-            android:id="@+id/togglebutton_theme"
+            android:id="@+id/togglebutton_archive_status"
             style="?attr/materialButtonToggleGroupStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/design_margin"
+            android:layout_marginTop="@dimen/design_margin_half"
+            android:layout_marginEnd="@dimen/design_margin"
             android:gravity="center_horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -69,21 +71,53 @@
             android:id="@+id/recycler_view_archived_goals"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="@dimen/design_margin"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/button_close"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/togglebutton_theme" />
+            app:layout_constraintTop_toBottomOf="@+id/togglebutton_archive_status" />
+
+        <LinearLayout
+            android:id="@+id/linear_layout_no_goals_placeholder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/recycler_view_archived_goals"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/recycler_view_archived_goals"
+            tools:ignore="UseCompoundDrawables"
+            tools:visibility="visible">
+
+            <ImageView
+                android:id="@+id/image_view_no_goals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/goals_goals_fragment_content_description_no_goals"
+                app:srcCompat="@drawable/goals_empty_placeholder" />
+
+            <TextView
+                android:id="@+id/text_view_no_goals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/design_margin"
+                android:text="@string/goals_goals_fragment_label_no_goals"
+                android:textAlignment="center"
+                android:textAppearance="@style/Perfectus.TextAppearanceSubtitle" />
+
+        </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_close"
-            style="@style/Widget.Perfectus.TextButton"
+            style="@style/Widget.NegativeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/goals_add_goals_button_close"
+            android:layout_marginStart="@dimen/design_margin_half"
+            android:layout_marginBottom="@dimen/design_margin_half"
             android:onClick="@{() -> fragment.onCloseClicked()}"
+            android:text="@string/goals_add_goals_button_close"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

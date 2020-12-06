@@ -22,4 +22,12 @@
     <attr name="design_bottom_sheet_menu_separator_color" format="color" />
     <!-- -->
 
+    <!-- Perfectus.FullScreenDialog -->
+    <attr name="design_full_screen_dialog_details_label_color" format="color" />
+    <attr name="design_full_screen_dialog_details_value_color" format="color" />
+    <attr name="design_full_screen_dialog_details_background_color" format="color" />
+    <attr name="design_full_screen_dialog_details_separator" format="color" />
+    <attr name="design_full_screen_dialog_background" format="color" />
+    <!-- -->
+
 </resources>

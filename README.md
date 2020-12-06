@@ -8,6 +8,7 @@
 > “Le mieux est l'ennemi du bien.
 
 [![CircleCI](https://circleci.com/gh/ChamichApps/Perfectus/tree/release.svg?style=shield)](https://circleci.com/gh/ChamichApps/Perfectus/tree/release)
+[![Codacy](https://app.codacy.com/project/badge/Grade/44921f3a182642e2ba264ea42b3ac8b6)](https://www.codacy.com/gh/ChamichApps/Perfectus/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ChamichApps/Perfectus&amp;utm_campaign=Badge_Grade)
 [![Kotlin Version](https://img.shields.io/badge/kotlin-1.4.10-blue.svg)](http://kotlinlang.org/)
 [![Gradle](https://img.shields.io/badge/gradle-6.6.1-blue.svg)](https://lv.binarybabel.org/catalog/gradle/latest)
 [![API](https://img.shields.io/badge/API-21%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=21)
@@ -20,6 +21,8 @@ Perfectus is an open-source application running on Android. With the help of Per
 -   [Authors](https://github.com/ChamichApps/Perfectus#authors)
 -   [License](https://github.com/ChamichApps/Perfectus#license)
 -   [Structure](https://github.com/ChamichApps/Perfectus#structure)
+-   [Architecture](https://github.com/ChamichApps/Perfectus#architecture)
+-   [Design](https://github.com/ChamichApps/Perfectus#design)
 
 ## Structure
 
@@ -38,6 +41,14 @@ The project consists of feature and library modules
   | - logger
   | - preferences
 ```
+## Architecture
+
+## Design
+
+| Theme  | Sign In  | Goals  | Add Goal  |
+|-------|-----------|--------|-----------|
+| Light |           |        |           |
+| Dark  |           |        |           |
 
 ## Author
 

@@ -34,7 +34,7 @@
         android:id="@+id/constraint_layout_goal_details"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#0d0d15">
+        android:background="?attr/design_full_screen_dialog_background">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -46,10 +46,10 @@
                 android:id="@+id/text_view_goal_details_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="@dimen/design_margin"
+                android:layout_marginTop="@dimen/design_margin"
                 android:text="@string/goals_goal_details_label"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -66,14 +66,14 @@
                 app:layout_constraintTop_toTopOf="@+id/text_view_goal_details_title"
                 app:srcCompat="@drawable/goals_edit" />
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_view_goal_details"
                 style="@style/Widget.Perfectus.Card"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="@dimen/design_margin_half"
+                android:layout_marginTop="@dimen/design_margin_triple"
+                android:layout_marginRight="@dimen/design_margin_half"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_goal_details_title">
@@ -99,7 +99,9 @@
 
                     <TextView
                         android:id="@+id/text_view_title"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        style="@style/Goals.TextAppearanceSubtitle"
+                        android:ellipsize="end"
+                        android:maxLines="2"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/design_margin_double"
@@ -112,12 +114,14 @@
 
                     <TextView
                         android:id="@+id/text_view_subtitle"
-                        style="@style/TextAppearance.MaterialComponents.Caption"
+                        style="@style/Goals.TextAppearanceCaption"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/design_margin_double"
                         android:layout_marginTop="4dp"
                         android:layout_marginEnd="@dimen/design_margin"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:text="@{@string/goals_item_goal_details_subtitle(goal.progress, viewmodel.progress, goal.totalEffort, context.getString(Measurement.asStringResource(goal.measuredIn)))}"
                         app:layout_constraintBottom_toTopOf="@+id/progress_bar_progress"
                         app:layout_constraintEnd_toStartOf="@+id/text_view_percentage"
@@ -126,7 +130,7 @@
 
                     <TextView
                         android:id="@+id/text_view_percentage"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        style="@style/Goals.TextAppearanceSubtitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/design_margin_double"
@@ -137,16 +141,16 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <include
                 android:id="@+id/include_goal_progress"
                 layout="@layout/goals_view_goal_progress_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="@dimen/design_margin_half"
+                android:layout_marginTop="@dimen/design_margin_tiny"
+                android:layout_marginRight="@dimen/design_margin_half"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/card_view_goal_details"
@@ -155,10 +159,11 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_close"
-                style="@style/Widget.Perfectus.TextButton"
+                style="@style/Widget.NegativeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="@dimen/design_margin_half"
+                android:layout_marginBottom="@dimen/design_margin_half"
                 android:onClick="@{() -> fragment.onCloseClicked()}"
                 android:text="@string/goals_add_goals_button_close"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -166,10 +171,11 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_add_progress"
-                style="@style/Widget.Perfectus.TextButton"
+                style="@style/Widget.PositiveButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="@dimen/design_margin_half"
+                android:layout_marginBottom="@dimen/design_margin_half"
                 android:onClick="@{() -> fragment.onSaveClicked()}"
                 android:text="@string/goals_button_text_save_progress"
                 app:layout_constraintBottom_toBottomOf="parent"

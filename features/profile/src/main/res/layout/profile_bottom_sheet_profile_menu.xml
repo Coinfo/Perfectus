@@ -61,11 +61,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/design_margin"
                     android:layout_marginTop="46dp"
-                    android:layout_marginEnd="@dimen/design_margin_half"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:singleLine="true"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/button_sign_out"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Viktor Apoyan" />
@@ -77,11 +76,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/design_margin"
                     android:layout_marginTop="@dimen/design_margin_half"
-                    android:layout_marginEnd="@dimen/design_margin_half"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:singleLine="true"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/text_view_username"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_view_username"
                     tools:text="chamich.apps@gmail.com" />
@@ -114,7 +112,7 @@
                     style="?attr/materialButtonToggleGroupStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="@dimen/design_margin"
                     android:gravity="center_horizontal"
                     app:layout_constraintBottom_toBottomOf="@+id/label_theme"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -141,20 +139,21 @@
 
                 </com.google.android.material.button.MaterialButtonToggleGroup>
 
+                <ImageButton
+                    android:id="@+id/button_sign_out"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/design_margin"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:onClick="@{() -> fragment.onSignOutClicked()}"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_view_email"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/text_view_username"
+                    app:srcCompat="@drawable/profile_sign_out" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
-
-        <Button
-            android:id="@+id/button_sign_out"
-            style="@style/Profile.Widget.TextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:onClick="@{() -> fragment.onSignOutClicked()}"
-            android:text="@string/profile_menu_button_text_sign_out"
-            app:layout_constraintBottom_toTopOf="@+id/card_view_profile_menu"
-            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
