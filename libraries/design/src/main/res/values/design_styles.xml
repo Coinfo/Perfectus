@@ -30,6 +30,13 @@
         <item name="android:height">55dp</item>
     </style>
 
+    <style name="Widget.ActionButton" parent="Widget.MaterialComponents.Button.OutlinedButton" tools:ignore="ResourceName">
+        <item name="shapeAppearanceOverlay">@style/Widget.ButtonShape</item>
+        <item name="backgroundTint">@color/design_color_button_action</item>
+        <item name="android:textColor">#0A92F8</item>
+        <item name="android:height">55dp</item>
+    </style>
+
     <style name="Widget.ButtonShape" parent="" tools:ignore="ResourceName">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item>

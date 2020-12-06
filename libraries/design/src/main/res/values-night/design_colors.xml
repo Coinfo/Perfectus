@@ -8,6 +8,7 @@
 
 
     <color name="design_color_button_negative">#4DD54343</color>
+    <color name="design_color_button_action">#1C374C</color>
 
     <!-- Perfectus.BottomSheetMenu -->
     <color name="design_color_bottom_sheet_menu_brand">#0A92F8</color>
