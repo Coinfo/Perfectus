@@ -36,10 +36,11 @@
                 android:id="@+id/text_view_action_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="@dimen/design_margin"
+                android:layout_marginTop="@dimen/design_margin"
                 android:text="@string/goals_action_menu_label_actions"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,7 +56,7 @@
 
                 <Button
                     android:id="@+id/button_archive"
-                    style="@style/Widget.Perfectus.TextButton"
+                    style="@style/Widget.ActionButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick="@{() -> fragment.onArchiveClicked()}"
@@ -64,7 +65,7 @@
 
                 <Button
                     android:id="@+id/button_complete"
-                    style="@style/Widget.Perfectus.TextButton"
+                    style="@style/Widget.ActionButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick="@{() -> fragment.onCompleteClicked()}"
@@ -73,7 +74,7 @@
 
                 <Button
                     android:id="@+id/button_unarchive"
-                    style="@style/Widget.Perfectus.TextButton"
+                    style="@style/Widget.ActionButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick="@{() -> fragment.onUnarchiveClicked()}"
@@ -82,7 +83,7 @@
 
                 <Button
                     android:id="@+id/button_delete"
-                    style="@style/Widget.Perfectus.TextButton"
+                    style="@style/Widget.ActionButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick="@{() -> fragment.onDeleteClicked()}"
@@ -94,7 +95,7 @@
                 android:id="@+id/constraint_layout_action_confirmation"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/design_margin"
                 android:visibility="invisible"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_action_title">
 
@@ -117,6 +118,7 @@
                     android:layout_height="wrap_content"
                     android:onClick="@{() -> fragment.onNoClicked()}"
                     android:text="@string/goals_action_menu_button_no_text"
+                    android:layout_marginTop="@dimen/design_margin"
                     app:layout_constraintEnd_toStartOf="@+id/button_yes"
                     app:layout_constraintTop_toBottomOf="@+id/text_view_action_message" />
 
@@ -127,6 +129,7 @@
                     android:layout_height="wrap_content"
                     android:onClick="@{() -> fragment.onYesClicked()}"
                     android:text="@string/goals_action_menu_button_yes_text"
+                    android:layout_marginTop="@dimen/design_margin"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_view_action_message" />
 

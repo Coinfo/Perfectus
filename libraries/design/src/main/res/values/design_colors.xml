@@ -9,6 +9,9 @@
     <color name="design_color_black">#000000</color>
     <color name="design_color_white">#FFFFFF</color>
 
+    <color name="design_color_button_negative">#4DD54343</color>
+    <color name="design_color_button_action">#B4DDFB</color>
+
 
     <!-- Perfectus.BottomSheetMenu -->
     <color name="design_color_bottom_sheet_menu_brand">#0A92F8</color>

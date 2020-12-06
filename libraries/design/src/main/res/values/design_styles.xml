@@ -25,8 +25,15 @@
 
     <style name="Widget.NegativeButton" parent="Widget.MaterialComponents.Button.OutlinedButton" tools:ignore="ResourceName">
         <item name="shapeAppearanceOverlay">@style/Widget.ButtonShape</item>
-        <item name="backgroundTint">#FFFFFF</item>
-        <item name="android:textColor">#2A43A9</item>
+        <item name="backgroundTint">@color/design_color_button_negative</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:height">55dp</item>
+    </style>
+
+    <style name="Widget.ActionButton" parent="Widget.MaterialComponents.Button.OutlinedButton" tools:ignore="ResourceName">
+        <item name="shapeAppearanceOverlay">@style/Widget.ButtonShape</item>
+        <item name="backgroundTint">@color/design_color_button_action</item>
+        <item name="android:textColor">#0A92F8</item>
         <item name="android:height">55dp</item>
     </style>
 

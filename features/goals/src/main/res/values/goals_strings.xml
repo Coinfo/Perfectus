@@ -60,6 +60,8 @@
     <string name="goals_archive_button_text_completed">Completed</string>
     <string name="goals_archive_button_text_archived">Archived</string>
     <string name="goals_archive_title_archive">Archive</string>
+    <string name="goals_archive_label_no_completed_goals">You don\'t have any completed goals</string>
+    <string name="goals_archive_label_no_archived_goals">You don\'t have any archived goals</string>
 
     <!-- Action Menu -->
     <string name="goals_action_menu_button_text_edit">Edit</string>

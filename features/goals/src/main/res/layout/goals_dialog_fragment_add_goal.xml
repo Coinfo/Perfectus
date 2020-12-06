@@ -350,8 +350,8 @@
             android:layout_height="wrap_content"
             android:onClick="@{() -> fragment.onCloseClicked()}"
             android:text="@string/goals_add_goals_button_close"
-            android:layout_marginLeft="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="@dimen/design_margin_half"
+            android:layout_marginBottom="@dimen/design_margin_half"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -361,8 +361,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="@{() -> fragment.onAddClicked()}"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginRight="@dimen/design_margin_half"
+            android:layout_marginBottom="@dimen/design_margin_half"
             android:text="@string/goals_add_goals_button_add_goal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
