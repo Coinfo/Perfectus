@@ -40,12 +40,12 @@ internal class GoalsFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupRecyclerView()
+        setupObservers()
+
         if (savedInstanceState == null) {
             viewModel.loadGoals()
         }
-
-        setupRecyclerView()
-        setupObservers()
 
         // IMPROVEME: This is hacky solution and need to be fixed.
         findNavController().addOnDestinationChangedListener { _, destination, _ ->
