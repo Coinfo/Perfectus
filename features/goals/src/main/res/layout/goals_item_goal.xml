@@ -23,9 +23,9 @@
         style="@style/Widget.Perfectus.Card"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginRight="8dp">
+        android:layout_marginLeft="@dimen/design_margin_half"
+        android:layout_marginTop="@dimen/design_margin_tiny"
+        android:layout_marginRight="@dimen/design_margin_half">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

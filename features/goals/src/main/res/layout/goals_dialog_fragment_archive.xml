@@ -16,17 +16,18 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#0d0d15">
+        android:background="?attr/design_full_screen_dialog_background">
 
 
         <TextView
             android:id="@+id/goals_textview"
-            android:text="@string/goals_archive_title_archive"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_marginStart="@dimen/design_margin"
+            android:layout_marginTop="@dimen/design_margin"
+            android:text="@string/goals_archive_title_archive"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,9 +37,9 @@
             style="?attr/materialButtonToggleGroupStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/design_margin"
+            android:layout_marginTop="@dimen/design_margin_half"
+            android:layout_marginEnd="@dimen/design_margin"
             android:gravity="center_horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -69,8 +70,7 @@
             android:id="@+id/recycler_view_archived_goals"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="@dimen/design_margin"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/button_close"
             app:layout_constraintEnd_toEndOf="parent"
@@ -79,11 +79,13 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_close"
-            style="@style/Widget.Perfectus.TextButton"
+            style="@style/Widget.NegativeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/goals_add_goals_button_close"
+            android:layout_marginStart="@dimen/design_margin_half"
+            android:layout_marginBottom="@dimen/design_margin_half"
             android:onClick="@{() -> fragment.onCloseClicked()}"
+            android:text="@string/goals_add_goals_button_close"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
