@@ -1,5 +1,9 @@
-<a href="https://medium.com/@vapoyan" target="_blank">
+<a href="https://play.google.com/apps/testing/app.chamich.perfectus" target="_blank">
   <img src="https://github.com/ChamichApps/Perfectus/blob/develop/.screenshots/Perfectus%20Icon.png" width="70" align="left">
+</a>
+
+<a href="https://play.google.com/apps/testing/app.chamich.perfectus" target="_blank">
+  <img src=".screenshots/play_store_icon.png" width="96" align="right">
 </a>
 
 
