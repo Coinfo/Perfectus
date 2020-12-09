@@ -45,6 +45,7 @@ The project consists of feature and library modules
 
 ## Design
 
+
 | Theme  | Sign In  | Empty Goals  | Add Goal  |
 |-------|-----------|--------|-----------|
 | Light |<img src=".screenshots/perfectus_login_light.png" width="250">|<img src=".screenshots/perfectus_goals_empty_light.png" width="250">|<img src=".screenshots/perfectus_add_goal_light.png" width="250">|
