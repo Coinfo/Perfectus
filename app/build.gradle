@@ -18,7 +18,7 @@ def keystoreProperties = new Properties()
 // Load your keystore.properties file into the keystoreProperties object.
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
-ext.versionMajor = 0
+ext.versionMajor = 1
 ext.versionMinor = 0
 ext.versionPatch = 0
 ext.versionClassifier = null
@@ -27,11 +27,11 @@ ext.minSdkVersion = 21
 
 private Integer generateVersionCode() {
     //return 1000 + (ext.versionMajor * 100) + (ext.versionMinor * 10) + ext.versionPatch
-    return 20
+    return 21
 }
 
 private String generateVersionName() {
-    String versionName = "${ext.versionMajor}.${ext.versionMinor}.${ext.versionPatch}"
+    String versionName = "${ext.versionMajor}.${ext.versionMinor}.${ext.versionPatch}-beta"
 
     if (ext.versionClassifier == null) {
         if (ext.isSnapShot) {
