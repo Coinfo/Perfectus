@@ -58,7 +58,7 @@ The project consists of feature and library modules
 ## Author
 
 <a href="https://medium.com/@vapoyan" target="_blank">
-  <img src="https://media-exp1.licdn.com/dms/image/C4D03AQG1bcSjvx4v9g/profile-displayphoto-shrink_200_200/0?e=1608768000&v=beta&t=fIidjjlBbmqmaWB6YXKr4Rxa-r9FqZX5UhUvYkgEiYw" width="70" align="left">
+  <img src="https://miro.medium.com/fit/c/262/262/1*nibSHtoh7hPPKbL5tqUNVA.png" width="70" align="left">
 </a>
 
 **Viktor Apoyan**
