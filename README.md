@@ -11,6 +11,7 @@
 
 > “Le mieux est l'ennemi du bien.
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6793aaaab2214097837e1279548608a3)](https://app.codacy.com/gh/ChamichApps/Perfectus?utm_source=github.com&utm_medium=referral&utm_content=ChamichApps/Perfectus&utm_campaign=Badge_Grade_Settings)
 [![CircleCI](https://circleci.com/gh/ChamichApps/Perfectus/tree/release.svg?style=shield)](https://circleci.com/gh/ChamichApps/Perfectus/tree/release)
 [![Codacy](https://app.codacy.com/project/badge/Grade/44921f3a182642e2ba264ea42b3ac8b6)](https://www.codacy.com/gh/ChamichApps/Perfectus/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ChamichApps/Perfectus&amp;utm_campaign=Badge_Grade)
 [![Kotlin Version](https://img.shields.io/badge/kotlin-1.4.10-blue.svg)](http://kotlinlang.org/)
